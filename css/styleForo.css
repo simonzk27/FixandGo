@@ -1,0 +1,289 @@
+/* Reset some basic elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Header */
+header {
+    background-color: #0d0c0c4a; /* Color de fondo azul claro */
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    border-radius: 15px; /* Sombra sutil */
+}
+
+.logo {
+    height: 50px; /* Ajusta esto al tamaño que prefieras */
+}
+
+header h1 {
+    color: #333; /* Color de texto gris oscuro */
+    font-size: 24px;
+    margin: 0; /* Eliminar margen */
+}
+
+/* Propiedades flexbox para el contenedor */
+header .container {
+    display: flex;
+    flex-direction: column; /* Organizar en columna */
+}
+
+/* Elementos del lado izquierdo */
+.top-section {
+    display: flex;
+    align-items: center;
+}
+
+/* Elementos del lado derecho */
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Menús de navegación */
+header nav ul {
+    list-style: none; /* Eliminar viñetas */
+    padding: 0; /* Eliminar padding */
+    margin: 0; /* Eliminar margen */
+}
+
+header nav li {
+    display: inline-block; /* Mostrar elementos del menú en línea */
+    padding: 10px 20px; /* Agregar espacio entre elementos del menú */
+    background-color: #333; /* Establecer el color de fondo */
+    border-radius: 15px; /* Bordes redondeados */
+}
+
+header nav li a {
+    color: #fff; /* Color de texto blanco */
+    text-decoration: none; /* Eliminar subrayado */
+    font-size: 18px;
+    transition: color 0.3s ease; /* Efecto suave al pasar el mouse */
+}
+
+header nav li a:hover {
+    color: #ccc; /* Gris claro al pasar el mouse */
+}
+
+.user-info {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    border-radius: 15px; /* Bordes redondeados */
+}
+
+.user-info.welcome-msg {
+    color: #fff; /* Color de texto blanco */
+}
+
+.user-info a {
+    color: #fff; /* Color de texto blanco */
+    text-decoration: none; /* Eliminar subrayado */
+    font-size: 18px;
+    transition: color 0.3s ease; /* Efecto suave al pasar el mouse */
+}
+
+.user-info a:hover {
+    color: #ccc; /* Gris claro al pasar el mouse */
+}
+
+/* hacia abajo header */
+
+/* Footer */
+footer {
+    background: #000000;
+    padding: 20px;
+    text-align: center;
+}
+
+footer ul {
+    list-style-type: none;
+    padding: 10px 0;
+}
+
+footer {
+    color: #ffffff;
+}
+
+footer ul li {
+    display: inline-block; /* Cambiado a inline-block */
+    margin: 0 10px;
+}
+
+footer ul li a {
+    color: #ffffff;
+    text-decoration: none;
+}
+/* Foro */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.post {
+    background-color: #fff;
+    margin: 20px auto;
+    width: 80%;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.post h2 {
+    color: #333;
+}
+
+.post p {
+    color: #666;
+}
+
+.comments {
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+}
+
+.comment {
+    margin-bottom: 20px;
+}
+
+.comment h4 {
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.comment p {
+    color: #666;
+}
+
+.new-comment {
+    background-color: #fff;
+    margin: 20px auto;
+    width: 80%;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.new-comment form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Añadido para centrar los elementos del formulario */
+    width: 100%; /* Añadido para que el formulario ocupe todo el ancho disponible */
+    margin: auto; /* Añadido para centrar el formulario */
+}
+
+.new-comment label {
+    margin-bottom: 5px;
+}
+
+.new-comment input,
+.new-comment textarea {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 100%; /* Añadido para que los campos de entrada y el área de texto ocupen todo el ancho disponible */
+}
+
+.new-comment input[type="submit"] {
+    width: 100px;
+    align-self: center; /* Añadido para centrar el botón de envío */
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+/* Estilos para dispositivos con pantalla de hasta 600px de ancho */
+@media (max-width: 600px) {
+    body {
+        font-size: 18px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    .grid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .item {
+        margin-bottom: 20px;
+    }
+
+    /* Añade más estilos específicos para móviles aquí */
+}
+
+/* Estilos para dispositivos con pantalla de entre 601px y 900px de ancho */
+@media (min-width: 601px) and (max-width: 900px) {
+    body {
+        font-size: 20px;
+    }
+
+    .container {
+        width: 90%;
+        padding: 0 15px;
+    }
+
+    .grid {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .item {
+        flex: 0 0 50%; /* Hace que los elementos de la grid ocupen la mitad del ancho */
+        margin-bottom: 20px;
+    }
+
+    /* Añade más estilos específicos para tablets aquí */
+}
+
+/* Estilos para dispositivos con pantalla de más de 900px de ancho */
+@media (min-width: 901px) {
+    body {
+        font-size: 22px;
+    }
+
+    .container {
+        width: 80%;
+        margin: auto;
+    }
+
+    .grid {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .item {
+        flex: 0 0 33.33%; /* Hace que los elementos de la grid ocupen un tercio del ancho */
+    }
+
+    /* Añade más estilos específicos para desktop aquí */
+}
+
+
