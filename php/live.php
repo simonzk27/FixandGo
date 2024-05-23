@@ -41,7 +41,7 @@ session_start();
             <div class="video-container">
                 <!-- Contenido del video en vivo (video descargado en formato MP4) -->
                 <video controls autoplay>
-                    <source src="../img/Y2meta.app-Wil_ Ayúdame por favor mi iphone no tiene señal �� ��-(480p).mp4" type="video/mp4">
+                    <source src="../img/Y2meta.app-14 de mayo de 2024-(480p).mp4" type="video/mp4">
                     Tu navegador no soporta el elemento video.
                 </video>
             </div>

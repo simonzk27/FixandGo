@@ -39,7 +39,7 @@ session_start();
 <main>
     <section class="hero">
         <div class="container">
-            <h2 style="color: #333;">Reparar es cuidar, cada objeto cuenta 20/05</h2>
+            <h2 style="color: #333;">Reparar es cuidar, cada objeto cuenta</h2>
             <p style="color: #555;">En Fix and Go, nos apasiona reparar tus objetos favoritos. Brindamos servicios de reparación rápida y eficiente para una amplia gama de artículos, desde electrodomésticos hasta dispositivos electrónicos.</p>
             <a href="php/foro.php" class="btn-hero">Discusiones</a>
         </div>
