@@ -1,6 +1,84 @@
 <?php
-    session_start(); 
+session_start();
+$basePath = __DIR__ . '/../guides/';
+include 'connect.php';
+
+$stmt = $pdo->query("SELECT IFNULL(MAX(id), 0) AS maxId FROM Repairs");
+$row = $stmt->fetch();
+$guideId = $row['maxId'] + 1;
+$guideDirPath = $basePath . 'g' . $guideId;
+if (!is_dir($guideDirPath)) {
+    mkdir($guideDirPath, 0755, true);
+}
+
+$guideFilePath = $guideDirPath . '/guia.php';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Recoge los datos del formulario
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+    $tools = $_POST['tools'];
+    $stepTitles = $_POST['stepTitles'];
+    $stepDescriptions = $_POST['stepDescriptions'];
+
+    // Crea el contenido de la guía
+    $guideContent = "
+    <!DOCTYPE html>
+    <html lang=\"es\">
+    <!-- Aquí iría el resto del HTML de la plantilla -->
+    <h2>$title</h2>
+    <section class=\"descripcion\">
+        <p>$description</p>
+    </section>
+    <section class=\"herramientas\">
+        <ul>$tools</ul>
+    </section>
+    <section class=\"pasos\">";
+
+    // Añade cada paso a la guía
+    for ($i = 0; $i < count($stepTitles); $i++) {
+        $stepTitle = $stepTitles[$i];
+        $stepDescription = $stepDescriptions[$i];
+
+        $guideContent .= "
+        <div class=\"paso\">
+            <h3>$stepTitle</h3>
+            <p>$stepDescription</p>
+        </div>";
+    }
+
+    $guideContent .= "
+    </section>
+    <!-- Aquí iría el resto del HTML de la plantilla -->
+    </html>";
+
+    // Guarda el contenido de la guía en un archivo HTML
+    file_put_contents('guide.html', $guideContent);
+}
+
+$guideUrl = 'https://fixandgo.site/guides/g' . $guideId . '/guia.php';
+
+// Manejo de la carga de la imagen principal
+if (isset($_FILES['mainImage']) && $_FILES['mainImage']['error'] === UPLOAD_ERR_OK) {
+    // Obtén la extensión del archivo
+    $fileTmpPath = $_FILES['mainImage']['tmp_name'];
+    $fileName = $_FILES['mainImage']['name'];
+    $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
+
+    // Cambia el nombre del archivo a "principal.elformatooriginal"
+    $newFileName = 'principal.' . $fileExtension;
+
+    // Mueve el archivo al directorio de la guía
+    $dest_path = $guideDirPath . '/' . $newFileName;
+    move_uploaded_file($fileTmpPath, $dest_path);
+}
+
+// Asegúrate de que tu tabla Repairs tenga una columna para la imagen
+$imagePath = isset($dest_path) ? $dest_path : null;
+
+$stmt = $pdo->prepare("INSERT INTO Repairs (title, guideUrl, mainImage, description) VALUES (?, ?, ?, ?)");
+$stmt->execute([$_POST['title'], $guideUrl, $imagePath, $_POST['description']]);
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -37,7 +115,7 @@
         </header>
         <main>
         
-            <form action="processGuide.php" method="post" enctype="multipart/form-data">
+            <form method="POST" action="createGuide.php" enctype="multipart/form-data">
                 <label for="title">Título:</label><br>
                 <input type="text" id="title" name="title" required><br>
                 <input type="file" id="mainImage" name="mainImage" accept="image/*" style="display: none;">
@@ -95,7 +173,6 @@
                     <input type="file" id="stepImage${stepCount}" name="stepImages[]" accept="image/*" style="display: none;">
                     <label for="stepImage${stepCount}" class="custom-file-upload" onclick="triggerClick('stepImage${stepCount}')">Examinar...</label>
                     <button type="button" class="remove-button" onclick="removeStep(${stepCount})">Eliminar paso</button><br>
-                    <br></br>
                 `;
                 stepsDiv.appendChild(newStep);
             }
