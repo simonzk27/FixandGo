@@ -55,10 +55,11 @@
                     <input type="text" id="stepTitle1" name="stepTitles[]"><br>
                     <label for="stepDescription1">Descripción del paso 1:</label><br>
                     <textarea id="stepDescription1" name="stepDescriptions[]"></textarea><br>
-                    <label for="stepImage1">Imagen del paso 1:</label><br>
-                    <input type="file" id="stepImage1" name="stepImages[]" accept="image/*"><br>
+                    <label for="stepImage1" class="custom-file-upload" onclick="triggerClick('stepImage1')">Imagen del paso 1:</label><br>
+                    <input type="file" id="stepImage1" name="stepImages[]" accept="image/*" style="display: none;"><br>
                 </div>
                 <button type="button" onclick="addStep()">Agregar paso</button><br>
+                <br>
                 <input type="submit" value="Crear guía">
             </form>
         </main>
