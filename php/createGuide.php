@@ -10,7 +10,7 @@ include 'connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $conn->query("SELECT IFNULL(MAX(id), 0) AS maxId FROM Repairs");
-    $row = $stmt->fetch();
+    $row = $stmt->fetch_assoc();
     $guideId = $row['maxId'] + 1;
     $guideDirPath = $basePath . 'g' . $guideId;
     if (!is_dir($guideDirPath)) {
