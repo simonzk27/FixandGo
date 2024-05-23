@@ -77,6 +77,12 @@
         <script>
             let stepCount = 1;
             function addStep() {
+                // Hide the remove button for the previous step
+                if (stepCount > 1) {
+                    const previousStepRemoveButton = document.querySelector(`#step${stepCount} button`);
+                    previousStepRemoveButton.style.display = 'none';
+                }
+
                 stepCount++;
                 const stepsDiv = document.getElementById('steps');
                 const newStep = document.createElement('div');
@@ -99,9 +105,15 @@
                     const stepToRemove = document.getElementById('step' + stepNumber);
                     stepToRemove.parentNode.removeChild(stepToRemove);
                     stepCount--;
+
+                    // Show the remove button for the new last step
+                    if (stepCount > 1) {
+                        const lastStepRemoveButton = document.querySelector(`#step${stepCount} button`);
+                        lastStepRemoveButton.style.display = 'block';
+                    }
                 }
             }
-        </script> 
+        </script>
         <footer>
             <div class="container">
                 <p>&copy; 2024 Fix and Go</p>
