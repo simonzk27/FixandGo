@@ -71,7 +71,7 @@
                 </div>
             <?php else: ?>
                 <div class="button-container">
-                    <p>Registrate o inicia sesión para crear guías taller</p>
+                    <p class="crear">Registrate o inicia sesión para crear guías taller</p>
                 </div>
             <?php endif; ?>
             
