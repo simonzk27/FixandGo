@@ -14,7 +14,7 @@ session_start();
     <div class="container">
         <div class="top-section">
             <img src="img/fixandgo.png" alt="Logo" class="logo">
-            <h1>Fix and Go</h1>
+            <h1>Fix and Go Go Go</h1>
         </div>
         <nav>
             <ul class="left-side">
