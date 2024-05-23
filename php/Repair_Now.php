@@ -70,7 +70,9 @@
                     <button class="crear">Crear guía-taller</button>
                 </div>
             <?php else: ?>
-                <p>Registrate o inicia sesión para crear guías taller</p>
+                <div class="button-container">
+                    <p>Registrate o inicia sesión para crear guías taller</p>
+                </div>
             <?php endif; ?>
             
         </main>
