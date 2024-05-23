@@ -124,6 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <form method="POST" action="createGuide.php" enctype="multipart/form-data">
                 <label for="title">Título:</label><br>
                 <input type="text" id="title" name="title" required><br>
+                <label for="mainImage">Imagen Principal:</label><br>
                 <input type="file" id="mainImage" name="mainImage" accept="image/*"><br>
                 <label for="description">Descripción:</label><br>
                 <textarea id="description" name="description" required></textarea><br>
