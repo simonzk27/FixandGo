@@ -93,7 +93,7 @@
                     <label for="stepDescription${stepCount}">Descripción del paso ${stepCount}:</label><br>
                     <textarea id="stepDescription${stepCount}" name="stepDescriptions[]"></textarea><br>
                     <input type="file" id="stepImage${stepCount}" name="stepImages[]" accept="image/*" style="display: none;">
-                    <label for="stepImage${stepCount}" class="custom-file-upload" onclick="triggerClick('stepImage${stepCount}')">Examinar...</label><br>
+                    <label for="stepImage${stepCount}" class="custom-file-upload" onclick="triggerClick('stepImage${stepCount}')">Examinar...</label>
                     <button type="button" class="remove-button" onclick="removeStep(${stepCount})">Eliminar paso</button><br>
                     
                 `;
