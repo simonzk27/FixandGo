@@ -36,11 +36,7 @@
             </div>
         </header>
         <main>
-        <script>
-            function triggerClick(id) {
-                document.getElementById(id).click();
-            }
-        </script>
+        
             <form action="processGuide.php" method="post" enctype="multipart/form-data">
                 <label for="title">Título:</label><br>
                 <input type="text" id="title" name="title" required><br>
@@ -59,9 +55,14 @@
                     <input type="file" id="stepImage1" name="stepImages[]" accept="image/*" style="display: none;"><br>
                 </div>
                 <button type="button" onclick="addStep()">Agregar paso</button><br>
-                <br>
+                <br></br>
                 <input type="submit" value="Crear guía">
             </form>
+            <script>
+                function triggerClick(id) {
+                    document.getElementById(id).click();
+                }
+            </script>
         </main>
         <script>
             let stepCount = 1;
