@@ -14,11 +14,12 @@ if (!is_dir($guideDirPath)) {
 $guideFilePath = $guideDirPath . '/guia.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Recoge los datos del formulario
-    $title = $_POST['title'];
-    $description = $_POST['description'];
-    $tools = $_POST['tools'];
-    $stepTitles = $_POST['stepTitles'];
-    $stepDescriptions = $_POST['stepDescriptions'];
+    console.log("hola");
+    $title = htmlspecialchars($_POST['title']);
+    $description = htmlspecialchars($_POST['description']);
+    $tools = htmlspecialchars($_POST['tools']);
+    $stepTitles = array_map('htmlspecialchars', $_POST['stepTitles']);
+    $stepDescriptions = array_map('htmlspecialchars', $_POST['stepDescriptions']);
 
     // Crea el contenido de la guía
     $guideContent = "
@@ -76,8 +77,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $imagePath = isset($dest_path) ? $dest_path : null;
 
     $stmt = $pdo->prepare("INSERT INTO Repairs (title, guideUrl, mainImage, description) VALUES (?, ?, ?, ?)");
-    $stmt->execute([$_POST['title'], $guideUrl, $imagePath, $_POST['description']]);
-    }
+    $stmt->execute([$title, $guideUrl, $imagePath, $description]);
+}
 ?>
 
 <!DOCTYPE html>
