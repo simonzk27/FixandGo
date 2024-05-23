@@ -14,7 +14,6 @@ if (!is_dir($guideDirPath)) {
 $guideFilePath = $guideDirPath . '/guia.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Recoge los datos del formulario
-    console.log("hola");
     $title = htmlspecialchars($_POST['title']);
     $description = htmlspecialchars($_POST['description']);
     $tools = htmlspecialchars($_POST['tools']);
