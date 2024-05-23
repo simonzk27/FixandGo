@@ -52,31 +52,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </html>";
 
     // Guarda el contenido de la guía en un archivo HTML
-    file_put_contents('guide.html', $guideContent);
-}
+    file_put_contents($guideFilePath, $guideContent);
 
-$guideUrl = 'https://fixandgo.site/guides/g' . $guideId . '/guia.php';
+    
+    $guideUrl = 'https://fixandgo.site/guides/g' . $guideId . '/guia.php';
 
-// Manejo de la carga de la imagen principal
-if (isset($_FILES['mainImage']) && $_FILES['mainImage']['error'] === UPLOAD_ERR_OK) {
-    // Obtén la extensión del archivo
-    $fileTmpPath = $_FILES['mainImage']['tmp_name'];
-    $fileName = $_FILES['mainImage']['name'];
-    $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
+    // Manejo de la carga de la imagen principal
+    if (isset($_FILES['mainImage']) && $_FILES['mainImage']['error'] === UPLOAD_ERR_OK) {
+        // Obtén la extensión del archivo
+        $fileTmpPath = $_FILES['mainImage']['tmp_name'];
+        $fileName = $_FILES['mainImage']['name'];
+        $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
 
-    // Cambia el nombre del archivo a "principal.elformatooriginal"
-    $newFileName = 'principal.' . $fileExtension;
+        // Cambia el nombre del archivo a "principal.elformatooriginal"
+        $newFileName = 'principal.' . $fileExtension;
 
-    // Mueve el archivo al directorio de la guía
-    $dest_path = $guideDirPath . '/' . $newFileName;
-    move_uploaded_file($fileTmpPath, $dest_path);
-}
+        // Mueve el archivo al directorio de la guía
+        $dest_path = $guideDirPath . '/' . $newFileName;
+        move_uploaded_file($fileTmpPath, $dest_path);
+    }
 
-// Asegúrate de que tu tabla Repairs tenga una columna para la imagen
-$imagePath = isset($dest_path) ? $dest_path : null;
+    // Asegúrate de que tu tabla Repairs tenga una columna para la imagen
+    $imagePath = isset($dest_path) ? $dest_path : null;
 
-$stmt = $pdo->prepare("INSERT INTO Repairs (title, guideUrl, mainImage, description) VALUES (?, ?, ?, ?)");
-$stmt->execute([$_POST['title'], $guideUrl, $imagePath, $_POST['description']]);
+    $stmt = $pdo->prepare("INSERT INTO Repairs (title, guideUrl, mainImage, description) VALUES (?, ?, ?, ?)");
+    $stmt->execute([$_POST['title'], $guideUrl, $imagePath, $_POST['description']]);
+    }
 ?>
 
 <!DOCTYPE html>
