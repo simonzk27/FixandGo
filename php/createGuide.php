@@ -9,15 +9,14 @@ $basePath = __DIR__ . '/../guides/';
 include 'connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    /*
-    $stmt = $pdo->query("SELECT IFNULL(MAX(id), 0) AS maxId FROM Repairs");
+    $stmt = $conn->query("SELECT IFNULL(MAX(id), 0) AS maxId FROM Repairs");
     $row = $stmt->fetch();
     $guideId = $row['maxId'] + 1;
     $guideDirPath = $basePath . 'g' . $guideId;
-    if (!is_dir($guideDirPath)) {*/
-        mkdir(__DIR__ . '/../guides/g3', 0777, true);
-    //}
-    /*
+    if (!is_dir($guideDirPath)) {
+        mkdir($guideDirPath, 0777, true);
+    }
+
     $guideFilePath = $guideDirPath . '/guia.php';
     // Recoge los datos del formulario
     $title = htmlspecialchars($_POST['title']);
@@ -82,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $imagePath = isset($dest_path) ? $dest_path : null;
 
     $stmt = $pdo->prepare("INSERT INTO Repairs (title, guideUrl, mainImage, description) VALUES (?, ?, ?, ?)");
-    $stmt->execute([$title, $guideUrl, $imagePath, $description]);*/
+    $stmt->execute([$title, $guideUrl, $imagePath, $description]);
 }
 ?>
 
