@@ -36,11 +36,16 @@
             </div>
         </header>
         <main>
+        <script>
+            function triggerClick(id) {
+                document.getElementById(id).click();
+            }
+        </script>
             <form action="processGuide.php" method="post" enctype="multipart/form-data">
                 <label for="title">Título:</label><br>
                 <input type="text" id="title" name="title" required><br>
-                <label for="mainImage">Imagen principal:</label><br>
-                <input type="file" id="mainImage" name="mainImage" accept="image/*" required><br>
+                <input type="file" id="mainImage" name="mainImage" accept="image/*" style="display: none;">
+                <label for="mainImage" class="custom-file-upload" onclick="triggerClick('mainImage')">Examinar...</label><br>
                 <label for="description">Descripción:</label><br>
                 <textarea id="description" name="description" required></textarea><br>
                 <label for="tools">Herramientas y Repuestos necesarios:</label><br>
@@ -62,15 +67,24 @@
             function addStep() {
                 stepCount++;
                 const stepsDiv = document.getElementById('steps');
-                stepsDiv.innerHTML += `
+                const newStep = document.createElement('div');
+                newStep.setAttribute('id', 'step' + stepCount);
+                newStep.innerHTML = `
                     <label for="stepTitle${stepCount}">Título del paso ${stepCount}:</label><br>
                     <input type="text" id="stepTitle${stepCount}" name="stepTitles[]"><br>
                     <label for="stepDescription${stepCount}">Descripción del paso ${stepCount}:</label><br>
                     <textarea id="stepDescription${stepCount}" name="stepDescriptions[]"></textarea><br>
-                    <label for="stepImage${stepCount}">Imagen del paso ${stepCount}:</label><br>
-                    <input type="file" id="stepImage${stepCount}" name="stepImages[]" accept="image/*"><br>
-                    `;
-                }
+                    <input type="file" id="stepImage${stepCount}" name="stepImages[]" accept="image/*" style="display: none;">
+                    <label for="stepImage${stepCount}" class="custom-file-upload" onclick="triggerClick('stepImage${stepCount}')">Examinar...</label><br>
+                    <button type="button" onclick="removeStep(${stepCount})">Eliminar paso</button><br>
+                `;
+                stepsDiv.appendChild(newStep);
+            }
+
+            function removeStep(stepNumber) {
+                const stepToRemove = document.getElementById('step' + stepNumber);
+                stepToRemove.parentNode.removeChild(stepToRemove);
+            }
         </script> 
         <footer>
             <div class="container">
