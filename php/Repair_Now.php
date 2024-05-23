@@ -65,9 +65,14 @@
                 $conn->close();
                 ?>
             </div>
-            <div class="button-container">
-                <button class="crear">Crea tu guia-taller</button>
-            </div>
+            <?php if ($_SESSION['loggedIn'] === true): ?>
+                <div class="button-container">
+                    <button class="crear">Crear guía-taller</button>
+                </div>
+            <?php else: ?>
+                <p>Registrate o inicia sesión para crear guías taller</p>
+            <?php endif; ?>
+            
         </main>
         <footer>
             <div class="container">
