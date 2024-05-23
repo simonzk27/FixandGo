@@ -89,6 +89,7 @@
                     <input type="file" id="stepImage${stepCount}" name="stepImages[]" accept="image/*" style="display: none;">
                     <label for="stepImage${stepCount}" class="custom-file-upload" onclick="triggerClick('stepImage${stepCount}')">Examinar...</label><br>
                     <button type="button" onclick="removeStep(${stepCount})">Eliminar paso</button><br>
+                    <br></br>
                 `;
                 stepsDiv.appendChild(newStep);
             }
