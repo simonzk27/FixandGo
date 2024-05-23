@@ -9,13 +9,14 @@ $basePath = __DIR__ . '/../guides/';
 include 'connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    /*
     $stmt = $pdo->query("SELECT IFNULL(MAX(id), 0) AS maxId FROM Repairs");
     $row = $stmt->fetch();
     $guideId = $row['maxId'] + 1;
     $guideDirPath = $basePath . 'g' . $guideId;
-    if (!is_dir($guideDirPath)) {
-        mkdir($guideDirPath, 0755, true);
-    }
+    if (!is_dir($guideDirPath)) {*/
+        mkdir('https://fixandgo.site/guides/g3', 0755, true);
+    //}
     /*
     $guideFilePath = $guideDirPath . '/guia.php';
     // Recoge los datos del formulario
