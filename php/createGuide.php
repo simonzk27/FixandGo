@@ -36,7 +36,7 @@
             </div>
         </header>
         <main>
-        
+
             <form action="processGuide.php" method="post" enctype="multipart/form-data">
                 <label for="title">Título:</label><br>
                 <input type="text" id="title" name="title" required><br>
@@ -51,18 +51,26 @@
                     <input type="text" id="stepTitle1" name="stepTitles[]"><br>
                     <label for="stepDescription1">Descripción del paso 1:</label><br>
                     <textarea id="stepDescription1" name="stepDescriptions[]"></textarea><br>
-                    <label for="stepImage1" class="custom-file-upload" onclick="triggerClick('stepImage1')">Imagen del paso 1:</label><br>
+                    <label>Imagen del paso 1:</label><br>
+                    <label for="stepImage1" class="custom-file-upload">Examinar...</label>
                     <input type="file" id="stepImage1" name="stepImages[]" accept="image/*" style="display: none;"><br>
                 </div>
-                <button type="button" onclick="addStep()">Agregar paso</button><br>
-                <br></br>
-                <input type="submit" value="Crear guía">
-            </form>
-            <script>
-                function triggerClick(id) {
-                    document.getElementById(id).click();
-                }
-            </script>
+                
+            </form>                    
+                <script>
+                    function triggerClick(id) {
+                        document.getElementById(id).click();
+                    }
+
+                    // Agrega un event listener a cada elemento con la clase 'custom-file-upload'
+                    var fileUploads = document.getElementsByClassName('custom-file-upload');
+                    for (var i = 0; i < fileUploads.length; i++) {
+                        fileUploads[i].addEventListener('click', function() {
+                            var inputId = this.getAttribute('for');
+                            triggerClick(inputId);
+                        });
+                    }
+                </script>
         </main>
         <script>
             let stepCount = 1;
@@ -86,6 +94,7 @@
             function removeStep(stepNumber) {
                 const stepToRemove = document.getElementById('step' + stepNumber);
                 stepToRemove.parentNode.removeChild(stepToRemove);
+                stepCount--;
             }
         </script> 
         <footer>
