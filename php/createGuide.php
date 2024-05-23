@@ -120,12 +120,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </header>
         <main>
-        
+        <h2>Crear guía</h2>
             <form method="POST" action="createGuide.php" enctype="multipart/form-data">
                 <label for="title">Título:</label><br>
                 <input type="text" id="title" name="title" required><br>
-                <input type="file" id="mainImage" name="mainImage" accept="image/*" style="display: none;">
-                <label for="mainImage" class="custom-file-upload" onclick="triggerClick('mainImage')">Examinar...</label><br>
+                <input type="file" id="mainImage" name="mainImage" accept="image/*"><br>
                 <label for="description">Descripción:</label><br>
                 <textarea id="description" name="description" required></textarea><br>
                 <label for="tools">Herramientas y Repuestos necesarios:</label><br>
@@ -136,67 +135,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="stepDescription1">Descripción del paso 1:</label><br>
                     <textarea id="stepDescription1" name="stepDescriptions[]"></textarea><br>
                     <label>Imagen del paso 1:</label><br>
-                    <label for="stepImage1" class="custom-file-upload">Examinar...</label>
-                    <input type="file" id="stepImage1" name="stepImages[]" accept="image/*" style="display: none;"><br>
+                    <input type="file" id="stepImage1" name="stepImages[]" accept="image/*"><br>
                 </div>
                 <button type="button" onclick="addStep()">Agregar paso</button><br>
                 <br></br>
                 <input type="submit" value="Crear guía">
             </form>
             <script>
-                function triggerClick(id) {
-                    document.getElementById(id).click();
+                let stepCount = 1;
+                function addStep() {
+                    // Hide the remove button for the previous step
+                    if (stepCount > 1) {
+                        const previousStepRemoveButton = document.querySelector(`#step${stepCount} .remove-button`);
+                        previousStepRemoveButton.style.display = 'none';
+                    }
+
+                    stepCount++;
+                    const stepsDiv = document.getElementById('steps');
+                    const newStep = document.createElement('div');
+                    newStep.setAttribute('id', 'step' + stepCount);
+                    newStep.innerHTML = `
+                        <label for="stepTitle${stepCount}">Título del paso ${stepCount}:</label><br>
+                        <input type="text" id="stepTitle${stepCount}" name="stepTitles[]"><br>
+                        <label for="stepDescription${stepCount}">Descripción del paso ${stepCount}:</label><br>
+                        <textarea id="stepDescription${stepCount}" name="stepDescriptions[]"></textarea><br>
+                        <input type="file" id="stepImage${stepCount}" name="stepImages[]" accept="image/*"><br>
+                        <button type="button" class="remove-button" onclick="removeStep(${stepCount})">Eliminar paso</button><br>
+                    `;
+                    stepsDiv.appendChild(newStep);
                 }
 
-                // Agrega un event listener a cada elemento con la clase 'custom-file-upload'
-                var fileUploads = document.getElementsByClassName('custom-file-upload');
-                for (var i = 0; i < fileUploads.length; i++) {
-                    fileUploads[i].addEventListener('click', function() {
-                        var inputId = this.getAttribute('for');
-                        triggerClick(inputId);
-                    });
+                function removeStep(stepNumber) {
+                    if (stepNumber === stepCount && stepCount > 1) {
+                        const stepToRemove = document.getElementById('step' + stepNumber);
+                        stepToRemove.parentNode.removeChild(stepToRemove);
+                        stepCount--;
+
+                        // Show the remove button for the new last step
+                        if (stepCount > 1) {
+                            const lastStepRemoveButton = document.querySelector(`#step${stepCount} .remove-button`);
+                            lastStepRemoveButton.style.display = 'block';
+                        }
+                    }
                 }
             </script>
         </main>
-        <script>
-            let stepCount = 1;
-            function addStep() {
-                // Hide the remove button for the previous step
-                if (stepCount > 1) {
-                    const previousStepRemoveButton = document.querySelector(`#step${stepCount} .remove-button`);
-                    previousStepRemoveButton.style.display = 'none';
-                }
-
-                stepCount++;
-                const stepsDiv = document.getElementById('steps');
-                const newStep = document.createElement('div');
-                newStep.setAttribute('id', 'step' + stepCount);
-                newStep.innerHTML = `
-                    <label for="stepTitle${stepCount}">Título del paso ${stepCount}:</label><br>
-                    <input type="text" id="stepTitle${stepCount}" name="stepTitles[]"><br>
-                    <label for="stepDescription${stepCount}">Descripción del paso ${stepCount}:</label><br>
-                    <textarea id="stepDescription${stepCount}" name="stepDescriptions[]"></textarea><br>
-                    <input type="file" id="stepImage${stepCount}" name="stepImages[]" accept="image/*" style="display: none;">
-                    <label for="stepImage${stepCount}" class="custom-file-upload" onclick="triggerClick('stepImage${stepCount}')">Examinar...</label>
-                    <button type="button" class="remove-button" onclick="removeStep(${stepCount})">Eliminar paso</button><br>
-                `;
-                stepsDiv.appendChild(newStep);
-            }
-
-            function removeStep(stepNumber) {
-                if (stepNumber === stepCount && stepCount > 1) {
-                    const stepToRemove = document.getElementById('step' + stepNumber);
-                    stepToRemove.parentNode.removeChild(stepToRemove);
-                    stepCount--;
-
-                    // Show the remove button for the new last step
-                    if (stepCount > 1) {
-                        const lastStepRemoveButton = document.querySelector(`#step${stepCount} .remove-button`);
-                        lastStepRemoveButton.style.display = 'block';
-                    }
-                }
-            }
-        </script>
         <footer>
             <div class="container">
                 <p>&copy; 2024 Fix and Go</p>
