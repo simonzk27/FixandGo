@@ -95,26 +95,13 @@
             }
 
             function removeStep(stepNumber) {
-                const stepToRemove = document.getElementById('step' + stepNumber);
-                stepToRemove.parentNode.removeChild(stepToRemove);
-                stepCount--;
-
-                // Renumber the remaining steps
-                for (let i = stepNumber; i <= stepCount; i++) {
-                    const step = document.getElementById('step' + (i + 1));
-                    if (step) {
-                        step.setAttribute('id', 'step' + i);
-                        step.querySelector(`label[for="stepTitle${i + 1}"]`).innerHTML = `Título del paso ${i}:`;
-                        step.querySelector(`label[for="stepDescription${i + 1}"]`).innerHTML = `Descripción del paso ${i}:`;
-                        step.querySelector(`label[for="stepImage${i + 1}"]`).setAttribute('for', 'stepImage' + i);
-                        step.querySelector(`input[id="stepTitle${i + 1}"]`).setAttribute('id', 'stepTitle' + i);
-                        step.querySelector(`textarea[id="stepDescription${i + 1}"]`).setAttribute('id', 'stepDescription' + i);
-                        step.querySelector(`input[id="stepImage${i + 1}"]`).setAttribute('id', 'stepImage' + i);
-                        step.querySelector(`button[onclick="removeStep(${i + 1})"]`).setAttribute('onclick', 'removeStep(' + i + ')');
-                    }
+                if (stepNumber === stepCount && stepCount > 1) {
+                    const stepToRemove = document.getElementById('step' + stepNumber);
+                    stepToRemove.parentNode.removeChild(stepToRemove);
+                    stepCount--;
                 }
             }
-        </script>
+        </script> 
         <footer>
             <div class="container">
                 <p>&copy; 2024 Fix and Go</p>
