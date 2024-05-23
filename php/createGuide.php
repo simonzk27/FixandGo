@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </header>
         <main>
         <h2>Crear guía</h2>
-            <form method="POST" action="createGuide.php" enctype="multipart/form-data">
+            <form method="POST" action="">
                 <label for="title">Título:</label><br>
                 <input type="text" id="title" name="title" required><br>
                 <label for="mainImage">Imagen Principal:</label><br>
