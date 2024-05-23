@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Asegúrate de que tu tabla Repairs tenga una columna para la imagen
     $imagePath = isset($dest_path) ? $dest_path : null;
 
-    $stmt = $pdo->prepare("INSERT INTO Repairs (title, guideUrl, mainImage, description) VALUES (?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO Repairs (title, guideUrl, mainImage, description) VALUES (?, ?, ?, ?)");
     $stmt->execute([$title, $guideUrl, $imagePath, $description]);
 }
 ?>
