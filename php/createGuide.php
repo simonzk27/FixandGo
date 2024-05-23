@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $guideId = $row['maxId'] + 1;
     $guideDirPath = $basePath . 'g' . $guideId;
     if (!is_dir($guideDirPath)) {*/
-        mkdir('https://fixandgo.site/guides/g3', 0755, true);
+        mkdir('/../guides/g3', 0755, true);
     //}
     /*
     $guideFilePath = $guideDirPath . '/guia.php';
