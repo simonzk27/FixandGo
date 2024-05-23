@@ -67,7 +67,7 @@
             </div>
             <?php if ($_SESSION['loggedIn'] === true): ?>
                 <div class="button-container">
-                    <button class="crear">Crear guía-taller</button>
+                    <button class="crear" onclick="location.href='createGuide.php'">Crear guía-taller</button>
                 </div>
             <?php else: ?>
                 <div class="button-container">
