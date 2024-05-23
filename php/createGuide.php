@@ -79,7 +79,7 @@
             function addStep() {
                 // Hide the remove button for the previous step
                 if (stepCount > 1) {
-                    const previousStepRemoveButton = document.querySelector(`#step${stepCount} button`);
+                    const previousStepRemoveButton = document.querySelector(`#step${stepCount} .remove-button`);
                     previousStepRemoveButton.style.display = 'none';
                 }
 
@@ -94,7 +94,7 @@
                     <textarea id="stepDescription${stepCount}" name="stepDescriptions[]"></textarea><br>
                     <input type="file" id="stepImage${stepCount}" name="stepImages[]" accept="image/*" style="display: none;">
                     <label for="stepImage${stepCount}" class="custom-file-upload" onclick="triggerClick('stepImage${stepCount}')">Examinar...</label><br>
-                    <button type="button" onclick="removeStep(${stepCount})">Eliminar paso</button><br>
+                    <button type="button" class="remove-button" onclick="removeStep(${stepCount})">Eliminar paso</button><br>
                     <br></br>
                 `;
                 stepsDiv.appendChild(newStep);
@@ -108,7 +108,7 @@
 
                     // Show the remove button for the new last step
                     if (stepCount > 1) {
-                        const lastStepRemoveButton = document.querySelector(`#step${stepCount} button`);
+                        const lastStepRemoveButton = document.querySelector(`#step${stepCount} .remove-button`);
                         lastStepRemoveButton.style.display = 'block';
                     }
                 }
