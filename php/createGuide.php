@@ -199,7 +199,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </header>
         <main>
         <h2>Crear guía</h2>
-            <form method="POST" action="" onsubmit="return confirmCreation()">
+            <form method="POST" action="" onsubmit="return confirmCreation()" enctype="multipart/form-data">
                 <label for="title">Título:</label><br>
                 <input type="text" id="title" name="title" required><br>
                 <label for="mainImage">Imagen Principal:</label><br>
