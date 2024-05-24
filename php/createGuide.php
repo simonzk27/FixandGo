@@ -99,9 +99,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stepDescription = $stepDescriptions[$i];
 
         $guideContent .= <<<HTML
-            <div class="paso">
-                <h3>$stepTitle</h3>
-                <p>$stepDescription</p>
+            <div style="display: flex; align-items: start;">
+            <img src="" alt="Imagen" style="width:10%;height:10%;border-radius: 15px;"> <!-- Cambiar la ruta de la imagen -->
+                <div style="margin-left: 20px;">
+                    <h3>{$i+1}. $stepTitle</h3>
+                    <p style="margin-left: 20px;">$stepDescription</p>
+                </div>
             </div>
     HTML;
     }
