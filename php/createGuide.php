@@ -51,21 +51,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </ul>
                 <ul class="right-side">
     HTML;
+
     if ($_SESSION['loggedIn'] === true) {
-        $username = isset($_SESSION['username']) ? $_SESSION['username'] : 'Invitado';
         $guideContent .= <<<HTML
-            <li class="user-info">
-                <a class="welcome-msg">
-                    Bienvenido, $username
-                </a>
-            </li>
-            <li class="user-info"><a href="https://fixandgo.site/php/logout.php" class="btn-header">Cerrar sesión</a></li>
-        HTML;
+                    <li class="user-info"><a class="welcome-msg">Bienvenido, $_SESSION['username']</a></li>
+                    <li class="user-info"><a href="https://fixandgo.site/php/logout.php" class="btn-header">Cerrar sesión</a></li>
+    HTML;
     } else {
         $guideContent .= <<<HTML
-            <li class="user-info"><a href="https://fixandgo.site/php/register.php" class="btn-header">Registrarse</a></li>
-            <li class="user-info"><a href="https://fixandgo.site/php/login.php" class="btn-header">Iniciar sesión</a></li>
-        HTML;
+                    <li class="user-info"><a href="https://fixandgo.site/php/register.php" class="btn-header">Registrarse</a></li>
+                    <li class="user-info"><a href="https://fixandgo.site/php/login.php" class="btn-header">Iniciar sesión</a></li>
+    HTML;
     }
 
     $guideContent .= <<<HTML
