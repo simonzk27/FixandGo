@@ -95,6 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Añade cada paso a la guía
     for ($i = 0; $i < count($stepTitles); $i++) {
+        $stepNumber = $i + 1;
         $stepTitle = $stepTitles[$i];
         $stepDescription = $stepDescriptions[$i];
 
@@ -102,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div style="display: flex; align-items: start;">
             <img src="" alt="Imagen" style="width:10%;height:10%;border-radius: 15px;"> 
                 <div style="margin-left: 20px;">
-                    <h3>{($i+1)}. $stepTitle</h3>
+                    <h3>$stepNumber. $stepTitle</h3>
                     <p style="margin-left: 20px;">$stepDescription</p>
                 </div>
             </div>
