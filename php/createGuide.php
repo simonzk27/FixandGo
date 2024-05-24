@@ -141,6 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <p style="margin-left: 20px;">$stepDescription</p>
                 </div>
             </div>
+            <br>
     HTML;
     }
 
