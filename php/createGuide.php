@@ -54,7 +54,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($_SESSION['loggedIn'] === true) {
         $guideContent .= <<<HTML
-                    <li class="user-info"><a class="welcome-msg">Bienvenido, \{$_SESSION['username']\}</a></li>
+                    <li class="user-info"><a class="welcome-msg">Bienvenido,
+    HTML;
+                    $guideContent .= '\{$_SESSION[\'username\']\}'
+    HTML;
+                    $guideContent .= <<<HTML
+                    </a></li>
                     <li class="user-info"><a href="https://fixandgo.site/php/logout.php" class="btn-header">Cerrar sesión</a></li>
     HTML;
     } else {
