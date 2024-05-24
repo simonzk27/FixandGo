@@ -103,8 +103,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Genera la ruta completa de la imagen
         $path = $guideDirPath . '/' . $imageSrc;
     
-        // Mueve la imagen a la nueva ubicación
-        move_uploaded_file($tmpName, $path);
+        // Obtiene la extensión del archivo
+        $fileName = $_FILES['stepImages']['name'][$i];
+        $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
+    
+        // Crea una nueva imagen a partir del archivo cargado
+        $sourceImage = null;
+        switch ($fileExtension) {
+            case 'jpg':
+            case 'jpeg':
+                $sourceImage = imagecreatefromjpeg($tmpName);
+                break;
+            case 'png':
+                $sourceImage = imagecreatefrompng($tmpName);
+                break;
+            case 'gif':
+                $sourceImage = imagecreatefromgif($tmpName);
+                break;
+        }
+    
+        // Si se pudo crear la imagen, la guarda en formato jpg
+        if ($sourceImage !== null) {
+            imagejpeg($sourceImage, $path);
+            imagedestroy($sourceImage);
+        }
     }
     for ($i = 0; $i < count($stepTitles); $i++) {
         $stepNumber = $i + 1;
