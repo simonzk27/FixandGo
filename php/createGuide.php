@@ -147,16 +147,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $fileName = $_FILES['mainImage']['name'];
         $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
 
-        // Cambia el nombre del archivo a "principal.elformatooriginal"
-        $newFileName = 'principal.' . $fileExtension;
+        // Cambia el nombre del archivo a "principal.jpg"
+        $newFileName = 'principal.jpg';
 
         // Mueve el archivo al directorio de la guía
         $dest_path = $guideDirPath . '/' . $newFileName;
-        move_uploaded_file($fileTmpPath, $dest_path);
-    }
 
+        // Crea una nueva imagen a partir del archivo cargado
+        $sourceImage = null;
+        switch ($fileExtension) {
+            case 'jpg':
+            case 'jpeg':
+                $sourceImage = imagecreatefromjpeg($fileTmpPath);
+                break;
+            case 'png':
+                $sourceImage = imagecreatefrompng($fileTmpPath);
+                break;
+            case 'gif':
+                $sourceImage = imagecreatefromgif($fileTmpPath);
+                break;
+        }
+
+        // Si se pudo crear la imagen, la guarda en formato jpg
+        if ($sourceImage !== null) {
+            imagejpeg($sourceImage, $dest_path);
+            imagedestroy($sourceImage);
+        }
+    }
     // Asegúrate de que tu tabla Repairs tenga una columna para la imagen
-    $imagePath = isset($dest_path) ? $dest_path : null;
+    $imagePath = 'https://fixandgo.site/guides/g' . $guideId . '/' . 'principal.jpg';
+    // Inserta la guía en la base de datos
     $stmt = $conn->prepare("INSERT INTO Repairs (title, url, authors_id, image_url, descripcion) VALUES (?, ?, ?, ?, ?)");
     $stmt->execute([$title, $guideUrl, $_SESSION['user_id'], $imagePath, $description]);
 
