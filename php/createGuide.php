@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </ul>
                 <ul class="right-side">
     HTML;
-    $guideContent .= '<?php if ($_SESSION['loggedIn'] === true): ?>'
+    $guideContent .= '<?php if ($_SESSION[\'loggedIn\'] === true): ?>'
                     $guideContent .= <<<HTML
                     <li class="user-info"><a class="welcome-msg">Bienvenido,
     HTML;
