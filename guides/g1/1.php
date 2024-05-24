@@ -62,7 +62,6 @@ session_start();
                         <li>Batería nueva para iPhone X (original o de alta calidad)</li>
                         <li>Adhesivo de sellado para iPhone X (opcional, pero recomendado)</li>
                     </ul>
-                    <button class="herramientas" style="position: absolute; right: 20px; bottom: 20px;">Encuentra las herramientas</button>
                 </div>
             </div>
         </section>

@@ -85,7 +85,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div style="margin-left: 20px;">
                     <h2>Herramientas y repuestos necesarios</h2>
                     <ul>$tools</ul>
-                    <button class="herramientas" style="position: absolute; right: 20px; bottom: 20px;">Encuentra las herramientas</button>
                 </div>
             </div>
         </section>
@@ -94,14 +93,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     HTML;
 
     // Añade cada paso a la guía
+    for ($i = 0; $i < count($_FILES['stepImages']['name']); $i++) {
+        // Genera el nuevo nombre de la imagen
+        $imageSrc = "stepImage" . ($i + 1) . ".jpg";
+    
+        // Obtiene la ubicación temporal de la imagen
+        $tmpName = $_FILES['stepImages']['tmp_name'][$i];
+    
+        // Genera la ruta completa de la imagen
+        $path = $guideDirPath . '/' . $imageSrc;
+    
+        // Mueve la imagen a la nueva ubicación
+        move_uploaded_file($tmpName, $path);
+    }
     for ($i = 0; $i < count($stepTitles); $i++) {
         $stepNumber = $i + 1;
         $stepTitle = $stepTitles[$i];
         $stepDescription = $stepDescriptions[$i];
-
+        $imageSrc = "stepImage" . $stepNumber . ".jpg";
         $guideContent .= <<<HTML
             <div style="display: flex; align-items: start;">
-            <img src="" alt="Imagen" style="width:10%;height:10%;border-radius: 15px;"> 
+            <img src="$imageSrc" alt="Imagen" style="width:10%;height:10%;border-radius: 15px;"> 
                 <div style="margin-left: 20px;">
                     <h3>$stepNumber. $stepTitle</h3>
                     <p style="margin-left: 20px;">$stepDescription</p>
@@ -218,23 +230,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </header>
         <main>
-        <h2>Crear guía</h2>
+            <h2>Crear guía</h2>
             <form method="POST" action="" enctype="multipart/form-data" onsubmit="return confirmCreation()">
                 <label for="title">Título:</label><br>
                 <input type="text" id="title" name="title" required><br>
                 <label for="mainImage">Imagen Principal:</label><br>
-                <input type="file" id="mainImage" name="mainImage" accept="image/*"><br>
+                <input type="file" id="mainImage" name="mainImage" accept="image/*" required><br>
                 <label for="description">Descripción:</label><br>
                 <textarea id="description" name="description" required></textarea><br>
                 <label for="tools">Herramientas y Repuestos necesarios:</label><br>
-                <textarea id="tools" name="tools"></textarea><br>
+                <textarea id="tools" name="tools" required></textarea><br>
                 <div id="steps">
                     <label for="stepTitle1">Título del paso 1:</label><br>
-                    <input type="text" id="stepTitle1" name="stepTitles[]"><br>
+                    <input type="text" id="stepTitle1" name="stepTitles[]" required><br>
                     <label for="stepDescription1">Descripción del paso 1:</label><br>
-                    <textarea id="stepDescription1" name="stepDescriptions[]"></textarea><br>
+                    <textarea id="stepDescription1" name="stepDescriptions[]" required></textarea><br>
                     <label>Imagen del paso 1:</label><br>
-                    <input type="file" id="stepImage1" name="stepImages[]" accept="image/*"><br>
+                    <input type="file" id="stepImage1" name="stepImages[]" accept="image/*" required><br>
                 </div>
                 <button type="button" onclick="addStep()">Agregar paso</button><br>
                 <br></br>
@@ -255,10 +267,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     newStep.setAttribute('id', 'step' + stepCount);
                     newStep.innerHTML = `
                         <label for="stepTitle${stepCount}">Título del paso ${stepCount}:</label><br>
-                        <input type="text" id="stepTitle${stepCount}" name="stepTitles[]"><br>
+                        <input type="text" id="stepTitle${stepCount}" name="stepTitles[]" required><br>
                         <label for="stepDescription${stepCount}">Descripción del paso ${stepCount}:</label><br>
-                        <textarea id="stepDescription${stepCount}" name="stepDescriptions[]"></textarea><br>
-                        <input type="file" id="stepImage${stepCount}" name="stepImages[]" accept="image/*"><br>
+                        <textarea id="stepDescription${stepCount}" name="stepDescriptions[]" required></textarea><br>
+                        <input type="file" id="stepImage${stepCount}" name="stepImages[]" accept="image/*" required><br>
                         <button type="button" class="remove-button" onclick="removeStep(${stepCount})">Eliminar paso</button><br>
                     `;
                     stepsDiv.appendChild(newStep);
