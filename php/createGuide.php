@@ -51,23 +51,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </ul>
                 <ul class="right-side">
     HTML;
-
-    if ($_SESSION['loggedIn'] === true) {
-        $guideContent .= <<<HTML
+    $guideContent .= '<?php if ($_SESSION['loggedIn'] === true): ?>'
+                    $guideContent .= <<<HTML
                     <li class="user-info"><a class="welcome-msg">Bienvenido,
     HTML;
-                    $guideContent .= '$_SESSION[\'username\']';
+                    $guideContent .= '<?php echo $_SESSION[\'username\'] ?>';
     
                     $guideContent .= <<<HTML
                     </a></li>
                     <li class="user-info"><a href="https://fixandgo.site/php/logout.php" class="btn-header">Cerrar sesión</a></li>
     HTML;
-    } else {
+    $guideContent .= '<?php else: ?>'
+    
         $guideContent .= <<<HTML
                     <li class="user-info"><a href="https://fixandgo.site/php/register.php" class="btn-header">Registrarse</a></li>
                     <li class="user-info"><a href="https://fixandgo.site/php/login.php" class="btn-header">Iniciar sesión</a></li>
-    HTML;
-    }
+        HTML;
+    $guideContent .= '<?php endif; ?>'
 
     $guideContent .= <<<HTML
                 </ul>
