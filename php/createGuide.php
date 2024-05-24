@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>$title</title>
-        <link rel="stylesheet" href="/../guides/1.css">
+        <link rel="stylesheet" href="../guides/1.css">
     </head>
     <body>
     <header>
@@ -69,15 +69,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </nav>
         </div>
     </header>
-
-        <h2>$title</h2>
-        <section class="descripcion">
+    <main>
+        <section class="introduccion">
+            <div style="display: flex; align-items: start;">
+                <img src="principal.jpg" alt="Imagen de un iPhone X" style="width:10%;height:10%;border-radius: 15px;"> 
+                <div style="margin-left: 20px;">
+                    <h2>$title</h2>
+                    <p>Autor: {$_SESSION['username']}</p>
+                </div>
+            </div>
             <p>$description</p>
         </section>
-        <section class="herramientas">
-            <ul>$tools</ul>
+        <section class="herramientas" style="position: relative;">
+            <div style="display: flex; align-items: start;"> 
+                <div style="margin-left: 20px;">
+                    <h2>Herramientas y repuestos necesarios</h2>
+                    <ul>$tools</ul>
+                    <button class="herramientas" style="position: absolute; right: 20px; bottom: 20px;">Encuentra las herramientas</button>
+                </div>
+            </div>
         </section>
         <section class="pasos">
+            <h2>Pasos</h2>
     HTML;
 
     // Añade cada paso a la guía
