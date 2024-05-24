@@ -108,18 +108,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
     
         // Crea una nueva imagen a partir del archivo cargado
-        $sourceImage = null;
+        $sourceImage = false;
         switch ($fileExtension) {
             case 'jpg':
             case 'jpeg':
-                $sourceImage = imagecreatefromjpeg($tmpName);
+                $sourceImage = @imagecreatefromjpeg($tmpName);
                 break;
             case 'png':
-                $sourceImage = imagecreatefrompng($tmpName);
+                $sourceImage = @imagecreatefrompng($tmpName);
                 break;
             case 'gif':
-                $sourceImage = imagecreatefromgif($tmpName);
+                $sourceImage = @imagecreatefromgif($tmpName);
                 break;
+        }
+
+        // Si se pudo crear la imagen, la guarda en formato jpg
+        if ($sourceImage !== false) {
+            imagejpeg($sourceImage, $path);
+            imagedestroy($sourceImage);
+        } else {
+            echo "Error al crear la imagen: " . $fileName;
         }
     
         // Si se pudo crear la imagen, la guarda en formato jpg
