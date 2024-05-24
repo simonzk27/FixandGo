@@ -51,23 +51,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </ul>
                 <ul class="right-side">
     HTML;
-    $guideContent .= '<?php if ($_SESSION[\'loggedIn\'] === true): ?>'
-                    $guideContent .= <<<HTML
-                    <li class="user-info"><a class="welcome-msg">Bienvenido,
-    HTML;
-                    $guideContent .= '<?php echo $_SESSION[\'username\'] ?>';
-    
-                    $guideContent .= <<<HTML
-                    </a></li>
-                    <li class="user-info"><a href="https://fixandgo.site/php/logout.php" class="btn-header">Cerrar sesión</a></li>
-    HTML;
-    $guideContent .= '<?php else: ?>'
-    
-        $guideContent .= <<<HTML
-                    <li class="user-info"><a href="https://fixandgo.site/php/register.php" class="btn-header">Registrarse</a></li>
-                    <li class="user-info"><a href="https://fixandgo.site/php/login.php" class="btn-header">Iniciar sesión</a></li>
-        HTML;
-    $guideContent .= '<?php endif; ?>'
+    <?php
+$guideContent .= <<<HTML
+<?php if (\$_SESSION['loggedIn'] === true): ?>
+    <li class="user-info"><a class="welcome-msg">Bienvenido, <?php echo \$_SESSION['username'] ?></a></li>
+    <li class="user-info"><a href="https://fixandgo.site/php/logout.php" class="btn-header">Cerrar sesión</a></li>
+<?php else: ?>
+    <li class="user-info"><a href="https://fixandgo.site/php/register.php" class="btn-header">Registrarse</a></li>
+    <li class="user-info"><a href="https://fixandgo.site/php/login.php" class="btn-header">Iniciar sesión</a></li>
+<?php endif; ?>
+HTML;
+?>
 
     $guideContent .= <<<HTML
                 </ul>
