@@ -26,35 +26,89 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stepDescriptions = array_map('htmlspecialchars', $_POST['stepDescriptions']);
 
     // Crea el contenido de la guía
-    $guideContent = "
+    $guideContent = <<<HTML
     <!DOCTYPE html>
-    <html lang=\"es\">
-    <!-- Aquí iría el resto del HTML de la plantilla -->
-    <h2>$title</h2>
-    <section class=\"descripcion\">
-        <p>$description</p>
-    </section>
-    <section class=\"herramientas\">
-        <ul>$tools</ul>
-    </section>
-    <section class=\"pasos\">";
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>$title</title>
+        <link rel="stylesheet" href="../guides/1.css">
+    </head>
+    <body>
+    <header>
+        <div class="container">
+            <div class="top-section">
+            <img src="../../img/fixandgo.png" alt="Logo" class="logo">
+            <h1>Fix and Go</h1>
+            </div>
+            <nav>
+                <ul class="left-side">
+                    <li><a href="https://fixandgo.site/index.php" class="btn-header">Inicio</a></li>
+                    <li><a href="https://fixandgo.site/php/Repair_Now.php" class="btn-header">Repair Now </a></li>
+                    <li><a href="https://fixandgo.site/php/foro.php" class="btn-header">Foro</a></li>
+                    <li><a href="https://fixandgo.site/php/live.php" class="btn-header">Live</a></li>
+                </ul>
+                <ul class="right-side">
+    HTML;
+
+    if ($_SESSION['loggedIn'] === true) {
+        $guideContent .= <<<HTML
+                    <li class="user-info"><a class="welcome-msg">Bienvenido, {$_SESSION['username']}</a></li>
+                    <li class="user-info"><a href="https://fixandgo.site/php/logout.php" class="btn-header">Cerrar sesión</a></li>
+    HTML;
+    } else {
+        $guideContent .= <<<HTML
+                    <li class="user-info"><a href="https://fixandgo.site/php/register.php" class="btn-header">Registrarse</a></li>
+                    <li class="user-info"><a href="https://fixandgo.site/php/login.php" class="btn-header">Iniciar sesión</a></li>
+    HTML;
+    }
+
+    $guideContent .= <<<HTML
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+        <h2>$title</h2>
+        <section class="descripcion">
+            <p>$description</p>
+        </section>
+        <section class="herramientas">
+            <ul>$tools</ul>
+        </section>
+        <section class="pasos">
+    HTML;
 
     // Añade cada paso a la guía
     for ($i = 0; $i < count($stepTitles); $i++) {
         $stepTitle = $stepTitles[$i];
         $stepDescription = $stepDescriptions[$i];
 
-        $guideContent .= "
-        <div class=\"paso\">
-            <h3>$stepTitle</h3>
-            <p>$stepDescription</p>
-        </div>";
+        $guideContent .= <<<HTML
+            <div class="paso">
+                <h3>$stepTitle</h3>
+                <p>$stepDescription</p>
+            </div>
+    HTML;
     }
 
-    $guideContent .= "
-    </section>
-    <!-- Aquí iría el resto del HTML de la plantilla -->
-    </html>";
+    $guideContent .= <<<HTML
+        </section>
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 Fix and Go</p>
+                <ul>
+                    <li><a href="#">Aviso legal</a></li>
+                    <li><a href="#">Política de privacidad</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+        </footer>
+    </body>
+    </html>
+    HTML;
+
 
     // Guarda el contenido de la guía en un archivo HTML
     file_put_contents($guideFilePath, $guideContent);
