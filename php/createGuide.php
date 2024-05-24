@@ -112,6 +112,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $guideContent .= <<<HTML
         </section>
+        <section class="retroalimentacion">
+            <h2>Retroalimentación</h2>
+            <p>¿Fue útil este tutorial?</p>
+            <button class = "Yes!" style="padding: 10px 20px; margin-right: 20px;">Sí, fue útil</button>
+            <button class = "No" style="padding: 10px 20px;">No, no funcionó</button>
+        </section>
+    </main>
         <footer>
             <div class="container">
                 <p>&copy; 2024 Fix and Go</p>
