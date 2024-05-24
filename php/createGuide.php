@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $guideContent .= <<<HTML
                     <li class="user-info"><a class="welcome-msg">Bienvenido,
     HTML;
-                    $guideContent .= '{$_SESSION[\'username\']}';
+                    $guideContent .= '$_SESSION[\'username\']';
     
                     $guideContent .= <<<HTML
                     </a></li>
