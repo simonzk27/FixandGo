@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <main>
         <section class="introduccion">
             <div style="display: flex; align-items: start;">
-                <img src="principal.jpg" alt="Imagen de un iPhone X" style="width:10%;height:10%;border-radius: 15px;"> 
+                <img src="principal.jpg" alt="Imagen" style="width:10%;height:10%;border-radius: 15px;"> 
                 <div style="margin-left: 20px;">
                     <h2>$title</h2>
                     <p>Autor: {$_SESSION['username']}</p>
@@ -99,9 +99,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stepDescription = $stepDescriptions[$i];
 
         $guideContent .= <<<HTML
-            <div class="paso">
-                <h3>$stepTitle</h3>
-                <p>$stepDescription</p>
+            <div style="display: flex; align-items: start;">
+            <img src="apagar.jpg" alt="Apaga tu iPhone X" style="width:10%;height:10%;border-radius: 15px;">
+                <div style="margin-left: 20px;">
+                    <h3>{$i+1}. $stepTitle</h3>
+                    <p style="margin-left: 20px;">$stepDescription</p>
+                </div>
             </div>
     HTML;
     }
