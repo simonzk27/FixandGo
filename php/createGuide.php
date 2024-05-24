@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stepDescriptions = array_map('htmlspecialchars', $_POST['stepDescriptions']);
 
     // Crea el contenido de la guía
+    $guideContent .= '<?php session_start(); ?>'
     $guideContent = <<<HTML
     <!DOCTYPE html>
     <html lang="es">
