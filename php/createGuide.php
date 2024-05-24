@@ -100,9 +100,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $guideContent .= <<<HTML
             <div style="display: flex; align-items: start;">
-            <img src="" alt="Imagen" style="width:10%;height:10%;border-radius: 15px;">
+            <img src="" alt="Imagen" style="width:10%;height:10%;border-radius: 15px;"> 
                 <div style="margin-left: 20px;">
-                    <h3>$stepTitle</h3>
+                    <h3>{($i+1)}. $stepTitle</h3>
                     <p style="margin-left: 20px;">$stepDescription</p>
                 </div>
             </div>
