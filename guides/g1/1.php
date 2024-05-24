@@ -150,8 +150,8 @@ session_start();
         <section class="retroalimentacion">
             <h2>Retroalimentación</h2>
             <p>¿Fue útil este tutorial?</p>
-            <button class = "Yes!" style="padding: 10px 20px; margin-right: 20px;">Sí, fue útil</button>
-            <button class = "No" style="padding: 10px 20px;">No, no funcionó</button>
+            <button class = "yes" style="padding: 10px 20px; margin-right: 20px;">Sí, fue útil</button>
+            <button class = "no" style="padding: 10px 20px;">No, no funcionó</button>
         </section>
     </main>
 
