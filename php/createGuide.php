@@ -26,8 +26,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stepDescriptions = array_map('htmlspecialchars', $_POST['stepDescriptions']);
 
     // Crea el contenido de la guía
-    $guideContent .= '<?php session_start();'
-    $guideContent = <<<HTML
+    $guideContent = '<?php session_start();?>'
+    $guideContent .= <<<HTML
     <!DOCTYPE html>
     <html lang="es">
     <head>
@@ -173,7 +173,7 @@ $guideContent .= '<?php if ($_SESSION[\'loggedIn\'] === true): ?>'
     </body>
     </html>
     HTML;
-    $guideContent .= '?>'
+    
 
 
     // Guarda el contenido de la guía en un archivo HTML
