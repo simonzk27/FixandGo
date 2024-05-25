@@ -43,7 +43,6 @@ session_start();
                 <div style="margin-left: 20px;">
                     <h2>Cambiar la batería de un iPhone X</h2>
                     <p>Autor: Fix and go</p>
-                    <p>Fecha de subida: Fecha</p>
                 </div>
             </div>
             <p>Esta guía te mostrará paso a paso cómo cambiar la batería de tu iPhone X. 
