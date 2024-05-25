@@ -39,16 +39,16 @@ session_start();
 </header>
 <main class="main"> <!-- Añade la clase .main aquí -->
 <?php
-
+ echo '<form action="create_live.php" method="post">
+ <input type="submit" value="Crear directo">
+</form>';
 
 // Supongamos que la autenticación ya está implementada
 $role = $_SESSION['role']; // Obtenemos el rol del usuario
-echo $_SESSION['role']; // Imprime el rol para depuración
+
 if ($role == 'admin' || $role == 'owner') {
     // Mostrar el formulario para crear un directo
-    echo '<form action="create_live.php" method="post">
-            <input type="submit" value="Crear directo">
-          </form>';
+   
 } else if ($role == 'user') {
     // Comprobar si hay directos en vivo
     $live = check_live(); // Supongamos que esta función comprueba si hay directos en vivo
