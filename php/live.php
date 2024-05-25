@@ -46,7 +46,7 @@
         include 'connect.php';
 
         // Obtener el enlace de YouTube de la base de datos
-        $stmt = $conn->prepare("SELECT link FROM lives LIMIT 1");
+        $stmt = $conn->prepare("SELECT links FROM lives LIMIT 1");
         $stmt->execute();
 
         $result = $stmt->get_result();
