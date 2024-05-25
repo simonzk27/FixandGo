@@ -81,9 +81,15 @@ include 'connect.php';
     echo '<textarea name="comentario" required></textarea>';
     echo '<input type="submit" value="Comentar">';
     echo '</form>';
-
-    // Consulta para obtener los comentarios
-    $stmt = $conn->prepare("SELECT * FROM Comments WHERE forums_id = ? ORDER BY upload_date DESC");
+    
+    // Consulta para obtener los comentarios y sus autores
+    $stmt = $conn->prepare("
+        SELECT Comments.*, Users.username 
+        FROM Comments 
+        INNER JOIN Users ON Comments.authors_id = Users.id 
+        WHERE Comments.forums_id = ? 
+        ORDER BY Comments.upload_date DESC
+    ");
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -92,9 +98,11 @@ include 'connect.php';
     while ($comment = $result->fetch_assoc()) {
         echo '<div>';
         echo '<p>' . $comment['content'] . '</p>';
+        echo '<p>Publicado por ' . $comment['username'] . ' el ' . $comment['upload_date'] . '</p>';
         echo '</div>';
     }
-    ?> 
+
+    ?>
     </main>
     <footer>
         <div class="container">
