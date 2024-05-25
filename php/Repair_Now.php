@@ -54,7 +54,7 @@
                         echo '<a href="'.$row['url'].'" class="card-link">';
                         echo '<div class="card_circle transition" style="background-image: url(\''.$row['image_url'].'\');"></div>';
                         echo '<h2 class="transition">'.$row['title'].'</h2>';
-                        echo '<p>'.$row['descripcion']'</p>';
+                        echo '<p>'.$row['descripcion'].'</p>';
                         echo '</a>';
                         echo '</div>';
                     }
