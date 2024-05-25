@@ -39,7 +39,7 @@ session_start();
 </header>
 <main class="main"> <!-- Añade la clase .main aquí -->
 <?php
-session_start();
+
 
 // Supongamos que la autenticación ya está implementada
 $role = $_SESSION['role']; // Obtenemos el rol del usuario
