@@ -48,7 +48,7 @@ if ($role == 'admin' || $role == 'owner') {
     echo '<form action="create_live.php" method="post">
             <input type="submit" value="Crear directo">
           </form>';
-} else if ($role == 'user') {
+} else if ($role == 'user' || isset($_SESSION['role'])) {
     // Comprobar si hay directos en vivo
     $live = check_live(); // Supongamos que esta función comprueba si hay directos en vivo
 
@@ -59,7 +59,7 @@ if ($role == 'admin' || $role == 'owner') {
         // Mostrar el recuadro negro de YouTube que dice "offline"
         echo '<iframe width="560" height="315" src="https://www.youtube.com/embed?status=offline" frameborder="0" allowfullscreen></iframe>';
     }
-}
+} 
 ?>
 </main>
     <footer>
