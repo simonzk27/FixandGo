@@ -57,7 +57,7 @@ if ($role == 'admin' || $role == 'owner') {
           </form>';
 } else if ($role == 'user' || $role == 'guest') {
     // Comprobar si hay directos en vivo
-    $live = check_live(); // Supongamos que esta función comprueba si hay directos en vivo
+    //$live = check_live(); // Supongamos que esta función comprueba si hay directos en vivo
 
     if ($live) {
         // Mostrar el directo
