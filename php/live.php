@@ -76,23 +76,21 @@ if ($role == 'admin' || $role == 'owner') {
         // Actualizar el enlace de YouTube en la base de datos
         $stmt = $conn->prepare("UPDATE lives SET link = ? WHERE id = 1");
         $stmt->bind_param("s", $new_youtube_link);
-        if (isset($_GET['message'])) {
-            echo '<div>' . htmlspecialchars($_GET['message']) . '</div>';
-        }
         if ($stmt->execute()) {
-            header("Location: live.php?message=Directo+subido+correctamente");
+        
         } else {
-            header("Location: live.php?message=Error+updating+link:+{$stmt->error}");
+        echo "Error updating link: " . $stmt->error;
         }
     }
    
-    echo '<iframe width="560" height="315" src="' . $youtube_link . '" frameborder="0" allowfullscreen></iframe>';
-    echo '<iframe src="https://www.youtube.com/live_chat?v=' . $video_id . '&is&embed_domain=fixandgo.site " width="560" height="315"></iframe>'; // Mostrar el chat de YouTube
-} else if ($role == 'user' || $role == 'guest') {
+   
+        echo '<iframe class="video" width="560" height="315" src="' . $youtube_link . '" frameborder="0" allowfullscreen></iframe>';
+        echo '<iframe class="chat" src="https://www.youtube.com/live_chat?v=' . $video_id . '&is&embed_domain=fixandgo.site " width="560" height="315"></iframe>';
+
     if (isset($youtube_link)) {
         // Mostrar el directo
-        echo '<iframe width="560" height="315" src="' . $youtube_link . '" frameborder="0" allowfullscreen></iframe>';
-        echo '<iframe src="https://www.youtube.com/live_chat?v=' . $video_id . '&is&embed_domain=fixandgo.site " width="560" height="315"></iframe>'; // Mostrar el chat de YouTube
+        echo '<iframe class="video" width="560" height="315" src="' . $youtube_link . '" frameborder="0" allowfullscreen></iframe>';
+        echo '<iframe class="chat" src="https://www.youtube.com/live_chat?v=' . $video_id . '&is&embed_domain=fixandgo.site " width="560" height="315"></iframe>';
     } else {
         // Mostrar el recuadro negro de YouTube que dice "offline"
         echo '<iframe width="560" height="315" src="https://www.youtube.com/embed?status=offline" frameborder="0" allowfullscreen></iframe>';
