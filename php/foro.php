@@ -53,7 +53,7 @@ $forums = $result->fetch_all(MYSQLI_ASSOC);
         <?php foreach ($forums as $forum): ?>
             <div class="forum-post">
                 <h2 class="forum-title">
-                    <a href="postedForum.php?id=<?php echo $forum['id']; ?>">
+                    <a class="title-link" href="postedForum.php?id=<?php echo $forum['id']; ?>">
                         <?php echo $forum['title']; ?>
                     </a>
                 </h2>
