@@ -57,6 +57,7 @@ if ($role == 'admin' || $role == 'owner') {
 
           if (isset($_POST['create_live'])) {
             $youtube_link = $_POST['youtube_link']; 
+            echo '<iframe width="560" height="315" src="' . $youtube_link . '" frameborder="0" allowfullscreen></iframe>';
           }// Guardar el enlace de YouTube en una variable
         } else if ($role == 'user' || $role == 'guest') {
             if (isset($youtube_link)) {
