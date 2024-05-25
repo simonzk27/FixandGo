@@ -36,15 +36,18 @@
             </div>
         </header>
         <main>
+            <?php
+            include 'connect.php';
+
+            // Consulta de búsqueda
+            $search = isset($_GET['search']) ? $_GET['search'] : '';
+            $stmt = $conn->prepare("SELECT * FROM Repairs WHERE title LIKE ?");
+            $stmt->execute(["%$search%"]);
+            $results = $stmt->fetchAll();
+            ?>
+
             <div class="search-bar">
                 <?php
-                include 'connect.php';
-                // Consulta de búsqueda
-                $search = $_GET['search'];
-                $stmt = $conn->prepare("SELECT * FROM Repairs WHERE title LIKE ?");
-                $stmt->execute(["%$search%"]);
-                $results = $stmt->fetchAll();
-
                 // Muestra los resultados
                 foreach ($results as $result) {
                     echo $result['title'] . '<br>';
@@ -53,7 +56,6 @@
                 <form action="" method="get">
                     <input type="text" name="search" placeholder="Buscar..." required>
                 </form>
-                
             </div>
             <div class="card-container">
                 <?php
