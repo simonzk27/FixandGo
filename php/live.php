@@ -52,7 +52,7 @@
         $result = $stmt->get_result();
         if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        $youtube_link = $row['links'];
+        $youtube_link = $row['link'];
         }
 
 
