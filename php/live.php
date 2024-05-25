@@ -83,16 +83,16 @@ if ($role == 'admin' || $role == 'owner') {
         }
     }
    
-    echo '<iframe width="560" height="315" src="' . $youtube_link . '" frameborder="0" allowfullscreen></iframe>';
-    echo '<iframe src="https://www.youtube.com/live_chat?v=' . $video_id . '&is&embed_domain=fixandgo.site " width="560" height="315"></iframe>'; // Mostrar el chat de YouTube
+    echo '<iframe src="' . $youtube_link . '" frameborder="0" allowfullscreen></iframe>';
+    echo '<iframe src="https://www.youtube.com/live_chat?v=' . $video_id . '&is&embed_domain=fixandgo.site " ></iframe>'; // Mostrar el chat de YouTube
 } else if ($role == 'user' || $role == 'guest') {
     if (isset($youtube_link)) {
         // Mostrar el directo
-        echo '<iframe width="560" height="315" src="' . $youtube_link . '" frameborder="0" allowfullscreen></iframe>';
-        echo '<iframe src="https://www.youtube.com/live_chat?v=' . $video_id . '&is&embed_domain=fixandgo.site " width="560" height="315"></iframe>'; // Mostrar el chat de YouTube
+        echo '<iframe src="' . $youtube_link . '" frameborder="0" allowfullscreen></iframe>';
+        echo '<iframe src="https://www.youtube.com/live_chat?v=' . $video_id . '&is&embed_domain=fixandgo.site " ></iframe>'; // Mostrar el chat de YouTube
     } else {
         // Mostrar el recuadro negro de YouTube que dice "offline"
-        echo '<iframe width="560" height="315" src="https://www.youtube.com/embed?status=offline" frameborder="0" allowfullscreen></iframe>';
+        echo '<iframe src="https://www.youtube.com/embed?status=offline" frameborder="0" allowfullscreen></iframe>';
     }
 }
 
