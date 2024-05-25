@@ -3,6 +3,10 @@ session_start();
 
 include 'connect.php';
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Verifica si el formulario fue enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recoge los datos del formulario
