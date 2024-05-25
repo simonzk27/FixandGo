@@ -45,7 +45,7 @@
                 <?php
                 include 'connect.php';
 
-                $result = $conn->query("SELECT id, title, url, authors_id, upload_date, image_url FROM Repairs");
+                $result = $conn->query("SELECT id, title, url, authors_id, upload_date, image_url, descripcion FROM Repairs");
 
                 if ($result->num_rows > 0) {
                     // Iterar sobre los resultados y generar una tarjeta para cada uno
@@ -54,7 +54,7 @@
                         echo '<a href="'.$row['url'].'" class="card-link">';
                         echo '<div class="card_circle transition" style="background-image: url(\''.$row['image_url'].'\');"></div>';
                         echo '<h2 class="transition">'.$row['title'].'</h2>';
-                        echo '<p>Esta guía te mostrará paso a paso cómo cambiar la batería de tu iPhone X. Especifica herramientas y requerimientos. Guia paso a paso.</p>';
+                        echo '<p>'.$row['descripcion']'</p>';
                         echo '</a>';
                         echo '</div>';
                     }
