@@ -152,6 +152,11 @@ main {
     color: #333;
 }
 
+.forum-title a {
+    color: inherit; /* hereda el color del texto del elemento padre */
+    text-decoration: none; /* elimina la línea debajo del enlace */
+}
+
 .forum-tema {
     font-size: 1.2em;
     color: #666;

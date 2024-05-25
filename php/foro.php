@@ -49,7 +49,6 @@ $forums = $result->fetch_all(MYSQLI_ASSOC);
             </nav>
         </div>
     </header>
-    <h1>Bienvenido al Foro</h1>
     <main>
         <?php foreach ($forums as $forum): ?>
             <div class="forum-post">
