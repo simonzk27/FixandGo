@@ -32,7 +32,7 @@ include 'connect.php';
                     <li><a href="encuentros.php" class="btn-header">Encuentros</a></li>
                 </ul>
                 <ul class="right-side">
-                    <?php if ($_SESSION['loggedIn'] === true): ?>
+                    <?php if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true): ?>
                         <li class="user-info"><a class="welcome-msg">Bienvenido, <?php echo $_SESSION['username']; ?></a></li>
                         <li class="user-info"><a href="logout.php" class="btn-header">Cerrar sesión</a></li>
                     <?php else: ?>
