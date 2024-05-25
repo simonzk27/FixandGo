@@ -67,11 +67,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="tema">Tema:</label><br>
             <select id="tema" name="tema" required>
                 <option value="">Selecciona un tema</option>
-                <option value="tema1">Tema 1</option>
-                <option value="tema2">Tema 2</option>
-                <option value="tema3">Tema 3</option>
-                <option value="tema4">Tema 4</option>
-                <option value="tema5">Tema 5</option>
+                <option value="Reparaciones">Reparaciones</option>
+                <option value="Quejas">Quejas</option>
+                <option value="Peticiones">Peticiones</option>
+                <option value="Recomendaciones">Recomendaciones</option>
+                <option value="Preguntas">Preguntas</option>
             </select><br>
             <label for="contenido">Contenido:</label><br>
             <textarea id="contenido" name="contenido" required></textarea><br>
