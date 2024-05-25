@@ -1,6 +1,31 @@
 <?php
 session_start(); 
 
+include 'connect.php';
+
+// Verifica si el formulario fue enviado
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Recoge los datos del formulario
+    $titulo = $_POST['titulo'];
+    $tema = $_POST['tema'];
+    $contenido = $_POST['contenido'];
+
+    // Prepara la consulta SQL
+    $stmt = $conn->prepare("INSERT INTO Blogs (titulo, tema, contenido, authors_id) VALUES (?, ?, ?, ?)");
+
+    // Vincula los parámetros a la consulta
+    $stmt->bind_param("sss", $titulo, $tema, $contenido, $_SESSION['user_id']);
+
+    // Ejecuta la consulta
+    $stmt->execute();
+
+    // Redirige al usuario a la página de foros
+    header("Location: foro.php");
+} else {
+    // Si el formulario no fue enviado, redirige al usuario a la página de creación de foros
+    header("Location: createForum.php");
+}
+
 ?>
 <!DOCTYPE html>
 <html>
