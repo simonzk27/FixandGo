@@ -42,28 +42,34 @@ session_start();
 
 include 'connect.php';
 
-// Obtener el enlace de YouTube de la base de datos
-$stmt = $conn->prepare("SELECT link FROM lives LIMIT 1");
-$stmt->execute();
-
-$result = $stmt->get_result();
-if ($result->num_rows > 0) {
-$row = $result->fetch_assoc();
-$youtube_link = $row['link'];
-}
-
 if (isset($_SESSION['role'])) {
     $role = $_SESSION['role']; // Obtenemos el rol del usuario
 } else {
     $role = 'guest'; // Asignamos un rol predeterminado para los usuarios no autenticados
 }
 
+$stmt = $conn->prepare("SELECT link FROM lives WHERE id = 1");
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();    
+if ($row) {
+    $youtube_link = $row['link'];
+    $endPos = strpos($youtube_link, '?');
+    if ($endPos === false) {
+        $endPos = strlen($youtube_link);
+    }
+    $startPos = strrpos($youtube_link, '/') + 1;
+    $video_id = substr($youtube_link, $startPos, $endPos - $startPos); // Extraer el ID del video de YouTube del enlace
+} else {
+    echo "No se encontró el enlace de YouTube en la base de datos.";
+}
+
 if ($role == 'admin' || $role == 'owner') {
-     // Mostrar el formulario para crear un directo
-     echo '<form method="post">
-     <input type="text" name="youtube_link" placeholder="Ingresa el enlace de YouTube aquí">
-     <input type="submit" name="create_live" value="Crear directo">
-   </form>';
+    // Mostrar el formulario para crear un directo
+    echo '<form method="post">
+    <input type="text" name="youtube_link" placeholder="Ingresa el enlace de YouTube aquí">
+    <input type="submit" name="create_live" value="Crear directo">
+    </form>';
     if (isset($_POST['youtube_link'])) {
         $new_youtube_link = $_POST['youtube_link']; 
 
@@ -71,40 +77,25 @@ if ($role == 'admin' || $role == 'owner') {
         $stmt = $conn->prepare("UPDATE lives SET link = ? WHERE id = 1");
         $stmt->bind_param("s", $new_youtube_link);
         if ($stmt->execute()) {
-        echo "Link updated successfully";
+        
         } else {
         echo "Error updating link: " . $stmt->error;
         }
     }
    
-    $stmt = $conn->prepare("SELECT link FROM lives WHERE id = 1");
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();    
-    if ($row) {
-        $youtube_link = $row['link'];
-        $endPos = strpos($youtube_link, '?');
-        if ($endPos === false) {
-            $endPos = strlen($youtube_link);
-        }
-        $startPos = strrpos($youtube_link, '/') + 1;
-        $video_id = substr($youtube_link, $startPos, $endPos - $startPos); // Extraer el ID del video de YouTube del enlace
+    echo '<iframe width="560" height="315" src="' . $youtube_link . '" frameborder="0" allowfullscreen></iframe>';
+    echo '<iframe src="https://www.youtube.com/live_chat?v=' . $video_id . '&is&embed_domain=fixandgo.site " width="560" height="315"></iframe>'; // Mostrar el chat de YouTube
+    echo $video_id;
+} else if ($role == 'user' || $role == 'guest') {
+    if (isset($youtube_link)) {
+        // Mostrar el directo
         echo '<iframe width="560" height="315" src="' . $youtube_link . '" frameborder="0" allowfullscreen></iframe>';
         echo '<iframe src="https://www.youtube.com/live_chat?v=' . $video_id . '&is&embed_domain=fixandgo.site " width="560" height="315"></iframe>'; // Mostrar el chat de YouTube
-        echo $video_id;
     } else {
-        echo "No se encontró el enlace de YouTube en la base de datos.";
+        // Mostrar el recuadro negro de YouTube que dice "offline"
+        echo '<iframe width="560" height="315" src="https://www.youtube.com/embed?status=offline" frameborder="0" allowfullscreen></iframe>';
     }
-        } else if ($role == 'user' || $role == 'guest') {
-            if (isset($youtube_link)) {
-                // Mostrar el directo
-                echo '<iframe width="560" height="315" src="' . $youtube_link . '" frameborder="0" allowfullscreen></iframe>';
-                echo '<iframe src="https://www.youtube.com/live_chat?v=' . $video_id . '&is&embed_domain=fixandgo.site " width="560" height="315"></iframe>'; // Mostrar el chat de YouTube
-            } else {
-                // Mostrar el recuadro negro de YouTube que dice "offline"
-                echo '<iframe width="560" height="315" src="https://www.youtube.com/embed?status=offline" frameborder="0" allowfullscreen></iframe>';
-            }
-        } 
+}
 
 ?>
 </main>
