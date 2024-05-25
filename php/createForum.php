@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </header>
     <h1>Bienvenido al Foro</h1>
     <main>
-        <form action="publicar.php" method="post">
+        <form method="post">
             <label for="titulo">Título:</label><br>
             <input type="text" id="titulo" name="titulo" required><br>
             <label for="tema">Tema:</label><br>
