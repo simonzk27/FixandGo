@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $_SESSION['role'] = $user['role'];
       echo 'Rol del usuario: ' . $_SESSION['role'];
       
-      header("Location: ../index.php"); // Replace with your logged-in page
+      //header("Location: ../index.php"); // Replace with your logged-in page
       exit;
     } else {
       $loginError = "Incorrect password.";
