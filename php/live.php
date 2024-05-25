@@ -48,7 +48,7 @@ if ($role == 'admin' || $role == 'owner') {
     echo '<form action="create_live.php" method="post">
             <input type="submit" value="Crear directo">
           </form>';
-} else if (!($role == 'admin' || $role == 'owner')) {
+} else if ($role == 'user' || !(isset($_SESSION['role']))) {
     // Comprobar si hay directos en vivo
     $live = check_live(); // Supongamos que esta función comprueba si hay directos en vivo
 
