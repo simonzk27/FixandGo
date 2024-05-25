@@ -59,7 +59,8 @@ $forums = $result->fetch_all(MYSQLI_ASSOC);
         // Consulta para obtener el forum
         $stmt = $conn->prepare("SELECT * FROM Forums WHERE id = ?");
         $stmt->execute([$id]);
-        $forum = $stmt->fetch();
+        $result = $stmt->get_result();
+        $forum = $result->fetch_assoc();
 
         // Muestra el forum
         echo '<h1>' . $forum['title'] . '</h1>';
