@@ -1,10 +1,5 @@
 <?php
 session_start(); 
-if (isset($_SESSION['role'])) {
-    echo 'Rol del usuario: ' . $_SESSION['role'];
-} else {
-    echo 'Rol del usuario no está definido en la sesión.';
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +39,11 @@ if (isset($_SESSION['role'])) {
 </header>
 <main class="main"> <!-- Añade la clase .main aquí -->
 <?php
-
+if (isset($_SESSION['role'])) {
+    echo 'Rol del usuario: ' . $_SESSION['role'];
+} else {
+    echo 'Rol del usuario no está definido en la sesión.';
+}
 
 // Supongamos que la autenticación ya está implementada
 $role = $_SESSION['role']; // Obtenemos el rol del usuario
