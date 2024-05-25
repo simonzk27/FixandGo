@@ -57,12 +57,15 @@ if ($role == 'admin' || $role == 'owner') {
 
           if (isset($_POST['create_live'])) {
             $youtube_link = $_POST['youtube_link']; 
+            $video_id = substr($youtube_link, strrpos($youtube_link, '/') + 1); // Extraer el ID del video de YouTube del enlace
             echo '<iframe width="560" height="315" src="' . $youtube_link . '" frameborder="0" allowfullscreen></iframe>';
+            echo '<iframe src="https://www.youtube.com/live_chat?v=' . $video_id . '&embed_domain=' . $_SERVER['SERVER_NAME'] . '" width="560" height="315"></iframe>'; // Mostrar el chat de YouTube
           }// Guardar el enlace de YouTube en una variable
         } else if ($role == 'user' || $role == 'guest') {
             if (isset($youtube_link)) {
                 // Mostrar el directo
                 echo '<iframe width="560" height="315" src="' . $youtube_link . '" frameborder="0" allowfullscreen></iframe>';
+                echo '<iframe src="https://www.youtube.com/live_chat?v=' . $video_id . '&embed_domain=' . $_SERVER['SERVER_NAME'] . '" width="560" height="315"></iframe>'; // Mostrar el chat de YouTube
             } else {
                 // Mostrar el recuadro negro de YouTube que dice "offline"
                 echo '<iframe width="560" height="315" src="https://www.youtube.com/embed?status=offline" frameborder="0" allowfullscreen></iframe>';
