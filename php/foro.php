@@ -8,11 +8,11 @@ error_reporting(E_ALL);
 
 include 'connect.php';
 
-// Consulta para obtener todos los blogs
+// Consulta para obtener todos los forums
 $stmt = $conn->prepare("SELECT * FROM Forums");
 $stmt->execute();
 $result = $stmt->get_result();
-$blogs = $result->fetch_all(MYSQLI_ASSOC);
+$forums = $result->fetch_all(MYSQLI_ASSOC);
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,14 +51,14 @@ $blogs = $result->fetch_all(MYSQLI_ASSOC);
     </header>
     <h1>Bienvenido al Foro</h1>
     <main>
-        <?php foreach ($blogs as $blog): ?>
-            <div class="blog-post">
-                <h2 class="blog-title">
-                    <a href="blog.php?id=<?php echo $blog['id']; ?>">
-                        <?php echo $blog['titulo']; ?>
+        <?php foreach ($forums as $forum): ?>
+            <div class="forum-post">
+                <h2 class="forum-title">
+                    <a href="forum.php?id=<?php echo $forum['id']; ?>">
+                        <?php echo $forum['title']; ?>
                     </a>
                 </h2>
-                <p class="blog-tema"><?php echo $blog['tema']; ?></p>
+                <p class="forum-tema"><?php echo $forum['theme']; ?></p>
             </div>
         <?php endforeach; ?>   
         <?php if ($_SESSION['loggedIn'] === true): ?>
