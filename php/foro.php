@@ -9,7 +9,7 @@ error_reporting(E_ALL);
 include 'connect.php';
 
 // Consulta para obtener todos los blogs
-$stmt = $conn->prepare("SELECT * FROM Blogs");
+$stmt = $conn->prepare("SELECT * FROM Forums");
 $stmt->execute();
 $result = $stmt->get_result();
 $blogs = $result->fetch_all(MYSQLI_ASSOC);
