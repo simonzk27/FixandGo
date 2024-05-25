@@ -44,24 +44,27 @@ error_reporting(E_ALL);
             <?php
             include 'connect.php';
 
-            // Consulta de búsqueda
-            $search = isset($_GET['search']) ? $_GET['search'] : '';
-            $stmt = $conn->prepare("SELECT * FROM Repairs WHERE title LIKE ?");
-            $stmt->execute(["%$search%"]);
-            $result = $stmt->get_result();
-            $results = $result->fetch_all(MYSQLI_ASSOC);
+            $results = [];
+            if (isset($_GET['search'])) {
+                // Consulta de búsqueda
+                $search = $_GET['search'];
+                $stmt = $conn->prepare("SELECT * FROM Repairs WHERE title LIKE ?");
+                $stmt->execute(["%$search%"]);
+                $result = $stmt->get_result();
+                $results = $result->fetch_all(MYSQLI_ASSOC);
+            }
             ?>
 
             <div class="search-bar">
-                <?php
-                // Muestra los resultados
-                foreach ($results as $result) {
-                    echo $result['title'] . '<br>';
-                }
-                ?>
                 <form action="" method="get">
                     <input type="text" name="search" placeholder="Buscar..." required>
                 </form>
+                <?php
+                // Muestra los resultados
+                foreach ($results as $result) {
+                    echo '<a href="' . $result['url'] . '">' . $result['title'] . '</a><br>';
+                }
+                ?>
             </div>
             <div class="card-container">
                 <?php
