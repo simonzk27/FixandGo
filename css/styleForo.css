@@ -131,89 +131,49 @@ footer ul li a {
 }
 /* Foro */
 
-body {
-    font-family: Arial, sans-serif;
+main {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.forum-post {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.forum-title {
     margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
+    font-size: 1.5em;
+    color: #333;
 }
 
-h1 {
-    color: #333;
+.forum-tema {
+    font-size: 1.2em;
+    color: #666;
+}
+
+.button-container {
     text-align: center;
-    padding: 20px 0;
-}
-
-.post {
-    background-color: #fff;
-    margin: 20px auto;
-    width: 80%;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.post h2 {
-    color: #333;
-}
-
-.post p {
-    color: #666;
-}
-
-.comments {
     margin-top: 20px;
-    border-top: 1px solid #ccc;
-    padding-top: 20px;
 }
 
-.comment {
-    margin-bottom: 20px;
-}
-
-.comment h4 {
-    color: #333;
-    margin-bottom: 5px;
-}
-
-.comment p {
-    color: #666;
-}
-
-.new-comment {
-    background-color: #fff;
-    margin: 20px auto;
-    width: 80%;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.new-comment form {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Añadido para centrar los elementos del formulario */
-    width: 100%; /* Añadido para que el formulario ocupe todo el ancho disponible */
-    margin: auto; /* Añadido para centrar el formulario */
-}
-
-.new-comment label {
-    margin-bottom: 5px;
-}
-
-.new-comment input,
-.new-comment textarea {
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    width: 100%; /* Añadido para que los campos de entrada y el área de texto ocupen todo el ancho disponible */
-}
-
-.new-comment input[type="submit"] {
-    width: 100px;
-    align-self: center; /* Añadido para centrar el botón de envío */
-    background-color: #333;
+.crear {
+    padding: 10px 20px;
+    background-color: #007BFF;
     color: #fff;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
+    text-decoration: none;
+}
+
+.crear:hover {
+    background-color: #0056b3;
 }
 
 /* Estilos para dispositivos con pantalla de hasta 600px de ancho */
