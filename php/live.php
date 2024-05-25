@@ -53,20 +53,26 @@ if (isset($_SESSION['role'])) {
 if ($role == 'admin' || $role == 'owner') {
     // Mostrar el formulario para crear un directo
     echo '<form action="create_live.php" method="post">
+            <input type="text" name="live_link" placeholder="Enlace del directo">
             <input type="submit" value="Crear directo">
           </form>';
+
+          if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $_SESSION['live_link'] = $_POST['live_link'];
+        }
+
+
+
 } else if ($role == 'user' || $role == 'guest') {
     // Comprobar si hay directos en vivo
-    //$live = check_live(); // Supongamos que esta función comprueba si hay directos en vivo
+    $live = check_live(); // Supongamos que esta función comprueba si hay directos en vivo
 
-    if ($live) {
-        // Mostrar el directo
-        echo '<iframe width="560" height="315" src="https://www.youtube.com/embed/' . $live . '" frameborder="0" allowfullscreen></iframe>';
-    } else {
-        // Mostrar el recuadro negro de YouTube que dice "offline"
-        echo '<iframe width="560" height="315" src="https://www.youtube.com/embed?status=offline" frameborder="0" allowfullscreen></iframe>';
-    }
-} 
+   if (isset($_SESSION['live_link'])) {
+    $live_link = $_SESSION['live_link'];
+} else {
+    $live_link = 'https://www.youtube.com/embed?status=offline'; // Enlace predeterminado cuando no hay directo
+}
+echo '<iframe width="560" height="315" src="' . $live_link . '" frameborder="0" allowfullscreen></iframe>';
 ?>
 </main>
     <footer>
