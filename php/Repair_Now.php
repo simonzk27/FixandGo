@@ -1,6 +1,5 @@
 <?php
     session_start(); 
-    include 'connect.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -42,6 +41,7 @@
                     <input type="text" name="search" placeholder="Buscar..." required>
                 </form>
                 <?php
+                include 'connect.php';
                 // Consulta de búsqueda
                 $search = $_GET['search'];
                 $stmt = $conn->prepare("SELECT * FROM Repairs WHERE title LIKE ?");
@@ -56,6 +56,7 @@
             </div>
             <div class="card-container">
                 <?php
+                include 'connect.php';
                 $result = $conn->query("SELECT id, title, url, authors_id, upload_date, image_url, descripcion FROM Repairs");
 
                 if ($result->num_rows > 0) {
