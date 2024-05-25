@@ -40,23 +40,11 @@
                 <form action="" method="get">
                     <input type="text" name="search" placeholder="Buscar..." required>
                 </form>
-                <?php
-                include 'connect.php';
-                // Consulta de búsqueda
-                $search = $_GET['search'];
-                $stmt = $conn->prepare("SELECT * FROM Repairs WHERE title LIKE ?");
-                $stmt->execute(["%$search%"]);
-                $results = $stmt->fetchAll();
-
-                // Muestra los resultados
-                foreach ($results as $result) {
-                    echo $result['title'] . '<br>';
-                }
-                ?>
             </div>
             <div class="card-container">
                 <?php
                 include 'connect.php';
+
                 $result = $conn->query("SELECT id, title, url, authors_id, upload_date, image_url, descripcion FROM Repairs");
 
                 if ($result->num_rows > 0) {
