@@ -64,7 +64,7 @@ if ($role == 'admin' || $role == 'owner') {
             $startPos = strrpos($youtube_link, '/') + 1;
             $video_id = substr($youtube_link, $startPos, $endPos - $startPos); // Extraer el ID del video de YouTube del enlace
             echo '<iframe width="560" height="315" src="' . $youtube_link . '" frameborder="0" allowfullscreen></iframe>';
-            echo '<iframe src="https://www.youtube.com/live_chat?v=' . $video_id . '&embed_domain=www.fixandgo.site " width="560" height="315"></iframe>'; // Mostrar el chat de YouTube
+            echo '<iframe src="https://www.youtube.com/live_chat?v=' . $video_id . '&is&embed_domain=www.fixandgo.site " width="560" height="315"></iframe>'; // Mostrar el chat de YouTube
                 echo $video_id;
           }// Guardar el enlace de YouTube en una variable
         } else if ($role == 'user' || $role == 'guest') {
