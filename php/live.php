@@ -68,7 +68,7 @@ if ($role == 'admin' || $role == 'owner') {
         $new_youtube_link = $_POST['youtube_link']; 
 
         // Actualizar el enlace de YouTube en la base de datos
-        $stmt = $conn->prepare("UPDATE link SET lives = ? WHERE id = 1");
+        $stmt = $conn->prepare("UPDATE lives SET link = ? WHERE id = 1");
         $stmt->bind_param("s", $new_youtube_link);
         if ($stmt->execute()) {
         echo "Link updated successfully";
@@ -77,18 +77,24 @@ if ($role == 'admin' || $role == 'owner') {
         }
     }
    
-          if (isset($_POST['create_live'])) {
-            $youtube_link = $_POST['youtube_link']; 
-            $endPos = strpos($youtube_link, '?');
-            if ($endPos === false) {
+    $stmt = $conn->prepare("SELECT link FROM lives WHERE id = 1");
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();    
+    if ($row) {
+        $youtube_link = $row['link'];
+        $endPos = strpos($youtube_link, '?');
+        if ($endPos === false) {
             $endPos = strlen($youtube_link);
-            }
-            $startPos = strrpos($youtube_link, '/') + 1;
-            $video_id = substr($youtube_link, $startPos, $endPos - $startPos); // Extraer el ID del video de YouTube del enlace
-            echo '<iframe width="560" height="315" src="' . $youtube_link . '" frameborder="0" allowfullscreen></iframe>';
-            echo '<iframe src="https://www.youtube.com/live_chat?v=' . $video_id . '&is&embed_domain=fixandgo.site " width="560" height="315"></iframe>'; // Mostrar el chat de YouTube
-                echo $video_id;
-          }// Guardar el enlace de YouTube en una variable
+        }
+        $startPos = strrpos($youtube_link, '/') + 1;
+        $video_id = substr($youtube_link, $startPos, $endPos - $startPos); // Extraer el ID del video de YouTube del enlace
+        echo '<iframe width="560" height="315" src="' . $youtube_link . '" frameborder="0" allowfullscreen></iframe>';
+        echo '<iframe src="https://www.youtube.com/live_chat?v=' . $video_id . '&is&embed_domain=fixandgo.site " width="560" height="315"></iframe>'; // Mostrar el chat de YouTube
+        echo $video_id;
+    } else {
+        echo "No se encontró el enlace de YouTube en la base de datos.";
+    }
         } else if ($role == 'user' || $role == 'guest') {
             if (isset($youtube_link)) {
                 // Mostrar el directo
