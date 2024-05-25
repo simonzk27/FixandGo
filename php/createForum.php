@@ -21,10 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Redirige al usuario a la página de foros
     header("Location: foro.php");
-} else {
-    // Si el formulario no fue enviado, redirige al usuario a la página de creación de foros
-    header("Location: createForum.php");
-}
+} 
 
 ?>
 <!DOCTYPE html>
