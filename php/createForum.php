@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contenido = $_POST['contenido'];
 
     // Prepara la consulta SQL
-    $stmt = $conn->prepare("INSERT INTO Blogs (titulo, tema, contenido, authors_id) VALUES (?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO Forums (title, theme, content, authors_id) VALUES (?, ?, ?, ?)");
 
     // Vincula los parámetros a la consulta
     $stmt->bind_param("sss", $titulo, $tema, $contenido, $_SESSION['user_id']);
