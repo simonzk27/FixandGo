@@ -1,12 +1,6 @@
 <?php
 session_start(); 
-include 'connect.php';
 
-// Consulta para obtener todos los blogs
-$stmt = $conn->prepare("SELECT * FROM Blogs");
-$stmt->execute();
-$result = $stmt->get_result();
-$blogs = $result->fetch_all(MYSQLI_ASSOC);
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,16 +39,22 @@ $blogs = $result->fetch_all(MYSQLI_ASSOC);
 </header>
     <h1>Bienvenido al Foro</h1>
     <main>
-    <?php foreach ($blogs as $blog): ?>
-        <div class="blog-post">
-            <h2 class="blog-title">
-                <a href="blog.php?id=<?php echo $blog['id']; ?>">
-                    <?php echo $blog['titulo']; ?>
-                </a>
-            </h2>
-            <p class="blog-tema"><?php echo $blog['tema']; ?></p>
-        </div>
-    <?php endforeach; ?>         
+        <form action="publicar.php" method="post">
+            <label for="titulo">Título:</label><br>
+            <input type="text" id="titulo" name="titulo" required><br>
+            <label for="tema">Tema:</label><br>
+            <select id="tema" name="tema" required>
+                <option value="">Selecciona un tema</option>
+                <option value="tema1">Tema 1</option>
+                <option value="tema2">Tema 2</option>
+                <option value="tema3">Tema 3</option>
+                <option value="tema4">Tema 4</option>
+                <option value="tema5">Tema 5</option>
+            </select><br>
+            <label for="contenido">Contenido:</label><br>
+            <textarea id="contenido" name="contenido" required></textarea><br>
+            <input type="submit" value="Publicar">
+        </form>
     </main>
     <footer>
         <div class="container">
