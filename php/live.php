@@ -1,5 +1,10 @@
 <?php
 session_start(); 
+if (isset($_SESSION['role'])) {
+    echo 'Rol del usuario: ' . $_SESSION['role'];
+} else {
+    echo 'Rol del usuario no está definido en la sesión.';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
