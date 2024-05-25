@@ -53,10 +53,11 @@ if ($role == 'admin' || $role == 'owner') {
     echo '<form method="post">
             <input type="text" name="youtube_link" placeholder="Ingresa el enlace de YouTube aquí">
             <input type="submit" name="create_live" value="Crear directo">
-          </form>'
+          </form>';
 
           if (isset($_POST['create_live'])) {
-            $youtube_link = $_POST['youtube_link']; // Guardar el enlace de YouTube en una variable
+            $youtube_link = $_POST['youtube_link']; 
+          }// Guardar el enlace de YouTube en una variable
         } else if ($role == 'user' || $role == 'guest') {
             if (isset($youtube_link)) {
                 // Mostrar el directo
