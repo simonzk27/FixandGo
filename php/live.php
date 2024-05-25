@@ -38,21 +38,30 @@ session_start();
     </div>
 </header>
 <main class="main"> <!-- Añade la clase .main aquí -->
-    <div class="container">
-        <div class="video-chat-container">
-            <div class="video-container">
-                <!-- Contenido del video en vivo (video descargado en formato MP4) -->
-                <video controls autoplay>
-                    <source src="../img/Y2meta.app-14 de mayo de 2024-(480p).mp4" type="video/mp4">
-                    Tu navegador no soporta el elemento video.
-                </video>
-            </div>
-            <div class="chat-container">
-                <!-- Contenido del chat (aquí inserta tu chat) -->
-                <script id="cid0020000374742593360" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 80%;height: 80%;">{"handle":"livefix","arch":"js","styles":{"a":"003166","b":100,"c":"FFFFFF","d":"FFFFFF","k":"003166","l":"003166","m":"003166","n":"FFFFFF","p":"10","q":"003166","r":100,"usricon":0,"fwtickm":1}}</script>
-            </div>
-        </div>
-    </div>
+<?php
+session_start();
+
+// Supongamos que la autenticación ya está implementada
+$role = $_SESSION['role']; // Obtenemos el rol del usuario
+
+if ($role == 'admin' || $role == 'owner') {
+    // Mostrar el formulario para crear un directo
+    echo '<form action="create_live.php" method="post">
+            <input type="submit" value="Crear directo">
+          </form>';
+} else if ($role == 'user') {
+    // Comprobar si hay directos en vivo
+    $live = check_live(); // Supongamos que esta función comprueba si hay directos en vivo
+
+    if ($live) {
+        // Mostrar el directo
+        echo '<iframe width="560" height="315" src="https://www.youtube.com/embed/' . $live . '" frameborder="0" allowfullscreen></iframe>';
+    } else {
+        // Mostrar el recuadro negro de YouTube que dice "offline"
+        echo '<iframe width="560" height="315" src="https://www.youtube.com/embed?status=offline" frameborder="0" allowfullscreen></iframe>';
+    }
+}
+?>
 </main>
     <footer>
         <div class="container">

@@ -20,6 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $_SESSION['user_id'] = $user['id'];
       $_SESSION['username'] = $username; // Add username for convenience
       $_SESSION['loggedIn'] = true;
+      $_SESSION['role'] = $user['role'];
+      
       header("Location: ../index.php"); // Replace with your logged-in page
       exit;
     } else {
@@ -37,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión</title>
+    <title>Iniciar Sesiï¿½n</title>
     <link rel="stylesheet" href="../css/styleLogin.css">
 </head>
 <body>
