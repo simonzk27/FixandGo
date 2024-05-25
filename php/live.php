@@ -44,6 +44,7 @@ session_start();
 // Supongamos que la autenticación ya está implementada
 $role = $_SESSION['role']; // Obtenemos el rol del usuario
 echo $_SESSION['role']; // Imprime el rol para depuración
+echo $_SESSION['username']; // Imprime el rol para depuración
 if ($role == 'admin' || $role == 'owner') {
     // Mostrar el formulario para crear un directo
     echo '<form action="create_live.php" method="post">
