@@ -7,12 +7,6 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 include 'connect.php';
-
-// Consulta para obtener todos los forums
-$stmt = $conn->prepare("SELECT * FROM Forums");
-$stmt->execute();
-$result = $stmt->get_result();
-$forums = $result->fetch_all(MYSQLI_ASSOC);
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,27 +46,55 @@ $forums = $result->fetch_all(MYSQLI_ASSOC);
     <main>
     <?php
 
-        // Obtén el ID del forum de la URL
-        $id = $_GET['id'];
+    // Obtén el ID del forum de la URL
+    $id = $_GET['id'];
 
-        // Consulta para obtener el forum
-        $stmt = $conn->prepare("SELECT * FROM Forums WHERE id = ?");
-        $stmt->execute([$id]);
-        $result = $stmt->get_result();
-        $forum = $result->fetch_assoc();
+    // Verifica si el formulario fue enviado
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Recoge los datos del formulario
+        $comentario = $_POST['comentario'];
 
-        // Muestra el forum
-        echo '<h1>' . $forum['title'] . '</h1>';
-        echo '<p>' . $forum['theme'] . '</p>';
-        echo '<div>' . $forum['content'] . '</div>';
+        // Prepara la consulta SQL
+        $stmt = $conn->prepare("INSERT INTO Comments (content, authors_id, forums_id) VALUES (?, ?, ?)");
 
-        // Formulario para comentar
-        echo '<form action="comentar.php" method="post">';
-        echo '<input type="hidden" name="blog_id" value="' . $id . '">';
-        echo '<textarea name="comentario" required></textarea>';
-        echo '<input type="submit" value="Comentar">';
-        echo '</form>';
-        ?> 
+        // Vincula los parámetros a la consulta
+        $stmt->bind_param("sii", $comentario, $_SESSION['user_id'], $id);
+
+        // Ejecuta la consulta
+        $stmt->execute();
+    }
+
+    // Consulta para obtener el forum
+    $stmt = $conn->prepare("SELECT * FROM Forums WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $forum = $result->fetch_assoc();
+
+    // Muestra el forum
+    echo '<h1>' . $forum['title'] . '</h1>';
+    echo '<p>' . $forum['theme'] . '</p>';
+    echo '<div>' . $forum['content'] . '</div>';
+
+    // Formulario para comentar
+    echo '<form action="postedForum.php?id=' . $id . '" method="post">';
+    echo '<textarea name="comentario" required></textarea>';
+    echo '<input type="submit" value="Comentar">';
+    echo '</form>';
+
+    // Consulta para obtener los comentarios
+    $stmt = $conn->prepare("SELECT * FROM Comments WHERE forums_id = ? ORDER BY upload_date DESC");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Muestra los comentarios
+    while ($comment = $result->fetch_assoc()) {
+        echo '<div>';
+        echo '<p>' . $comment['content'] . '</p>';
+        echo '</div>';
+    }
+    ?> 
     </main>
     <footer>
         <div class="container">
