@@ -57,7 +57,12 @@ if ($role == 'admin' || $role == 'owner') {
 
           if (isset($_POST['create_live'])) {
             $youtube_link = $_POST['youtube_link']; 
-            $video_id = substr($youtube_link, strrpos($youtube_link, '/') + 1); // Extraer el ID del video de YouTube del enlace
+            $endPos = strpos($youtube_link, '?');
+            if ($endPos === false) {
+            $endPos = strlen($youtube_link);
+            }
+            $startPos = strrpos($youtube_link, '/') + 1;
+            $video_id = substr($youtube_link, $startPos, $endPos - $startPos); // Extraer el ID del video de YouTube del enlace
             echo '<iframe width="560" height="315" src="' . $youtube_link . '" frameborder="0" allowfullscreen></iframe>';
             echo '<iframe src="https://www.youtube.com/live_chat?v=' . $video_id . '&embed_domain=www.fixandgo.site " width="560" height="315"></iframe>'; // Mostrar el chat de YouTube
                 echo $video_id;
