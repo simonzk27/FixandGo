@@ -1,5 +1,8 @@
         <?php
         session_start(); 
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
         ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -58,7 +61,7 @@
         } else {
             $role = 'guest'; // Asignamos un rol predeterminado para los usuarios no autenticados
         }
-        
+
         if ($role == 'admin' || $role == 'owner') {
         if (isset($_POST['youtube_link'])) {
             $new_youtube_link = $_POST['youtube_link']; 
