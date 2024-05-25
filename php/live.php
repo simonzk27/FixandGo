@@ -42,13 +42,17 @@ session_start();
 
 // Supongamos que la autenticación ya está implementada
 $role = $_SESSION['role']; // Obtenemos el rol del usuario
-
+if (isset($_SESSION['role'])) {
+    $role = $_SESSION['role']; // Obtenemos el rol del usuario
+} else {
+    $role = 'guest'; // Asignamos un rol predeterminado para los usuarios no autenticados
+}
 if ($role == 'admin' || $role == 'owner') {
     // Mostrar el formulario para crear un directo
     echo '<form action="create_live.php" method="post">
             <input type="submit" value="Crear directo">
           </form>';
-} else if ($role == 'user' || !(isset($_SESSION['role']))) {
+} else if ($role == 'user' || $role == 'guest') {
     // Comprobar si hay directos en vivo
     $live = check_live(); // Supongamos que esta función comprueba si hay directos en vivo
 
