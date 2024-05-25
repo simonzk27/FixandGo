@@ -126,13 +126,40 @@ footer ul li a {
 }
 
 /*Main*/
-main {
-    width: 100%;
-    height: calc(100vh - 100px); /* Ajusta "100px" al tamaño de tu footer */
-    overflow: auto; /* Agrega barras de desplazamiento si el contenido es demasiado grande */
+/* Estilos para el botón */
+button {
+    background-color: #4CAF50; /* Color de fondo */
+    border: none; /* Sin bordes */
+    color: white; /* Color del texto */
+    padding: 15px 32px; /* Espaciado interno */
+    text-align: center; /* Alineación del texto */
+    text-decoration: none; /* Sin decoración de texto */
+    display: inline-block; /* Hacer que el botón sea un bloque en línea */
+    font-size: 16px; /* Tamaño de la fuente */
+    margin: 4px 2px; /* Margen alrededor del botón */
+    cursor: pointer; /* Cambiar el cursor al pasar el mouse sobre el botón */
 }
 
-iframe {
-    width: 100%;
-    height: 100%;
+/* Estilos para el campo de entrada */
+input[type=text] {
+    width: 100%; /* Ancho completo */
+    padding: 12px 20px; /* Espaciado interno */
+    margin: 8px 0; /* Margen alrededor del campo de entrada */
+    box-sizing: border-box; /* Asegurarse de que el padding y el borde estén incluidos en el ancho total */
+    border: 3px solid #ccc; /* Borde alrededor del campo de entrada */
+    -webkit-transition: 0.5s; /* Transición suave al cambiar el tamaño */
+    transition: 0.5s; /* Transición suave al cambiar el tamaño */
+    outline: none; /* Sin contorno al seleccionar el campo de entrada */
+}
+
+/* Cambiar el tamaño del campo de entrada al seleccionarlo */
+input[type=text]:focus {
+    border: 3px solid #555;
+}
+
+/* Estilos para el chat y el video */
+.chat, .video {
+    width: 45%; /* Ancho del chat y del video */
+    margin: 2.5%; /* Margen alrededor del chat y del video */
+    float: left; /* Hacer que el chat y el video floten uno al lado del otro */
 }

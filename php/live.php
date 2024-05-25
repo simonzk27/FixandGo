@@ -77,10 +77,11 @@ if ($role == 'admin' || $role == 'owner') {
         $stmt = $conn->prepare("UPDATE lives SET link = ? WHERE id = 1");
         $stmt->bind_param("s", $new_youtube_link);
         if ($stmt->execute()) {
-        
+            echo '<div id="message" style="display: none;">Directo subido correctamente</div>';
+            echo '<script type="text/javascript">document.getElementById("message").style.display = "block";</script>';
         } else {
-        echo "Error updating link: " . $stmt->error;
-        }
+            echo '<div id="message" style="display: none;">Error updating link: ' . $stmt->error . '</div>';
+            echo '<script type="text/javascript">document.getElementById("message").style.display = "block";</script>';
     }
    
     echo '<iframe width="560" height="315" src="' . $youtube_link . '" frameborder="0" allowfullscreen></iframe>';
