@@ -44,7 +44,7 @@ error_reporting(E_ALL);
 <?php
 
 // Supongamos que la autenticación ya está implementada
-$role = $_SESSION['role']; // Obtenemos el rol del usuario
+
 if (isset($_SESSION['role'])) {
     $role = $_SESSION['role']; // Obtenemos el rol del usuario
 } else {
