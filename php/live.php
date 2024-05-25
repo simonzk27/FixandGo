@@ -76,12 +76,14 @@ if ($role == 'admin' || $role == 'owner') {
         // Actualizar el enlace de YouTube en la base de datos
         $stmt = $conn->prepare("UPDATE lives SET link = ? WHERE id = 1");
         $stmt->bind_param("s", $new_youtube_link);
+        if (isset($_GET['message'])) {
+            echo '<div>' . htmlspecialchars($_GET['message']) . '</div>';
+        }
         if ($stmt->execute()) {
-            echo '<div id="message" style="display: none;">Directo subido correctamente</div>';
-            echo '<script type="text/javascript">document.getElementById("message").style.display = "block";</script>';
+            header("Location: live.php?message=Directo+subido+correctamente");
         } else {
-            echo '<div id="message" style="display: none;">Error updating link: ' . $stmt->error . '</div>';
-            echo '<script type="text/javascript">document.getElementById("message").style.display = "block";</script>';
+            header("Location: live.php?message=Error+updating+link:+{$stmt->error}");
+        }
     }
    
     echo '<iframe width="560" height="315" src="' . $youtube_link . '" frameborder="0" allowfullscreen></iframe>';
