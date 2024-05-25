@@ -156,6 +156,24 @@ footer ul li a {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
+.search-result {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-result a {
+  text-decoration: none;
+  color: #333;
+}
+
+.search-result a:hover {
+  color: #007BFF;
+}
+
 /* hacia abajo card */
 
 .transition { transition: .8s cubic-bezier(.3, 0, 0, 1.3) }

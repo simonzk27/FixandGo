@@ -62,7 +62,9 @@ error_reporting(E_ALL);
                 <?php
                 // Muestra los resultados
                 foreach ($results as $result) {
-                    echo '<a href="' . $result['url'] . '">' . $result['title'] . '</a><br>';
+                    echo '<div class="search-result">';
+                    echo '<a href="' . $result['url'] . '">' . $result['title'] . '</a>';
+                    echo '</div>';
                 }
                 ?>
             </div>
