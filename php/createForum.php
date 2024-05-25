@@ -18,10 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare("INSERT INTO Forums (title, theme, content, authors_id) VALUES (?, ?, ?, ?)");
 
     // Vincula los parámetros a la consulta
-    $stmt->bind_param("sss", $titulo, $tema, $contenido, $_SESSION['user_id']);
-
-    // Ejecuta la consulta
-    $stmt->execute();
+    $stmt->execute([$title, $guideUrl, $_SESSION['user_id'], $imagePath, $description]);
 
     // Redirige al usuario a la página de foros
     header("Location: foro.php");
