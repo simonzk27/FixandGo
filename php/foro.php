@@ -45,16 +45,25 @@ $blogs = $result->fetch_all(MYSQLI_ASSOC);
 </header>
     <h1>Bienvenido al Foro</h1>
     <main>
-    <?php foreach ($blogs as $blog): ?>
-        <div class="blog-post">
-            <h2 class="blog-title">
-                <a href="blog.php?id=<?php echo $blog['id']; ?>">
-                    <?php echo $blog['titulo']; ?>
-                </a>
-            </h2>
-            <p class="blog-tema"><?php echo $blog['tema']; ?></p>
-        </div>
-    <?php endforeach; ?>         
+        <?php foreach ($blogs as $blog): ?>
+            <div class="blog-post">
+                <h2 class="blog-title">
+                    <a href="blog.php?id=<?php echo $blog['id']; ?>">
+                        <?php echo $blog['titulo']; ?>
+                    </a>
+                </h2>
+                <p class="blog-tema"><?php echo $blog['tema']; ?></p>
+            </div>
+        <?php endforeach; ?>   
+        <?php if ($_SESSION['loggedIn'] === true): ?>
+            <div class="button-container">
+                <button class="crear" onclick="location.href='createForum.php'">Escribe un foro</button>
+            </div>
+        <?php else: ?>
+            <div class="button-container">
+                <p class="crear">Registrate o inicia sesión para escribir foros</p>
+            </div>
+        <?php endif; ?>      
     </main>
     <footer>
         <div class="container">
