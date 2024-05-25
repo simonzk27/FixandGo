@@ -39,33 +39,22 @@ session_start();
 </header>
     <h1>Bienvenido al Foro</h1>
     <main>
-        <section>
-            <div class="post">
-                <h2>Título del Post 1</h2>
-                <p>Contenido del post 1...</p>
-                <div class="comments">
-                    <h3>Comentarios</h3>
-                    <div class="comment">
-                        <h4>Usuario 1</h4>
-                        <p>Comentario 1...</p>
-                    </div>
-                    <!-- Agrega más comentarios según sea necesario -->
-                </div>
-            </div>
-        
-            <!-- Agrega más posts según sea necesario -->
-        
-            <div class="new-comment">
-                <h2>Publicar un nuevo comentario</h2>
-                <form>
-                    <label for="username">Nombre de usuario:</label><br>
-                    <input type="text" id="username" name="username"><br>
-                    <label for="comment">Comentario:</label><br>
-                    <textarea id="comment" name="comment"></textarea><br>
-                    <input type="submit" value="Publicar">
-                </form>
-            </div>
-        </section> 
+        <form action="publicar.php" method="post">
+            <label for="titulo">Título:</label><br>
+            <input type="text" id="titulo" name="titulo" required><br>
+            <label for="tema">Tema:</label><br>
+            <select id="tema" name="tema" required>
+                <option value="">Selecciona un tema</option>
+                <option value="tema1">Tema 1</option>
+                <option value="tema2">Tema 2</option>
+                <option value="tema3">Tema 3</option>
+                <option value="tema4">Tema 4</option>
+                <option value="tema5">Tema 5</option>
+            </select><br>
+            <label for="contenido">Contenido:</label><br>
+            <textarea id="contenido" name="contenido" required></textarea><br>
+            <input type="submit" value="Publicar">
+        </form>
     </main>
     <footer>
         <div class="container">
