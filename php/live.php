@@ -67,7 +67,7 @@
             $new_youtube_link = $_POST['youtube_link']; 
 
             // Actualizar el enlace de YouTube en la base de datos
-            $stmt = $conn->prepare("UPDATE Links SET links = ? WHERE id = 1");
+            $stmt = $conn->prepare("UPDATE link SET lives = ? WHERE id = 1");
             $stmt->bind_param("s", $new_youtube_link);
             if ($stmt->execute()) {
             echo "Link updated successfully";
