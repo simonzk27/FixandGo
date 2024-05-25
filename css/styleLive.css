@@ -125,29 +125,14 @@ footer ul li a {
     text-decoration: none;
 }
 
-/* Añade .main antes de .container */
-.main .container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
+/*Main*/
+main {
+    width: 100%;
+    height: calc(100vh - 100px); /* Ajusta "100px" al tamaño de tu footer */
+    overflow: auto; /* Agrega barras de desplazamiento si el contenido es demasiado grande */
 }
 
-/* Ajusta los selectores de la siguiente manera */
-.main .video-chat-container {
-    display: flex;
-}
-
-.main .video-chat-container .video-container {
-    flex: 1;
-    margin-right: 20px;
-}
-
-.main .video-chat-container .chat-container {
-    flex: 1;
-}
-
-.main .video-chat-container .video-container video {
-    max-width: 100%;
-    height: auto;
-    display: block;
+iframe {
+    width: 100%;
+    height: 100%;
 }
