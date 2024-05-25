@@ -48,7 +48,8 @@ error_reporting(E_ALL);
             $search = isset($_GET['search']) ? $_GET['search'] : '';
             $stmt = $conn->prepare("SELECT * FROM Repairs WHERE title LIKE ?");
             $stmt->execute(["%$search%"]);
-            $results = $stmt->fetchAll();
+            $result = $stmt->get_result();
+            $results = $result->fetch_all(MYSQLI_ASSOC);
             ?>
 
             <div class="search-bar">
