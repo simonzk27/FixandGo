@@ -43,8 +43,6 @@ error_reporting(E_ALL);
 <main class="main"> <!-- Añade la clase .main aquí -->
 <?php
 
-// Supongamos que la autenticación ya está implementada
-
 if (isset($_SESSION['role'])) {
     $role = $_SESSION['role']; // Obtenemos el rol del usuario
 } else {
@@ -52,20 +50,23 @@ if (isset($_SESSION['role'])) {
 }
 if ($role == 'admin' || $role == 'owner') {
     // Mostrar el formulario para crear un directo
-    <form action="live.php" method="post">
-    <input type="text" name="live_link" placeholder="Enlace del directo">
-    <input type="submit" value="Crear directo">
-    </form>
+    echo '<form method="post">
+            <input type="text" name="youtube_link" placeholder="Ingresa el enlace de YouTube aquí">
+            <input type="submit" name="create_live" value="Crear directo">
+          </form>'
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['live_link'])) {
-        header("Location: " . $_POST['live_link']);
-        exit;
-    }
+          if (isset($_POST['create_live'])) {
+            $youtube_link = $_POST['youtube_link']; // Guardar el enlace de YouTube en una variable
+        } else if ($role == 'user' || $role == 'guest') {
+            if (isset($youtube_link)) {
+                // Mostrar el directo
+                echo '<iframe width="560" height="315" src="' . $youtube_link . '" frameborder="0" allowfullscreen></iframe>';
+            } else {
+                // Mostrar el recuadro negro de YouTube que dice "offline"
+                echo '<iframe width="560" height="315" src="https://www.youtube.com/embed?status=offline" frameborder="0" allowfullscreen></iframe>';
+            }
+        } 
 
-} else if ($role == 'user' || $role == 'guest') {
-    // Comprobar si hay directos en vivo
-    $live = check_live(); // Supongamos que esta función comprueba si hay directos en vivo
-}
 ?>
 </main>
     <footer>
