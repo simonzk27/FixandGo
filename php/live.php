@@ -22,6 +22,8 @@ session_start();
                 <li><a href="Repair_Now.php" class="btn-header">Repair Now </a></li>
                 <li><a href="foro.php" class="btn-header">Foro</a></li>
                 <li><a href="live.php" class="btn-header">Live</a></li>
+                <li><a href="encuentros.php" class="btn-header">Encuentros</a></li>
+
             </ul>
             <ul class="right-side">
                 <?php if (isset($_SESSION['username'])): ?>

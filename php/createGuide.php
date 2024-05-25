@@ -51,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <li><a href="https://fixandgo.site/php/Repair_Now.php" class="btn-header">Repair Now </a></li>
                     <li><a href="https://fixandgo.site/php/foro.php" class="btn-header">Foro</a></li>
                     <li><a href="https://fixandgo.site/php/live.php" class="btn-header">Live</a></li>
+                    <li><a href="https://fixandgo.site/php/encuentros.php" class="btn-header">Encuentros</a></li>
                 </ul>
                 <ul class="right-side">
     HTML;
