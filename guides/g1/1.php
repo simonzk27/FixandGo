@@ -137,15 +137,6 @@ session_start();
             </div>
         </section>
 
-        <section class="conclusion">
-            <h2>Comprobacion</h2>
-            <p>Abre la aplicación Ajustes en tu iPhone X, toca Batería y toca Salud de la batería.
-            <br>En esta pantalla, verás la siguiente información:
-            <br>Capacidad máxima de la batería: Este es el porcentaje de la capacidad original de la batería que queda. Una batería nueva tiene una capacidad máxima del 100%. A medida que la batería envejece, su capacidad máxima disminuye.
-            Capacidad de máximo rendimiento: Esta indica si la batería está proporcionando suficiente energía para que el iPhone funcione al máximo rendimiento. Si dice Normal, la batería está funcionando bien. Si dice Reducida, es posible que notes que el rendimiento del iPhone se ha ralentizado un poco.
-            Batería necesita servicio: Si ves este mensaje, significa que la batería de tu iPhone está muy desgastada y necesita ser reemplazada.</p>
-        </section>
-
         <section class="retroalimentacion">
             <h2>Retroalimentación</h2>
             <p>¿Fue útil este tutorial?</p>
