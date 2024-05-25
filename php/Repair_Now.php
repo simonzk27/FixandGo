@@ -37,9 +37,6 @@
         </header>
         <main>
             <div class="search-bar">
-                <form action="" method="get">
-                    <input type="text" name="search" placeholder="Buscar..." required>
-                </form>
                 <?php
                 include 'connect.php';
                 // Consulta de búsqueda
@@ -53,6 +50,10 @@
                     echo $result['title'] . '<br>';
                 }
                 ?>
+                <form action="" method="get">
+                    <input type="text" name="search" placeholder="Buscar..." required>
+                </form>
+                
             </div>
             <div class="card-container">
                 <?php
