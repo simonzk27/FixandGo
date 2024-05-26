@@ -84,8 +84,8 @@ if ($role == 'admin' || $role == 'owner') {
         }
     }
    
-    echo '<iframe width="600" height="400" src="' . $youtube_link . '" frameborder="0" allowfullscreen></iframe>';
-    echo '<iframe src="https://www.youtube.com/live_chat?v=' . $video_id . '&is&embed_domain=fixandgo.site " width="1000" height="800"></iframe>'; // Mostrar el chat de YouTube
+    echo '<iframe width="1000" height="800" src="' . $youtube_link . '" frameborder="0" allowfullscreen></iframe>';
+    echo '<iframe src="https://www.youtube.com/live_chat?v=' . $video_id . '&is&embed_domain=fixandgo.site " width="600" height="800"></iframe>'; // Mostrar el chat de YouTube
 } else if ($role == 'user' || $role == 'guest') {
     if (isset($youtube_link)) {
         // Mostrar el directo
