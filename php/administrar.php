@@ -17,11 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $action = $_POST['action'];
 
     if ($action == 'ascend' && $_SESSION['id'] != $userId) {
-        $sql = "UPDATE users SET role='admin' WHERE id=?";
+        $sql = "UPDATE usUsersers SET role='admin' WHERE id=?";
     } elseif ($action == 'descend' && $_SESSION['id'] != $userId) {
-        $sql = "UPDATE users SET role='user' WHERE id=?";
+        $sql = "UPDATE Users SET role='user' WHERE id=?";
     } elseif ($action == 'delete' && $_SESSION['id'] != $userId) {
-        $sql = "DELETE FROM users WHERE id=?";
+        $sql = "DELETE FROM Users WHERE id=?";
     } else {
         die("Acción no permitida");
     }
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     exit;
 }
 
-$sql = "SELECT * FROM Users";
+$sql = "SELECT * FROM Users"; // Asegúrate de que estás utilizando el nombre correcto de la tabla
 $result = $conn->query($sql);
 if (!$result) {
     die("Error al ejecutar la consulta");
