@@ -48,12 +48,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 $sql = "SELECT * FROM Users";
 $result = $conn->query($sql);
-if (!$result) {
-    die("Error al ejecutar la consulta");
-}
-
-$users = $result->fetch_all(MYSQLI_ASSOC);
-?>
 <!DOCTYPE html>
 <html>
 <head>
