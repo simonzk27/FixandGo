@@ -72,6 +72,7 @@ include 'connect.php';
     $forum = $result->fetch_assoc();
 
     // Muestra el forum
+    echo '<main class="main-forum">';
     echo '<h1>' . $forum['title'] . '</h1>';
     echo '<p>' . $forum['theme'] . '</p>';
     echo '<div>' . $forum['content'] . '</div>';
