@@ -44,9 +44,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h1>Fix and Go</h1>
             </div>
             <nav>
-            <ul class="left-side">
                  HTML;
-            $guideContent .= ' <?php if ($_SESSION[\'role\'] == \'owner\') { ?> '
+            $guideContent .= ' <ul class="left-side"> '
+                    .'<?php if ($_SESSION[\'role\'] == \'owner\') { ?> '
                     .'<li><a href="../index.php" class="btn-header">Inicio</a></li>'
                     .'<li><a href="../php/Repair_Now.php" class="btn-header">Repair Now </a></li>'
                     .'<li><a href="../php/foro.php" class="btn-header">Foro</a></li>'
@@ -59,11 +59,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     .'<li><a href="../php/foro.php" class="btn-header">Foro</a></li>'
                     .'<li><a href="../php/live.php" class="btn-header">Live</a></li>'
                     .'<li><a href="../php/encuentros.php" class="btn-header">Encuentros</a></li>'
-                .'<?php }  ?>';
+                .'<?php }  ?>'
+                    .'</ul>';
                 $guideContent .= <<<HTML
-            </ul> 
                 <ul class="right-side">
-    HTML;
+                HTML;
     
 $guideContent .= '<?php if (isset($_SESSION[\'loggedIn\']) && $_SESSION[\'loggedIn\'] === true): ?>'
                 .'<li class="user-info"><a class="welcome-msg">Bienvenido, <?php echo $_SESSION[\'username\'] ?></a></li>'
@@ -151,6 +151,7 @@ $guideContent .= '<?php if (isset($_SESSION[\'loggedIn\']) && $_SESSION[\'logged
         $stepTitle = $stepTitles[$i];
         $stepDescription = $stepDescriptions[$i];
         $imageSrc = "stepImage" . $stepNumber . ".jpg";
+        
         $guideContent .= <<<HTML
             <div style="display: flex; align-items: start;">
             <img src="$imageSrc" alt="Imagen" style="width:10%;height:10%;border-radius: 15px;"> 
@@ -160,7 +161,7 @@ $guideContent .= '<?php if (isset($_SESSION[\'loggedIn\']) && $_SESSION[\'logged
                 </div>
             </div>
             <br>
-    HTML;
+        HTML;
     }
 
     $guideContent .= <<<HTML
