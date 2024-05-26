@@ -115,33 +115,20 @@ if ($role == 'admin' || $role == 'owner') {
                 container: "mapGen",
                 style: "mapbox://styles/mapbox/streets-v12",
                 center: [-74.06581442603229, 4.632584654601695], // starting position [lng, lat]
-                zoom: 9 // starting zoom
+                zoom: 9 // starting zoom 
             });
             </script>';
 } 
-
+    // Cargar los encuentros disponibles
     $result = $conn->query("SELECT * FROM meetings");
     while($row = $result->fetch_assoc()) {
-        // Divide la ubicación en longitud y latitud
-        $location = explode(",", $row["location"]);
-        $longitude = $location[0];
-        $latitude = $location[1];
-
         // Agregar un marcador para la ubicación del encuentro
         echo "<script>
-            var marker = new mapboxgl.Marker()
-                .setLngLat([$longitude, $latitude])
+            new mapboxgl.Marker()
+                .setLngLat([" . $row["location"] . "])
                 .addTo(mapGen);
-
-            // Crear un Popup con la información del encuentro
-            var popup = new mapboxgl.Popup({ offset: 25 })
-                .setText('Titulo: " . addslashes($row["title"]) . " - Descripcion: " . addslashes($row["description"]) . " - Fecha: " . $row["date"] . "');
-
-            // Agregar el Popup al marcador
-            marker.setPopup(popup);
         </script>";
     }
-
 
 
 ?>
