@@ -89,17 +89,19 @@ if ($role == 'admin' || $role == 'owner') {
             style: "mapbox://styles/mapbox/streets-v12"
         });
 
-        map.on("click", function(e) {
-            document.getElementById("location").value = e.lngLat.lat + "," + e.lngLat.lng;
+        // Crear un nuevo marcador
+        const marker = new mapboxgl.Marker();  
 
-            if (currentMarker) {
-                currentMarker.remove();
-            }
-        
-            // Agrega un nuevo marcador en la ubicación del clic
-            currentMarker = new mapboxgl.Marker()
-                .setLngLat(e.lngLat)
-                .addTo(map);
+        // Agregar un evento de clic al mapa
+        map.on("click", function(e) {
+            // Obtener las coordenadas del clic
+            var coordinates = e.lngLat;
+
+            // Configurar la posición del marcador con las coordenadas
+            marker.setLngLat(coordinates).addTo(map);  
+
+            // Imprimir las coordenadas en la consola
+            console.log(coordinates);
         });
         </script>
 
