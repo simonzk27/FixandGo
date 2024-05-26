@@ -1,50 +1,6 @@
 <?php
 session_start(); 
-require 'connect.php';  // Cambiado a require para detener la ejecución si el archivo no se puede incluir
 
-if (!isset($_SESSION['role']) || $_SESSION['role'] != 'owner') {
-    die("No tienes permiso para ver esta página");
-}
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (!isset($_POST['userId']) || !isset($_POST['action'])) {
-        die("Datos de entrada no válidos");
-    }
-
-    $userId = $_POST['userId'];
-    $action = $_POST['action'];
-
-    if ($action == 'ascend' && $_SESSION['id'] != $userId) {
-        $sql = "UPDATE users SET role='admin' WHERE id=?";
-    } elseif ($action == 'descend' && $_SESSION['id'] != $userId) {
-        $sql = "UPDATE users SET role='user' WHERE id=?";
-    } elseif ($action == 'delete' && $_SESSION['id'] != $userId) {
-        $sql = "DELETE FROM users WHERE id=?";
-    } else {
-        die("Acción no permitida");
-    }
-
-    $stmt = $conn->prepare($sql);
-    if (!$stmt) {
-        die("Error al preparar la consulta");
-    }
-
-    $result = $stmt->execute([$userId]);
-    if (!$result) {
-        die("Error al ejecutar la consulta");
-    }
-
-    header("Location: administrar.php");
-    exit;
-}
-
-$sql = "SELECT * FROM Users";
-$stmt = $conn->query($sql);
-if (!$stmt) {
-    die("Error al ejecutar la consulta");
-}
-
-$users = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
 <html>
