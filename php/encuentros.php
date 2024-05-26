@@ -7,9 +7,9 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sesiones presenciales</title>
-    
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" type="text/css" href="../css/styleEncuentros.css">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
 </head>
 <body>
 <header>
@@ -81,7 +81,7 @@ if ($role == 'admin' || $role == 'owner') {
         <input type="date" id="date" name="date">
         <label for="location">Ubicacion:</label>
         <input type="hidden" id="location" name="location">
-        <div id="map" style="height: 400px; width: 100%;"></div>
+        <div id="map" style="width: 400px; height: 300px;"></div>
         <input type="submit" value="Crear encuentro">
     </div>
     </form>';
