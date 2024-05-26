@@ -1,6 +1,7 @@
 <?php
 session_start(); 
-require 'db.php'; // Asegúrate de que este archivo contiene la conexión a tu base de datos
+include 'connect.php';  // Asegúrate de que este archivo contiene la conexión a tu base de datos
+
 
 if ($_SESSION['role'] != 'owner') {
     die("No tienes permiso para ver esta página");
