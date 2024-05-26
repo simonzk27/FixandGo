@@ -96,7 +96,7 @@ if ($role == 'admin' || $role == 'owner') {
 
 ?>
 
-<script src="mapbox.js"></script>
+
 
 </main>
 
@@ -110,5 +110,6 @@ if ($role == 'admin' || $role == 'owner') {
         </ul>
     </div>
 </footer>
+<script src="mapbox.js"></script>
 </body>
 </html>
