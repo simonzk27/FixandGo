@@ -86,8 +86,9 @@ if ($role == 'admin' || $role == 'owner') {
         mapboxgl.accessToken = "pk.eyJ1IjoiZml4YW5kZ28iLCJhIjoiY2x3bXh2Z2U1MHVpbTJqbWo5cnR6MnBrMiJ9.r9FK66ArVUcn8sYbc4PLrA";
         var map = new mapboxgl.Map({
             container: "map",
-            style: "mapbox://styles/mapbox/streets-v12"
-            
+            style: "mapbox://styles/mapbox/streets-v12",
+            center: [-74.06581442603229, 4.632584654601695], // starting position [lng, lat]
+            zoom: 9 // starting zoom 
         });
 
         // Crear un nuevo marcador
