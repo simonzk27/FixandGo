@@ -1,13 +1,16 @@
 <?php
 session_start(); 
-include 'connect.php';  // Asegúrate de que este archivo contiene la conexión a tu base de datos
+require 'connect.php';  // Cambiado a require para detener la ejecución si el archivo no se puede incluir
 
-
-if ($_SESSION['role'] != 'owner') {
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 'owner') {
     die("No tienes permiso para ver esta página");
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (!isset($_POST['userId']) || !isset($_POST['action'])) {
+        die("Datos de entrada no válidos");
+    }
+
     $userId = $_POST['userId'];
     $action = $_POST['action'];
 
@@ -22,7 +25,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     $stmt = $conn->prepare($sql);
-    $stmt->execute([$userId]);
+    if (!$stmt) {
+        die("Error al preparar la consulta");
+    }
+
+    $result = $stmt->execute([$userId]);
+    if (!$result) {
+        die("Error al ejecutar la consulta");
+    }
 
     header("Location: administrar.php");
     exit;
@@ -30,6 +40,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 $sql = "SELECT * FROM Users";
 $stmt = $conn->query($sql);
+if (!$stmt) {
+    die("Error al ejecutar la consulta");
+}
+
 $users = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
