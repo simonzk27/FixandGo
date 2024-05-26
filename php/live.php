@@ -17,13 +17,27 @@ session_start();
         <h1>Fix and Go</h1>
         </div>
         <nav>
-            <ul class="left-side">
-                <li><a href="../index.php" class="btn-header">Inicio</a></li>
-                <li><a href="Repair_Now.php" class="btn-header">Repair Now </a></li>
-                <li><a href="foro.php" class="btn-header">Foro</a></li>
-                <li><a href="live.php" class="btn-header">Live</a></li>
-                <li><a href="encuentros.php" class="btn-header">Encuentros</a></li>
-
+        <ul class="left-side">
+                <?php
+                if ($_SESSION['role'] == 'owner') {
+                ?>
+                    <li><a href="../index.php" class="btn-header">Inicio</a></li>
+                    <li><a href="../php/Repair_Now.php" class="btn-header">Repair Now </a></li>
+                    <li><a href="../php/foro.php" class="btn-header">Foro</a></li>
+                    <li><a href="../php/live.php" class="btn-header">Live</a></li>
+                    <li><a href="../php/encuentros.php" class="btn-header">Encuentros</a></li>
+                    <li><a href="../php/administrar.php" class="btn-header">Administrar</a></li>
+                <?php
+                } else {
+                ?>
+                    <li><a href="../index.php" class="btn-header">Inicio</a></li>
+                    <li><a href="../php/Repair_Now.php" class="btn-header">Repair Now </a></li>
+                    <li><a href="../php/foro.php" class="btn-header">Foro</a></li>
+                    <li><a href="../php/live.php" class="btn-header">Live</a></li>
+                    <li><a href="../php/encuentros.php" class="btn-header">Encuentros</a></li>
+                <?php
+                }
+                ?>
             </ul>
             <ul class="right-side">
                 <?php if (isset($_SESSION['username'])): ?>
