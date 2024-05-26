@@ -182,11 +182,9 @@ input[type=text]:focus {
     justify-content: center;
     align-items: center;
     margin-bottom: 50px; /* Añade un margen inferior para evitar la superposición con el footer */
-    flex-wrap: wrap; /* Permite que los elementos se ajusten en la pantalla */
 }
 
 .chat, .video {
-    flex: 1 1 auto; /* Permite que los elementos se ajusten automáticamente */
+    width: 50%; /* Establece el ancho al 50% */
     margin: 1em;
-    max-width: calc(50% - 2em); /* Limita el ancho máximo al 50% del contenedor, menos los márgenes */
 }
