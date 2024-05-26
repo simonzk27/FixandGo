@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <nav>
             
                 <ul class="right-side">
-                HTML;
+    HTML;
     
 $guideContent .= '<?php if (isset($_SESSION[\'loggedIn\']) && $_SESSION[\'loggedIn\'] === true): ?>'
                 .'<li class="user-info"><a class="welcome-msg">Bienvenido, <?php echo $_SESSION[\'username\'] ?></a></li>'
