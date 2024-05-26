@@ -21,6 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } elseif ($action == 'descend' && $_SESSION['id'] != $userId) {
         $sql = "UPDATE Users SET role='user' WHERE id=?";
     } elseif ($action == 'delete' && $_SESSION['id'] != $userId) {
+        $sql = "DELETE FROM Forums WHERE authors_id=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$userId]);
+    
         $sql = "DELETE FROM Users WHERE id=?";
     } else {
         die("Acción no permitida");
