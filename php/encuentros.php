@@ -86,7 +86,7 @@ if ($role == 'admin' || $role == 'owner') {
         mapboxgl.accessToken = "pk.eyJ1IjoiZml4YW5kZ28iLCJhIjoiY2x3bXh2Z2U1MHVpbTJqbWo5cnR6MnBrMiJ9.r9FK66ArVUcn8sYbc4PLrA";
         var map = new mapboxgl.Map({
             container: "map",
-            style: "mapbox://styles/mapbox/streets-v11"
+            style: "mapbox://styles/mapbox/streets-v12"
         });
 
         map.on("click", function(e) {
