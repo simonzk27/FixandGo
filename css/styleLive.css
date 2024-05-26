@@ -127,7 +127,7 @@ footer ul li a {
 
 /*Main*/
 /* Estilo para el campo de entrada del enlace */
-input[type=url] {
+input[name=youtube_link] {
     width: 80%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -140,12 +140,12 @@ input[type=url] {
     margin: 0 auto;
 }
 
-input[type=url]:focus {
+input[name=youtube_link]:focus {
     border: 3px solid #555;
 }
 
 /* Estilo para el botón */
-button {
+button[name=create_live] {
     display: block;
     width: 20%;
     padding: 10px;
@@ -161,6 +161,6 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+button[name=create_live]:hover {
     background-color: #45a049;
 }
