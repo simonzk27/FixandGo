@@ -1,0 +1,174 @@
+/* Reset some basic elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Header */
+header {
+    background-color: #0d0c0c4a; /* Color de fondo azul claro */
+    padding: 20px;
+    margin-bottom: 4px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2); /* Sombra sutil */
+}
+
+.logo {
+    height: 50px; /* Ajusta esto al tamaño que prefieras */
+}
+
+header h1 {
+    color: #333; /* Color de texto gris oscuro */
+    font-size: 24px;
+    margin: 0; /* Eliminar margen */
+}
+
+/* Propiedades flexbox para el contenedor */
+header .container {
+    display: flex;
+    flex-direction: column; /* Organizar en columna */
+}
+
+/* Elementos del lado izquierdo */
+.top-section {
+    display: flex;
+    align-items: center;
+}
+
+/* Elementos del lado derecho */
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Menús de navegación */
+header nav ul {
+    list-style: none; /* Eliminar viñetas */
+    padding: 0; /* Eliminar padding */
+    margin: 0; /* Eliminar margen */
+}
+
+header nav li {
+    display: inline-block; /* Mostrar elementos del menú en línea */
+    padding: 10px 20px; /* Agregar espacio entre elementos del menú */
+    background-color: #333; /* Establecer el color de fondo */
+    border-radius: 15px; /* Bordes redondeados */
+}
+
+header nav li a {
+    color: #fff; /* Color de texto blanco */
+    text-decoration: none; /* Eliminar subrayado */
+    font-size: 18px;
+    transition: color 0.3s ease; /* Efecto suave al pasar el mouse */
+}
+
+header nav li a:hover {
+    color: #ccc; /* Gris claro al pasar el mouse */
+}
+
+.user-info {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    border-radius: 15px; /* Bordes redondeados */
+}
+
+.user-info.welcome-msg {
+    color: #fff; /* Color de texto blanco */
+}
+
+.user-info a {
+    color: #fff; /* Color de texto blanco */
+    text-decoration: none; /* Eliminar subrayado */
+    font-size: 18px;
+    transition: color 0.3s ease; /* Efecto suave al pasar el mouse */
+}
+
+.user-info a:hover {
+    color: #ccc; /* Gris claro al pasar el mouse */
+}
+
+
+/* Main */
+main {
+    padding: 20px;
+    background: #fff;
+    margin-bottom: 15px;
+}
+
+.hero, .servicios, .testimonios {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.btn-hero, .btn-servicios {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.slider {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.testimonial {
+    flex-basis: 45%;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Footer */
+footer {
+    background: #000000;
+    padding: 20px;
+    text-align: center;
+}
+
+footer ul {
+    list-style-type: none;
+    padding: 10px 0;
+}
+
+footer {
+    color: #ffffff;
+}
+
+footer ul li {
+    display: inline-block; /* Cambiado a inline-block */
+    margin: 0 10px;
+}
+
+footer ul li a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Main */
+
+
+
+
+
+
+
+
