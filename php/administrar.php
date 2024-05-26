@@ -1,5 +1,7 @@
 <?php
 session_start(); 
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 include 'connect.php'; // Cambiado a require para detener la ejecución si el archivo no se puede incluir
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 'owner') {
