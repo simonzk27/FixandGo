@@ -21,15 +21,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die("Acción no permitida");
     }
 
-    $stmt = $pdo->prepare($sql);
+    $stmt = $conn->prepare($sql);
     $stmt->execute([$userId]);
 
     header("Location: administrar.php");
     exit;
 }
 
-$sql = "SELECT * FROM users";
-$stmt = $pdo->query($sql);
+$sql = "SELECT * FROM Users";
+$stmt = $conn->query($sql);
 $users = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
