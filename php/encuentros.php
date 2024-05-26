@@ -72,17 +72,17 @@ if (isset($_SESSION['role'])) {
 if ($role == 'admin' || $role == 'owner') {
     // Mostrar el formulario para crear un encuentro
     echo '<form method="post">
-    <div style="justify-content: center;">
+        <div style="display: flex; flex-direction: column; align-items: center;">
         <label for="title">Titulo:</label>
-        <input type="text" id="title" name="title">
+        <input type="text" id="title" name="title" style="width: 200px; height: 30px; margin-bottom: 10px;">
         <label for="description">Descripcion:</label>
-        <input type="text" id="description" name="description">
+        <input type="text" id="description" name="description" style="width: 200px; height: 30px; margin-bottom: 10px;">
         <label for="date">Fecha:</label>
-        <input type="date" id="date" name="date">
+        <input type="date" id="date" name="date" style="width: 200px; height: 30px; margin-bottom: 10px;">
         <label for="location">Ubicacion:</label>
         <input type="hidden" id="location" name="location">
-        <div id="map" style="width: 400px; height: 300px;""></div>
-        <script>
+        <div id="map" style="width: 400px; height: 300px; margin-bottom: 10px;"></div>
+    <script>
         mapboxgl.accessToken = "pk.eyJ1IjoiZml4YW5kZ28iLCJhIjoiY2x3bXh2Z2U1MHVpbTJqbWo5cnR6MnBrMiJ9.r9FK66ArVUcn8sYbc4PLrA";
         var map = new mapboxgl.Map({
             container: "map",
@@ -106,7 +106,7 @@ if ($role == 'admin' || $role == 'owner') {
         });
         </script>
 
-        <input type="submit" value="Crear encuentro">
+        <input type="submit" value="Crear encuentro" style="width: 200px; height: 40px;">
     </div>
     </form>';
 } 
