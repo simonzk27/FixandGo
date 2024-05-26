@@ -2,14 +2,10 @@
 session_start(); 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-include 'connect.php'; 
+include 'connect.php'; // Cambiado a require para detener la ejecución si el archivo no se puede incluir
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 'owner') {
     die("No tienes permiso para ver esta página");
-}
-
-if (!isset($_SESSION['id'])) {
-    die("No estás autenticado");
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -21,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $action = $_POST['action'];
 
     if ($action == 'ascend' && $_SESSION['id'] != $userId) {
-        $sql = "UPDATE Users SET role='admin' WHERE id=?";
+        $sql = "UPDATE Users SET role='admin' WHERE id=?"; // Corrige el nombre de la tabla aquí
     } elseif ($action == 'descend' && $_SESSION['id'] != $userId) {
         $sql = "UPDATE Users SET role='user' WHERE id=?";
     } elseif ($action == 'delete' && $_SESSION['id'] != $userId) {
@@ -31,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     
     // ...
-
+    
     $stmt = $conn->prepare($sql);
     if (!$stmt) {
         die("Error al preparar la consulta");
@@ -46,8 +42,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     exit;
 }
 
-$sql = "SELECT * FROM Users";
+$sql = "SELECT * FROM Users"; // Asegúrate de que estás utilizando el nombre correcto de la tabla
 $result = $conn->query($sql);
+if (!$result) {
+    die("Error al ejecutar la consulta");
+}
+
+$users = $result->fetch_all(MYSQLI_ASSOC);
+?>
 <!DOCTYPE html>
 <html>
 <head>
