@@ -46,19 +46,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <nav>
             <ul class="left-side">
     HTML;
-            $guideContent .= '<?php if (isset($_SESSION[\'role\'] && $_SESSION[\'role\'] == \'owner\'): ?> '
-                    .'<li><a href="https://fixandgo.site/index.php" class="btn-header">Inicio</a></li>'
-                    .'<li><a href="https://fixandgo.site/php/Repair_Now.php" class="btn-header">Repair Now </a></li>'
-                    .'<li><a href="https://fixandgo.site/php/foro.php" class="btn-header">Foro</a></li>'
-                    .'<li><a href="https://fixandgo.site/php/live.php" class="btn-header">Live</a></li>'
-                    .'<li><a href="https://fixandgo.site/php/encuentros.php" class="btn-header">Encuentros</a></li>'
-                    .'<li><a href="https://fixandgo.site/php/administrar.php" class="btn-header">Administrar</a></li>'
+$guideContent .= '<?php if (isset($_SESSION[\'role\'] && $_SESSION[\'role\'] == \'owner\'): ?>'
+                .'<li><a href="https://fixandgo.site/index.php" class="btn-header">Inicio</a></li>'
+                .'<li><a href="https://fixandgo.site/php/Repair_Now.php" class="btn-header">Repair Now </a></li>'
+                .'<li><a href="https://fixandgo.site/php/foro.php" class="btn-header">Foro</a></li>'
+                .'<li><a href="https://fixandgo.site/php/live.php" class="btn-header">Live</a></li>'
+                .'<li><a href="https://fixandgo.site/php/encuentros.php" class="btn-header">Encuentros</a></li>'
+                .'<li><a href="https://fixandgo.site/php/administrar.php" class="btn-header">Administrar</a></li>'
                 .'<?php else: ?>'
-                    .'<li><a href="https://fixandgo.site/index.php" class="btn-header">Inicio</a></li>'
-                    .'<li><a href="https://fixandgo.site/php/Repair_Now.php" class="btn-header">Repair Now </a></li>'
-                    .'<li><a href="https://fixandgo.site/php/foro.php" class="btn-header">Foro</a></li>'
-                    .'<li><a href="https://fixandgo.site/php/live.php" class="btn-header">Live</a></li>'
-                    .'<li><a href="https://fixandgo.site/php/encuentros.php" class="btn-header">Encuentros</a></li>'
+                .'<li><a href="https://fixandgo.site/index.php" class="btn-header">Inicio</a></li>'
+                .'<li><a href="https://fixandgo.site/php/Repair_Now.php" class="btn-header">Repair Now </a></li>'
+                .'<li><a href="https://fixandgo.site/php/foro.php" class="btn-header">Foro</a></li>'
+                .'<li><a href="https://fixandgo.site/php/live.php" class="btn-header">Live</a></li>'
+                .'<li><a href="https://fixandgo.site/php/encuentros.php" class="btn-header">Encuentros</a></li>'
                 .'<?php endif;  ?>';
                     
                 $guideContent .= <<<HTML
