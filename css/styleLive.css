@@ -128,12 +128,12 @@ footer ul li a {
 /*Main*/
 /* Estilos para el botón */
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-    width: 100vw;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column; 
+    min-height: 100vh; 
+    width: 100%; 
 }
 
 button {
@@ -179,4 +179,12 @@ input[type=text]:focus {
 .chat, .video {
     width: 70%; /* Reducir el ancho */
     margin: 1em auto;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px; /* Añade un margen inferior para evitar la superposición con el footer */
 }
