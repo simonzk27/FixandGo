@@ -146,11 +146,7 @@ main {
     border-radius: 5px;
 }
 
-.forum-title {
-    margin: 0;
-    font-size: 1.5em;
-    color: #333;
-}
+
 .forum-title .title-link {
     color: #000; /* Cambia el color a negro */
     text-decoration: none; /* Elimina la línea de subrayado */
