@@ -107,27 +107,29 @@ if ($role == 'admin' || $role == 'owner') {
         <input type="submit" value="Crear encuentro">
     </div>
     </form>';
-
-    echo '<div id="mapGen" style="width: 400px; height: 300px;""></div>
-            <script>
-                mapboxgl.accessToken = "pk.eyJ1IjoiZml4YW5kZ28iLCJhIjoiY2x3bXh2Z2U1MHVpbTJqbWo5cnR6MnBrMiJ9.r9FK66ArVUcn8sYbc4PLrA";
-            var mapGen = new mapboxgl.Map({
-                container: "mapGen",
-                style: "mapbox://styles/mapbox/streets-v12",
-                center: [-74.06581442603229, 4.632584654601695], // starting position [lng, lat]
-                zoom: 9 // starting zoom 
-            });
-            </script>';
 } 
+    echo '<div id="mapGen" style="width: 400px; height: 300px;""></div>
+    <script>
+        mapboxgl.accessToken = "pk.eyJ1IjoiZml4YW5kZ28iLCJhIjoiY2x3bXh2Z2U1MHVpbTJqbWo5cnR6MnBrMiJ9.r9FK66ArVUcn8sYbc4PLrA";
+    var mapGen = new mapboxgl.Map({
+        container: "mapGen",
+        style: "mapbox://styles/mapbox/streets-v12",
+        center: [-74.06581442603229, 4.632584654601695], // starting position [lng, lat]
+        zoom: 9 // starting zoom 
+    });
+    </script>';
+
     // Cargar los encuentros disponibles
     $result = $conn->query("SELECT * FROM meetings");
     while($row = $result->fetch_assoc()) {
-        // Agregar un marcador para la ubicación del encuentro
-        echo "<script>
-            new mapboxgl.Marker()
-                .setLngLat([" . $row["location"] . "])
-                .addTo(mapGen);
-        </script>";
+    // Agregar un marcador para la ubicación del encuentro
+    echo "<script>
+        new mapboxgl.Marker()
+            .setLngLat([" . $row["location"] . "])
+            .setPopup(new mapboxgl.Popup({ offset: 25 }) // agrega un popup
+            .setHTML('<h3>" . $row["title"] . "</h3><p>" . $row["description"] . "</p>')) // Aquí puedes poner la información que quieras mostrar
+            .addTo(mapGen);
+    </script>";
     }
 
 
