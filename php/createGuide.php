@@ -46,20 +46,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <nav>
                  HTML;
             $guideContent .= ' <ul class="left-side"> '
-                    .'<?php if ($_SESSION[\'role\'] == \'owner\') { ?> '
+                    .'<?php if ($_SESSION[\'role\'] == \'owner\'): ?> '
                     .'<li><a href="../index.php" class="btn-header">Inicio</a></li>'
                     .'<li><a href="../php/Repair_Now.php" class="btn-header">Repair Now </a></li>'
                     .'<li><a href="../php/foro.php" class="btn-header">Foro</a></li>'
                     .'<li><a href="../php/live.php" class="btn-header">Live</a></li>'
                     .'<li><a href="../php/encuentros.php" class="btn-header">Encuentros</a></li>'
                     .'<li><a href="../php/administrar.php" class="btn-header">Administrar</a></li>'
-                .'<?php } else { ?>'
+                .'<?php else: ?>'
                     .'<li><a href="../index.php" class="btn-header">Inicio</a></li>'
                     .'<li><a href="../php/Repair_Now.php" class="btn-header">Repair Now </a></li>'
                     .'<li><a href="../php/foro.php" class="btn-header">Foro</a></li>'
                     .'<li><a href="../php/live.php" class="btn-header">Live</a></li>'
                     .'<li><a href="../php/encuentros.php" class="btn-header">Encuentros</a></li>'
-                .'<?php }  ?>'
+                .'<?php endif;  ?>'
                     .'</ul>';
                 $guideContent .= <<<HTML
                 <ul class="right-side">
@@ -151,7 +151,7 @@ $guideContent .= '<?php if (isset($_SESSION[\'loggedIn\']) && $_SESSION[\'logged
         $stepTitle = $stepTitles[$i];
         $stepDescription = $stepDescriptions[$i];
         $imageSrc = "stepImage" . $stepNumber . ".jpg";
-        
+
         $guideContent .= <<<HTML
             <div style="display: flex; align-items: start;">
             <img src="$imageSrc" alt="Imagen" style="width:10%;height:10%;border-radius: 15px;"> 
