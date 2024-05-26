@@ -110,7 +110,7 @@ if ($role == 'admin' || $role == 'owner') {
         </script>
 
         <input type="submit" value="Crear encuentro" style="width: 200px; height: 40px;">
-    </div>
+    
     </form>';
 } 
     echo '<div id="mapGen" style="width: 400px; height: 300px;""></div>
