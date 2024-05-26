@@ -114,7 +114,7 @@ if ($role == 'admin' || $role == 'owner') {
             var mapGen = new mapboxgl.Map({
                 container: "mapGen",
                 style: "mapbox://styles/mapbox/streets-v12",
-                center: [-74.5, 40], // starting position [lng, lat]
+                center: [-74.06581442603229, 4.632584654601695], // starting position [lng, lat]
                 zoom: 9 // starting zoom
             });
             </script>';
@@ -124,9 +124,16 @@ if ($role == 'admin' || $role == 'owner') {
     while($row = $result->fetch_assoc()) {
         // Agregar un marcador para la ubicación del encuentro
         echo "<script>
-            new mapboxgl.Marker()
+            var marker = new mapboxgl.Marker()
                 .setLngLat([" . $row["location"] . "])
                 .addTo(mapGen);
+
+            // Crear un Popup con la información del encuentro
+            var popup = new mapboxgl.Popup({ offset: 25 })
+                .setText('Titulo: " . addslashes($row["title"]) . " - Descripcion: " . addslashes($row["description"]) . " - Fecha: " . $row["date"] . "');
+
+            // Agregar el Popup al marcador
+            marker.setPopup(popup);
         </script>";
     }
 
