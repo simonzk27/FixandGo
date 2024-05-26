@@ -85,7 +85,7 @@ if ($role == 'admin' || $role == 'owner') {
         echo "Error updating link: " . $stmt->error;
         }
     }
-    echo '<div style="display: flex; justify-content: center; align-items: center; height: 33vh;">';
+    echo '<div style="display: flex; justify-content: center; align-items: center; height: 200vh;">';
     echo '<iframe width="800" height="600" src="' . $youtube_link . '" frameborder="0" allowfullscreen></iframe>';
     echo '<iframe src="https://www.youtube.com/live_chat?v=' . $video_id . '&is&embed_domain=fixandgo.site " width="500" height="600"></iframe>';
     echo '</div>';
