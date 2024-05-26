@@ -151,7 +151,14 @@ main {
     font-size: 1.5em;
     color: #333;
 }
+.forum-title .title-link {
+    color: #000; /* Cambia el color a negro */
+    text-decoration: none; /* Elimina la línea de subrayado */
+}
 
+.forum-title .title-link:hover {
+    color: #000; /* Mantiene el color negro al pasar el mouse */
+}
 
 .forum-tema {
     font-size: 1.2em;
