@@ -68,7 +68,9 @@ if ($role == 'admin' || $role == 'owner') {
     // Mostrar el formulario para crear un directo
     echo '<form method="post">
     <input type="text" name="youtube_link" placeholder="Ingresa el enlace de YouTube aquí">
+    <div style="display: flex; justify-content: center;">
     <input type="submit" name="create_live" value="Crear directo">
+    </div>
     </form>';
     if (isset($_POST['youtube_link']) && !empty($_POST['youtube_link'])) {
         
@@ -83,7 +85,7 @@ if ($role == 'admin' || $role == 'owner') {
         echo "Error updating link: " . $stmt->error;
         }
     }
-    echo '<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">';
+    echo '<div style="display: flex; justify-content: center; align-items: center;">';
     echo '<iframe width="800" height="600" src="' . $youtube_link . '" frameborder="0" allowfullscreen></iframe>';
     echo '<iframe src="https://www.youtube.com/live_chat?v=' . $video_id . '&is&embed_domain=fixandgo.site " width="500" height="600"></iframe>';
     echo '</div>';
