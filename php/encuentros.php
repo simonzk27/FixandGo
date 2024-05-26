@@ -44,6 +44,23 @@ session_start();
 
 include 'connect.php';
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+    $date = $_POST['date'];
+    $location = $_POST['location'];
+
+    $sql = "INSERT INTO meetings (title, description, date, location) VALUES (?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssss", $title, $description, $date, $location);
+
+    if ($stmt->execute()) {
+        echo "Nuevo encuentro creado exitosamente";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+
 if (isset($_SESSION['role'])) {
     $role = $_SESSION['role']; // Obtenemos el rol del usuario
 } else {
@@ -52,7 +69,7 @@ if (isset($_SESSION['role'])) {
 
 if ($role == 'admin' || $role == 'owner') {
     // Mostrar el formulario para crear un encuentro
-    echo '<form method="post" action="save_meeting.php">
+    echo '<form method="post">
     <div style="display: flex; justify-content: center;">
         <label for="title">Titulo:</label>
         <input type="text" id="title" name="title">
