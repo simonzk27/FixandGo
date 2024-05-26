@@ -52,14 +52,26 @@ if (isset($_SESSION['role'])) {
 
 if ($role == 'admin' || $role == 'owner') {
     // Mostrar el formulario para crear un directo
-    echo '<form method="post">
+    echo '<form method="post" action="save_meeting.php">
     <div style="display: flex; justify-content: center;">
-    
+        <label for="title">Titulo:</label>
+        <input type="text" id="title" name="title">
+        <label for="description">Descripcion:</label>
+        <input type="text" id="description" name="description">
+        <label for="date">Fecha:</label>
+        <input type="date" id="date" name="date">
+        <label for="location">Ubicacion:</label>
+        <input type="text" id="location" name="location">
+        <input type="submit" value="Crear encuentro">
     </div>
     </form>';
 
 } else if ($role == 'user' || $role == 'guest') {
-        
+    // Cargar los encuentros disponibles
+    $result = $conn->query("SELECT * FROM meetings");
+    while($row = $result->fetch_assoc()) {
+        echo "Titulo: " . $row["title"]. " - Descripcion: " . $row["description"]. " - Fecha: " . $row["date"]. " - Ubicacion: " . $row["location"]. "<br>";
+    }
 }
 
 ?>
