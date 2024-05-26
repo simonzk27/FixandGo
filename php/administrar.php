@@ -69,7 +69,7 @@ $users = $result->fetch_all(MYSQLI_ASSOC);
 <header>
     <div class="container">
         <div class="top-section">
-            <img src="img/fixandgo.png" alt="Logo" class="logo">
+            <img src="../img/fixandgo.png" alt="Logo" class="logo">
             <h1>Fix and Go</h1>
         </div>
         <nav>
