@@ -96,7 +96,6 @@
                         echo '<p>'.$row['descripcion'].'</p>';
                         echo '</a>';
                         echo '</div>';
-                        echo '<br>';
                     }
                 } else {
                     echo "No se encontraron resultados";
