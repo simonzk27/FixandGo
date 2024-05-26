@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <nav>
             <ul class="left-side">
     HTML;
-    $guideContent .= '<?php if (isset($_SESSION[\'role\'] && $_SESSION[\'role\'] == \'owner\'): ?>'
+    $guideContent .= '<?php if ($_SESSION[\'role\'] == \'owner\'): ?>'
                     .'<li><a href="https://fixandgo.site/index.php" class="btn-header">Inicio</a></li>'
                     .'<li><a href="https://fixandgo.site/php/Repair_Now.php" class="btn-header">Repair Now </a></li>'
                     .'<li><a href="https://fixandgo.site/php/foro.php" class="btn-header">Foro</a></li>'
