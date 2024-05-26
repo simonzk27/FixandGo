@@ -122,8 +122,6 @@ if ($role == 'admin' || $role == 'owner') {
     // Cargar los encuentros disponibles
     $result = $conn->query("SELECT * FROM meetings");
     while($row = $result->fetch_assoc()) {
-        echo "Titulo: " . $row["title"]. " - Descripcion: " . $row["description"]. " - Fecha: " . $row["date"]. " - Ubicacion: " . $row["location"]. "<br>";
-        
         // Agregar un marcador para la ubicación del encuentro
         echo "<script>
             new mapboxgl.Marker()
