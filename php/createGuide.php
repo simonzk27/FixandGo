@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <nav>
             <ul class="left-side">
     HTML;
-            $guideContent .= '<?php if (isset($_SESSION[\'role\'] && $_SESSION[\'role\'] === \'owner\'): ?> '
+            /*$guideContent .= '<?php if (isset($_SESSION[\'role\'] && $_SESSION[\'role\'] === \'owner\'): ?> '
                     .'<li><a href="../index.php" class="btn-header">Inicio</a></li>'
                     .'<li><a href="../php/Repair_Now.php" class="btn-header">Repair Now </a></li>'
                     .'<li><a href="../php/foro.php" class="btn-header">Foro</a></li>'
@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     .'<li><a href="../php/foro.php" class="btn-header">Foro</a></li>'
                     .'<li><a href="../php/live.php" class="btn-header">Live</a></li>'
                     .'<li><a href="../php/encuentros.php" class="btn-header">Encuentros</a></li>'
-                .'<?php endif;  ?>';
+                .'<?php endif;  ?>';*/
                     
                 $guideContent .= <<<HTML
                 </ul>
