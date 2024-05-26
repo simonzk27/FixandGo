@@ -91,6 +91,15 @@ if ($role == 'admin' || $role == 'owner') {
 
         map.on("click", function(e) {
             document.getElementById("location").value = e.lngLat.lat + "," + e.lngLat.lng;
+
+            if (currentMarker) {
+                currentMarker.remove();
+            }
+        
+            // Agrega un nuevo marcador en la ubicación del clic
+            currentMarker = new mapboxgl.Marker()
+                .setLngLat(e.lngLat)
+                .addTo(map);
         });
         </script>
 
