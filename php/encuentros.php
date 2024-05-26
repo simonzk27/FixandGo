@@ -72,7 +72,7 @@ if (isset($_SESSION['role'])) {
 if ($role == 'admin' || $role == 'owner') {
     // Mostrar el formulario para crear un encuentro
     echo '<form method="post">
-    <div style="display: flex; align-items: center;">
+    <div style="display: flex; justify-content: center; align-items: center;">
         <div style="display: flex; flex-direction: column; align-items: flex-start; width: 50%; margin-right: 20px;">
             <label for="title">Titulo:</label>
             <input type="text" id="title" name="title" style="width: 200px; height: 30px; margin-bottom: 10px;">
@@ -83,7 +83,7 @@ if ($role == 'admin' || $role == 'owner') {
             <label for="location">Ubicacion:</label>
             <input type="hidden" id="location" name="location">
         </div>
-        <div id="map" style="width: 400px; height: 300px;"></div>
+        <div id="map" style="width: 600px; height: 300px;"></div>
     </div>
     <script>
         mapboxgl.accessToken = "pk.eyJ1IjoiZml4YW5kZ28iLCJhIjoiY2x3bXh2Z2U1MHVpbTJqbWo5cnR6MnBrMiJ9.r9FK66ArVUcn8sYbc4PLrA";
