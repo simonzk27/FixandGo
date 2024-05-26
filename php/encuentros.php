@@ -88,6 +88,10 @@ if ($role == 'admin' || $role == 'owner') {
             container: "map",
             style: "mapbox://styles/mapbox/streets-v11"
         });
+
+        map.on("click", function(e) {
+            document.getElementById("location").value = e.lngLat.lat + "," + e.lngLat.lng;
+        });
         </script>
 
         <input type="submit" value="Crear encuentro">
