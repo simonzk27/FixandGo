@@ -118,7 +118,11 @@ if ($role == 'admin' || $role == 'owner') {
     
     </form>';
 } 
-    echo '<div id="mapGen" style="width: 400px; height: 300px;""></div>
+    echo ' <br>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+        <label for="mapGen">Encuentros disponibles</label>
+        <div id="mapGen" style="width: 600px; height: 300px;"></div>
+    </div>
     <script>
         mapboxgl.accessToken = "pk.eyJ1IjoiZml4YW5kZ28iLCJhIjoiY2x3bXh2Z2U1MHVpbTJqbWo5cnR6MnBrMiJ9.r9FK66ArVUcn8sYbc4PLrA";
     var mapGen = new mapboxgl.Map({
