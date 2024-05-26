@@ -67,8 +67,8 @@ if ($row) {
 if ($role == 'admin' || $role == 'owner') {
     // Mostrar el formulario para crear un directo
     echo '<form method="post">
-    <input type="text" name="youtube_link" placeholder="Ingresa el enlace de YouTube aquí">
     <div style="display: flex; justify-content: center;">
+    <input type="text" name="youtube_link" placeholder="Ingresa el enlace de YouTube aquí">
     <input type="submit" name="create_live" value="Crear directo">
     </div>
     </form>';
