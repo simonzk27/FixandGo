@@ -82,7 +82,9 @@ if ($role == 'admin' || $role == 'owner') {
             <input type="date" id="date" name="date" style="width: 200px; height: 30px; margin-bottom: 10px;">
             <input type="hidden" id="location" name="location">
         </div>
-        <div id="map" style="width: 600px; height: 300px;"></div>
+        <div id="map" style="width: 600px; height: 300px;">
+        <label for="map">Ubicacion:</label>
+        </div>
     </div>
     <script>
         mapboxgl.accessToken = "pk.eyJ1IjoiZml4YW5kZ28iLCJhIjoiY2x3bXh2Z2U1MHVpbTJqbWo5cnR6MnBrMiJ9.r9FK66ArVUcn8sYbc4PLrA";
