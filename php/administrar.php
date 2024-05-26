@@ -41,12 +41,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 $sql = "SELECT * FROM Users";
-$stmt = $conn->query($sql);
-if (!$stmt) {
+$result = $conn->query($sql);
+if (!$result) {
     die("Error al ejecutar la consulta");
 }
 
-$users = $stmt->fetchAll();
+$users = $result->fetch_all(MYSQLI_ASSOC);
 ?>
 <!DOCTYPE html>
 <html>
