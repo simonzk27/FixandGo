@@ -83,7 +83,7 @@ if ($role == 'admin' || $role == 'owner') {
             <input type="hidden" id="location" name="location">
         </div>
         <div style="display: flex; flex-direction: column; align-items: center;">
-            <label for="map">Ubicacion:</label>
+            <label for="map">Ubicacion: (click para seleccionar)</label>
             <div id="map" style="width: 600px; height: 300px;"></div>
         </div>
     </div>
