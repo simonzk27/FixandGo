@@ -100,8 +100,7 @@ if ($role == 'admin' || $role == 'owner') {
             // Configurar la posición del marcador con las coordenadas
             marker.setLngLat(coordinates).addTo(map);  
 
-            // Imprimir las coordenadas en la consola
-            console.log(coordinates);
+            document.getElementById("location").value = coordinates.lng + "," + coordinates.lat;
         });
         </script>
 
