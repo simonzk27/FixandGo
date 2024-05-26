@@ -18,14 +18,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($action == 'ascend' && $_SESSION['id'] != $userId) {
         $sql = "UPDATE Users SET role='admin' WHERE id=?"; // Corrige el nombre de la tabla aquí
-    } elseif ($action == 'descend' && $_SESSION['id'] != $userId) {
-        $sql = "UPDATE Users SET role='user' WHERE id=?";
-    } elseif ($action == 'delete' && $_SESSION['id'] != $userId) {
-        $sql = "DELETE FROM Forums WHERE authors_id=?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$userId]);
-    
+    } elseif ($action == 'descend' && $_SESSION['id'] != $userId) {
+        $sql = "UPDATE Users SET role='user' WHERE id=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$userId]);
+    } elseif ($action == 'delete' && $_SESSION['id'] != $userId) {
         $sql = "DELETE FROM Users WHERE id=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$userId]);
     } else {
         die("Acción no permitida");
     }
