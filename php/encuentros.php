@@ -51,7 +51,7 @@ if (isset($_SESSION['role'])) {
 }
 
 if ($role == 'admin' || $role == 'owner') {
-    // Mostrar el formulario para crear un directo
+    // Mostrar el formulario para crear un encuentro
     echo '<form method="post" action="save_meeting.php">
     <div style="display: flex; justify-content: center;">
         <label for="title">Titulo:</label>
@@ -61,7 +61,8 @@ if ($role == 'admin' || $role == 'owner') {
         <label for="date">Fecha:</label>
         <input type="date" id="date" name="date">
         <label for="location">Ubicacion:</label>
-        <input type="text" id="location" name="location">
+        <input type="hidden" id="location" name="location">
+        <div id="map" style="height: 400px; width: 100%;"></div>
         <input type="submit" value="Crear encuentro">
     </div>
     </form>';
@@ -75,6 +76,9 @@ if ($role == 'admin' || $role == 'owner') {
 }
 
 ?>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZ596ty0hPTp_kcv9D5Aeig5AqXZIlBb0&callback=initMap"></script>
+<script src="map.js"></script>
 
 </main>
 
