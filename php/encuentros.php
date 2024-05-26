@@ -111,7 +111,9 @@ if ($role == 'admin' || $role == 'owner') {
         });
         </script>
 
-        <input type="submit" value="Crear encuentro" style="width: 200px; height: 40px;">
+        <div style="display: flex; justify-content: center;">
+            <input type="submit" value="Crear encuentro" style="width: 200px; height: 40px;">
+        </div>
     
     </form>';
 } 
