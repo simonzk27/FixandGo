@@ -17,13 +17,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $action = $_POST['action'];
 
     if ($action == 'ascend' && $_SESSION['id'] != $userId) {
-        $sql = "UPDATE usUsersers SET role='admin' WHERE id=?";
+        $sql = "UPDATE Users SET role='admin' WHERE id=?"; // Corrige el nombre de la tabla aquí
     } elseif ($action == 'descend' && $_SESSION['id'] != $userId) {
         $sql = "UPDATE Users SET role='user' WHERE id=?";
     } elseif ($action == 'delete' && $_SESSION['id'] != $userId) {
         $sql = "DELETE FROM Users WHERE id=?";
     } else {
         die("Acción no permitida");
+    }
+    
+    // ...
+    
+    if (!isset($_SESSION['id'])) {
+        die("No estás autenticado");
     }
 
     $stmt = $conn->prepare($sql);
