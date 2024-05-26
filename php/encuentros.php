@@ -119,13 +119,18 @@ if ($role == 'admin' || $role == 'owner') {
             });
             </script>';
 } 
-    // Cargar los encuentros disponibles
+
     $result = $conn->query("SELECT * FROM meetings");
     while($row = $result->fetch_assoc()) {
+        // Divide la ubicación en longitud y latitud
+        $location = explode(",", $row["location"]);
+        $longitude = $location[0];
+        $latitude = $location[1];
+
         // Agregar un marcador para la ubicación del encuentro
         echo "<script>
             var marker = new mapboxgl.Marker()
-                .setLngLat([" . $row["location"] . "])
+                .setLngLat([$longitude, $latitude])
                 .addTo(mapGen);
 
             // Crear un Popup con la información del encuentro
@@ -136,6 +141,7 @@ if ($role == 'admin' || $role == 'owner') {
             marker.setPopup(popup);
         </script>";
     }
+
 
 
 ?>
