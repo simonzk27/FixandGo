@@ -98,10 +98,10 @@ $users = $result->fetch_all(MYSQLI_ASSOC);
             <ul class="right-side">
                 <?php if ($_SESSION['loggedIn'] === true): ?> 
                     <li class="user-info"><a class="welcome-msg">Bienvenido, <?php echo $_SESSION['username']; ?></a></li>
-                    <li class="user-info"><a href="php/logout.php" class="btn-header">Cerrar sesión</a></li>
+                    <li class="user-info"><a href="../php/logout.php" class="btn-header">Cerrar sesión</a></li>
                 <?php else: ?>
-                    <li class="user-info"><a href="php/register.php" class="btn-header">Registrarse</a></li>
-                    <li class="user-info"><a href="php/login.php" class="btn-header">Iniciar sesión</a></li>
+                    <li class="user-info"><a href="../php/register.php" class="btn-header">Registrarse</a></li>
+                    <li class="user-info"><a href="../php/login.php" class="btn-header">Iniciar sesión</a></li>
                 <?php endif; ?>
             </ul>
         </nav>
