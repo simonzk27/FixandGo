@@ -40,7 +40,29 @@ session_start();
 
 <main>
 
+<?php
 
+include 'connect.php';
+
+if (isset($_SESSION['role'])) {
+    $role = $_SESSION['role']; // Obtenemos el rol del usuario
+} else {
+    $role = 'guest'; // Asignamos un rol predeterminado para los usuarios no autenticados
+}
+
+if ($role == 'admin' || $role == 'owner') {
+    // Mostrar el formulario para crear un directo
+    echo '<form method="post">
+    <div style="display: flex; justify-content: center;">
+    
+    </div>
+    </form>';
+
+} else if ($role == 'user' || $role == 'guest') {
+        
+}
+
+?>
 
 </main>
 
