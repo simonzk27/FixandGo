@@ -177,6 +177,6 @@ input[type=text]:focus {
 }
 
 .chat, .video {
-    width: 90%; /* Ajusta este valor según tus necesidades */
+    width: 70%; /* Reducir el ancho */
     margin: 1em auto;
 }
