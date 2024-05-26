@@ -127,7 +127,7 @@ if ($role == 'admin' || $role == 'owner') {
         new mapboxgl.Marker()
             .setLngLat([" . $row["location"] . "])
             .setPopup(new mapboxgl.Popup({ offset: 25 }) // agrega un popup
-            .setHTML('<h3>" . $row["title"] . "</h3><p>" . $row["description"] . "</p>')) // Aquí puedes poner la información que quieras mostrar
+            .setHTML('<h3>" . $row["title"] . "</h3><p>" . $row["description"] . "</p><p>" . $row["date"] . "</p>')) // Aquí puedes poner la información que quieras mostrar
             .addTo(mapGen);
     </script>";
     }
