@@ -48,7 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     exit;
 }
 
-$sql = "SELECT * FROM Users"; // Asegúrate de que estás utilizando el nombre correcto de la tabla
+
+$sql = "SELECT * FROM Users where role <> 'owner'"; // Asegúrate de que estás utilizando el nombre correcto de la tabla
 $result = $conn->query($sql);
 if (!$result) {
     die("Error al ejecutar la consulta");
