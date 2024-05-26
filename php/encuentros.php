@@ -72,7 +72,7 @@ if (isset($_SESSION['role'])) {
 if ($role == 'admin' || $role == 'owner') {
     // Mostrar el formulario para crear un encuentro
     echo '<form method="post">
-    <div style="display: flex; justify-content: center;">
+    <div style="justify-content: center;">
         <label for="title">Titulo:</label>
         <input type="text" id="title" name="title">
         <label for="description">Descripcion:</label>
