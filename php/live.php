@@ -70,7 +70,7 @@ if ($role == 'admin' || $role == 'owner') {
     <input type="text" name="youtube_link" placeholder="Ingresa el enlace de YouTube aquí">
     <input type="submit" name="create_live" value="Crear directo">
     </form>';
-    if (isset($_POST['youtube_link']) && !empty($_POST['youtube_link']) {
+    if (isset($_POST['youtube_link']) && !empty($_POST['youtube_link'])) {
         
         $new_youtube_link = $_POST['youtube_link']; 
 
