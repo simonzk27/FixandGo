@@ -169,12 +169,14 @@ input[type=text]:focus {
 
 .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100vh; /* Esto asegura que el contenedor ocupe toda la altura de la pantalla */
+    width: 100vw;
+    height: 100vh;
 }
+
 .chat, .video {
-    width: 45vw;
-    margin: 2.5vw;
+    width: 90%; /* Ajusta este valor según tus necesidades */
+    margin: 1em auto;
 }
