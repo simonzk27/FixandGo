@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssss", $title, $description, $date, $location);
 
     if ($stmt->execute()) {
-        echo "Nuevo encuentro creado exitosamente";
+        
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -108,13 +108,28 @@ if ($role == 'admin' || $role == 'owner') {
     </div>
     </form>';
 
-} else if ($role == 'user' || $role == 'guest') {
+    echo '<div id="mapGen" style="width: 400px; height: 300px;""></div>
+                mapboxgl.accessToken = "pk.eyJ1IjoiZml4YW5kZ28iLCJhIjoiY2x3bXh2Z2U1MHVpbTJqbWo5cnR6MnBrMiJ9.r9FK66ArVUcn8sYbc4PLrA";
+            var mapGen = new mapboxgl.Map({
+                container: "mapGen",
+                style: "mapbox://styles/mapbox/streets-v12",
+                center: [-74.5, 40], // starting position [lng, lat]
+                zoom: 9 // starting zoom
+            });'
+} 
     // Cargar los encuentros disponibles
     $result = $conn->query("SELECT * FROM meetings");
     while($row = $result->fetch_assoc()) {
         echo "Titulo: " . $row["title"]. " - Descripcion: " . $row["description"]. " - Fecha: " . $row["date"]. " - Ubicacion: " . $row["location"]. "<br>";
+        
+        // Agregar un marcador para la ubicación del encuentro
+        echo "<script>
+            new mapboxgl.Marker()
+                .setLngLat([" . $row["location"] . "])
+                .addTo(mapGen);
+        </script>";
     }
-}
+
 
 ?>
 
