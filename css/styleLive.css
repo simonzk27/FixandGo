@@ -145,7 +145,7 @@ input[name=youtube_link]:focus {
 }
 
 /* Estilo para el botón */
-button[name=create_live] {
+input[type=submit][name=create_live] {
     display: block;
     width: 20%;
     padding: 10px;
@@ -161,6 +161,6 @@ button[name=create_live] {
     cursor: pointer;
 }
 
-button[name=create_live]:hover {
+input[type=submit][name=create_live]:hover {
     background-color: #45a049;
 }
