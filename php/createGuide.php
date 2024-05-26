@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     .'<li><a href="../php/foro.php" class="btn-header">Foro</a></li>'
                     .'<li><a href="../php/live.php" class="btn-header">Live</a></li>'
                     .'<li><a href="../php/encuentros.php" class="btn-header">Encuentros</a></li>'
-                .'<?php }  ?>'
+                .'<?php }  ?>';
                 $guideContent .= <<<HTML
             </ul> 
                 <ul class="right-side">
