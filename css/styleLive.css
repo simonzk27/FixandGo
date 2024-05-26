@@ -176,15 +176,17 @@ input[type=text]:focus {
     margin-bottom: 50px; /* Ajusta este valor según tus necesidades */
 }
 
-.chat, .video {
-    width: 70%; /* Reducir el ancho */
-    margin: 1em auto;
-}
-
 .main {
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* Cambia la dirección a fila */
     justify-content: center;
     align-items: center;
     margin-bottom: 50px; /* Añade un margen inferior para evitar la superposición con el footer */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en la pantalla */
+}
+
+.chat, .video {
+    flex: 1 1 auto; /* Permite que los elementos se ajusten automáticamente */
+    margin: 1em;
+    max-width: calc(50% - 2em); /* Limita el ancho máximo al 50% del contenedor, menos los márgenes */
 }
