@@ -115,7 +115,7 @@ if ($role == 'admin' || $role == 'owner') {
                 style: "mapbox://styles/mapbox/streets-v12",
                 center: [-74.5, 40], // starting position [lng, lat]
                 zoom: 9 // starting zoom
-            });'
+            });';
 } 
     // Cargar los encuentros disponibles
     $result = $conn->query("SELECT * FROM meetings");
