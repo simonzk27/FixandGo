@@ -190,18 +190,18 @@ error_reporting(E_ALL);
         </section>
         HTML;
         $guideContent .= <<<PHP
-            <?php
-            include '../../php/connect.php';
-            if (\$_SERVER["REQUEST_METHOD"] === "POST") {
-                \$vote = \$_POST['vote'];
-                \$id = \$_POST['guide_id'];
-                if(\$vote==1){
-                    \$conn->query("UPDATE Repairs SET rating = rating + 100, votes = votes + 1 WHERE id = \$id");
-                }else{
-                    \$conn->query("UPDATE Repairs SET votes = votes + 1 WHERE id = \$id");
-                }
-            }
-            ?>
+        <?php
+        include '../../php/connect.php';
+        if (\$_SERVER["REQUEST_METHOD"] === "POST") {
+            \$vote = \$_POST['vote'];
+            \$id = \$_POST['guide_id'];
+            if(\$vote==1):
+                \$conn->query("UPDATE Repairs SET rating = rating + 100, votes = votes + 1 WHERE id = \$id");
+            else:
+                \$conn->query("UPDATE Repairs SET votes = votes + 1 WHERE id = \$id");
+            endif;
+        }
+        ?>
         PHP;
 
         $guideContent .= <<<HTML
