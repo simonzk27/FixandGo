@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $sql = "INSERT INTO meetings (title, description, date, location, time) VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssss", $title, $description, $date, $location, $time);
+    $stmt->bind_param("sssss", $title, $description, $date, $location, $time);
 
     if ($stmt->execute()) {
         
@@ -96,7 +96,7 @@ if ($role == 'admin' || $role == 'owner') {
             <label for="date">Fecha:</label>
             <input type="date" id="date" name="date" required style="width: 200px; height: 30px; margin-bottom: 10px;">
             <label for="date">Hora:</label>
-            <input type="time" id="time" name="time" min="09:00" max="18:00" required style="width: 200px; height: 30px; margin-bottom: 10px;">
+            <input type="time" id="time" name="time" required style="width: 200px; height: 30px; margin-bottom: 10px;">
             <input type="hidden" id="location" name="location">
         </div>
         <div style="display: flex; flex-direction: column; align-items: center;">
