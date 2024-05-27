@@ -169,21 +169,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <section class="retroalimentacion">
             <h2>Retroalimentación</h2>
             <p>¿Fue útil este tutorial?</p>
-            <form method="post"></form>
-            <input type="hidden" name="guideId" value="$guideId">
-                <button value="Yes" class = "yes" style="padding: 10px 20px; margin-right: 20px;">Sí, fue útil</button>
-                <button value="No" class = "no" style="padding: 10px 20px;">No, no funcionó</button>
-            </form>
-    HTML;   
-    $guideContent .= '<?php $rating = $_POST[\'rating\'];'
-                  .= 'if ($rating == \'Yes\'):'
-                  .= '$sql = "UPDATE Repairs SET rating = rating + 100, votes = votes + 1";'
-                  .= 'else:'
-                  .= '$sql = "UPDATE Repairs SET votes = votes + 1";'
-                  .= 'endif; ?>'
-                  .= '$stmt = $conn->prepare($sql);'
-                  .= '$stmt->execute(); ?>';
-    $guideContent .= <<<HTML     
+            <button class = "yes" style="padding: 10px 20px; margin-right: 20px;">Sí, fue útil</button>
+            <button class = "no" style="padding: 10px 20px;">No, no funcionó</button>
         </section>
     </main>
         <footer>
