@@ -217,12 +217,12 @@ error_reporting(E_ALL);
         document.addEventListener('DOMContentLoaded', function () {
         var ratings = JSON.parse('<?php echo \$jsonRatings; ?>');
         var dataPoints = ratings.map(function (rating, index) {
-            return { y: rating, label: "Rating " + (index + 1), color: "green" };
+            return { y: rating, label: "Fue útil" + (index + 1), color: "green" };
         });
 
         // Si el rating no es el 100%, agregar el porcentaje restante como un segundo punto de datos
         if (dataPoints[0].y < 100) {
-            dataPoints.push({ y: 100 - dataPoints[0].y, label: "Restante", color: "red" });
+            dataPoints.push({ y: 100 - dataPoints[0].y, label: "No fue útil", color: "red" });
         }
 
         var chart = new CanvasJS.Chart("chartContainer", {
