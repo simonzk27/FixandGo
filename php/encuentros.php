@@ -116,6 +116,14 @@ if ($role == 'admin' || $role == 'owner') {
         // Crear un nuevo marcador
         const marker = new mapboxgl.Marker();  
 
+        document.querySelector("form").addEventListener("submit", function(e) {
+            var location = document.getElementById("location").value;
+            if (!location) {
+                e.preventDefault();
+                alert("Por favor, selecciona una ubicación en el mapa.");
+            }
+        });
+
         // Agregar un evento de clic al mapa
         map.on("click", function(e) {
             // Obtener las coordenadas del clic
