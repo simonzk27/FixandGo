@@ -202,7 +202,7 @@ error_reporting(E_ALL);
         endif;
     }
     // Obtener los datos de la columna rating
-    \$result = \$conn->query("SELECT rating FROM Repairs");
+    \$result = \$conn->query("SELECT rating FROM Repairs WHERE id = \$id");
     \$ratings = [];
     while (\$row = \$result->fetch_assoc()) {
         \$ratings[] = \$row['rating'];
