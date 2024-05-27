@@ -166,12 +166,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $guideContent .= <<<HTML
         </section>
-        <section class="retroalimentacion">
-            <h2>Retroalimentación</h2>
-            <p>¿Fue útil este tutorial?</p>
-            <button class = "yes" style="padding: 10px 20px; margin-right: 20px;">Sí, fue útil</button>
-            <button class = "no" style="padding: 10px 20px;">No, no funcionó</button>
+        <section>
+            <form action="updateRating.php" method="post">
+                <h2>Retroalimentación</h2>
+                <p>¿Fue útil este tutorial?</p>
+                <input type="hidden" name="vote" value="1">
+                <input type="submit" class="yes" style="padding: 10px 20px; margin-right: 20px;" value="Sí, fue útil">
+            </form>
+            <form action="updateRating.php" method="post">
+                <input type="hidden" name="vote" value="-1">
+                <input type="submit" class="no" style="padding: 10px 20px;" value="No, no funcionó">
+            </form>
         </section>
+        HTML;
+        $guideContent .= '<?php $vote = $_POST[\'vote\']; 
+        include \'connect.php\'; 
+        $sql = "UPDATE Repairs SET rating = rating + $vote, votes = votes + 1 WHERE id = $_POST"[\'id\']"; 
+        $conn->query($sql) ?>';
+            // Aquí debes conectar a tu base de datos
+            // $conn = new mysqli($servername, $username, $password, $dbname);
+            // Asegúrate de manejar los errores de conexión
+
+        $guideContent .= <<<HTML
     </main>
         <footer>
             <div class="container">
