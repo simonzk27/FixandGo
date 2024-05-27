@@ -179,10 +179,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
         </section>
         HTML;
-        $guideContent .= '<?php $vote = $_POST[\'vote\']; 
-        include \'connect.php\'; 
-        $sql = "UPDATE Repairs SET rating = rating + $vote, votes = votes + 1 WHERE id = {$_POST[\'id\']}"; 
-        $conn->query($sql) ?>';
+        $guideContent .= '<?php 
+        $sql = "UPDATE Repairs SET rating = rating + 100, votes = votes + 1";'
+        '$stmt = $conn->prepare($sql);'
+        '$stmt->execute();?>';
             // Aquí debes conectar a tu base de datos
             // $conn = new mysqli($servername, $username, $password, $dbname);
             // Asegúrate de manejar los errores de conexión
