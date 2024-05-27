@@ -65,10 +65,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $description = $_POST['description'];
     $date = $_POST['date'];
     $location = $_POST['location'];
+    $time = $_POST['time'];
 
-    $sql = "INSERT INTO meetings (title, description, date, location) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO meetings (title, description, date, location, time) VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssss", $title, $description, $date, $location);
+    $stmt->bind_param("ssss", $title, $description, $date, $location, $time);
 
     if ($stmt->execute()) {
         
@@ -89,11 +90,11 @@ if ($role == 'admin' || $role == 'owner') {
     <div style="display: flex; justify-content: center; align-items: center;">
         <div style="display: flex; flex-direction: column; align-items: center; width: auto; margin-right: 20px;">
             <label for="title">Titulo:</label>
-            <input type="text" id="title" name="title" style="width: 200px; height: 30px; margin-bottom: 10px;">
+            <input type="text" id="title" name="title" required style="width: 200px; height: 30px; margin-bottom: 10px;">
             <label for="description">Descripcion:</label>
-            <input type="text" id="description" name="description" style="width: 200px; height: 30px; margin-bottom: 10px;">
+            <input type="text" id="description" name="description" required style="width: 200px; height: 30px; margin-bottom: 10px;">
             <label for="date">Fecha:</label>
-            <input type="date" id="date" name="date" style="width: 200px; height: 30px; margin-bottom: 10px;">
+            <input type="date" id="date" name="date" required style="width: 200px; height: 30px; margin-bottom: 10px;">
             <label for="date">Hora:</label>
             <input type="time" id="time" name="time" min="09:00" max="18:00" required style="width: 200px; height: 30px; margin-bottom: 10px;">
             <input type="hidden" id="location" name="location">
