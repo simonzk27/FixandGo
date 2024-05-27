@@ -202,7 +202,6 @@ error_reporting(E_ALL);
             endif;
             \$query = "SELECT rating, votes FROM Repairs WHERE id = \$id";
             \$stmt = \$conn->prepare(\$query);
-            \$stmt->bind_param("i", \$guideId);
             \$stmt->execute();
             \$result = \$stmt->get_result();
             \$row = \$result->fetch_assoc();
