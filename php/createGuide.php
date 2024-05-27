@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 $basePath = __DIR__ . '/../guides/';
 include 'connect.php';
 
@@ -22,7 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Crea el contenido de la guía
     
-    $guideContent = '<?php session_start();?>';
+    $guideContent = '<?php session_start();
+    ini_set(\'display_errors\', 1);
+    ini_set(\'display_startup_errors\', 1);
+    error_reporting(E_ALL);
+    ?>';
 
     $guideContent .= <<<HTML
     <!DOCTYPE html>
