@@ -192,7 +192,6 @@ error_reporting(E_ALL);
     $guideContent .= <<<PHP
     <?php
     include '../../php/connect.php';
-    \$id = \$_GET['guide_id'] ?? null;
     if (\$_SERVER["REQUEST_METHOD"] === "POST") {
         \$vote = \$_POST['vote'];
         \$id = \$_POST['guide_id'];
@@ -201,8 +200,7 @@ error_reporting(E_ALL);
         else:
             \$conn->query("UPDATE Repairs SET votes = votes + 1 WHERE id = \$id");
         endif;
-    }
-    // Obtener los datos de las columnas rating y votes
+        // Obtener los datos de las columnas rating y votes
         \$result = \$conn->query("SELECT rating, votes FROM Repairs WHERE id = \$id");
         \$ratings = [];
         while (\$row = \$result->fetch_assoc()) {
@@ -210,32 +208,38 @@ error_reporting(E_ALL);
             \$ratings[] = \$row['rating'] / \$row['votes'];
         }
         \$jsonRatings = json_encode(\$ratings);
+    }
     ?>
     PHP;
     $guideContent .= <<<HTML
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var ratings = JSON.parse('<?php echo \$jsonRatings; ?>');
-            var dataPoints = ratings.map(function (rating, index) {
-                return { y: rating, label: "Rating " + (index + 1) };
-            });
-
-            var chart = new CanvasJS.Chart("chartContainer", {
-                animationEnabled: true,
-                title: {
-                    text: "Ratings Pie Chart"
-                },
-                data: [{
-                    type: "pie",
-                    startAngle: 240,
-                    yValueFormatString: "##0.00\"%\"",
-                    indexLabel: "{label} {y}",
-                    dataPoints: dataPoints
-                }]
-            });
-            chart.render();
+        var ratings = JSON.parse('<?php echo \$jsonRatings; ?>');
+        var dataPoints = ratings.map(function (rating, index) {
+            return { y: rating, label: "Rating " + (index + 1), color: "green" };
         });
+
+        // Si el rating no es el 100%, agregar el porcentaje restante como un segundo punto de datos
+        if (dataPoints[0].y < 100) {
+            dataPoints.push({ y: 100 - dataPoints[0].y, label: "Restante", color: "red" });
+        }
+
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            title: {
+                text: "Ratings Pie Chart"
+            },
+            data: [{
+                type: "pie",
+                startAngle: 240,
+                yValueFormatString: "##0.00\"%\"",
+                indexLabel: "{label} {y}",
+                dataPoints: dataPoints
+            }]
+        });
+        chart.render();
+    });
     </script>
     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
     HTML;
