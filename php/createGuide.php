@@ -200,11 +200,12 @@ error_reporting(E_ALL);
         else:
             \$conn->query("UPDATE Repairs SET votes = votes + 1 WHERE id = \$id");
         endif;
-        // Obtener los datos de la columna rating
-        \$result = \$conn->query("SELECT rating FROM Repairs WHERE id = \$id");
+        // Obtener los datos de las columnas rating y votes
+        \$result = \$conn->query("SELECT rating, votes FROM Repairs WHERE id = \$id");
         \$ratings = [];
         while (\$row = \$result->fetch_assoc()) {
-            \$ratings[] = \$row['rating'];
+            // Calcular el rating como rating/votes
+            \$ratings[] = \$row['rating'] / \$row['votes'];
         }
         \$jsonRatings = json_encode(\$ratings);
     }
