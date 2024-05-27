@@ -189,7 +189,7 @@ error_reporting(E_ALL);
         HTML;
         $guideContent .= <<<PHP
             <?php
-            include 'connect.php';
+            include '../../php/connect.php';
             if (\$_SERVER["REQUEST_METHOD"] === "POST") {
                 echo "entro";
                 \$vote = \$_POST['vote'];
