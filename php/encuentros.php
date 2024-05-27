@@ -94,6 +94,8 @@ if ($role == 'admin' || $role == 'owner') {
             <input type="text" id="description" name="description" style="width: 200px; height: 30px; margin-bottom: 10px;">
             <label for="date">Fecha:</label>
             <input type="date" id="date" name="date" style="width: 200px; height: 30px; margin-bottom: 10px;">
+            <label for="date">Hora:</label>
+            <input type="time" id="time" name="time" min="09:00" max="18:00" required style="width: 200px; height: 30px; margin-bottom: 10px;">
             <input type="hidden" id="location" name="location">
         </div>
         <div style="display: flex; flex-direction: column; align-items: center;">
