@@ -189,7 +189,7 @@ error_reporting(E_ALL);
             </form>
         </section>
         HTML;
-        $guideContent .= <<<PHP
+    $guideContent .= <<<PHP
     <?php
     include '../../php/connect.php';
     if (\$_SERVER["REQUEST_METHOD"] === "POST") {
