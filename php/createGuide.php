@@ -187,9 +187,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 \$id = \$_POST['id'];
                 echo \$id;
                 echo \$vote;
-                \$sql = "UPDATE Repairs SET rating = rating + 100, votes = votes + 1 WHERE id = ?";
-                \$stmt = \$conn->prepare(\$sql);
-                \$stmt->bind_param("i", \$id);
+                \$stmt =\$conn->prepare("UPDATE Repairs SET rating = 20 where id = 25");
                 \$stmt->execute();
             }
             ?>
