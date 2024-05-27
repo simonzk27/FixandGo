@@ -184,6 +184,7 @@ error_reporting(E_ALL);
             </form>
             <form method="post">
                 <input type="hidden" name="vote" value="-1">
+                <input type="hidden" name="guide_id" value="<?php echo $guideId; ?>">
                 <input type="submit" class="no" style="padding: 10px 20px;" value="No, no funcionó">
             </form>
         </section>
@@ -192,21 +193,16 @@ error_reporting(E_ALL);
             <?php
             include '../../php/connect.php';
             if (\$_SERVER["REQUEST_METHOD"] === "POST") {
-                echo "entro";
                 \$vote = \$_POST['vote'];
                 \$id = \$_POST['guide_id'];
-                echo \$id;
-                echo \$vote;
-                \$conn->query("UPDATE Repairs SET rating = 20 WHERE id = \$id");
+                if(\$vote==1){
+                    \$conn->query("UPDATE Repairs SET rating = rating + 100, votes = votes + 1 WHERE id = \$id");
+                }else{
+                    \$conn->query("UPDATE Repairs SET votes = votes + 1 WHERE id = \$id");
+                }
             }
             ?>
         PHP;
-
-        
-        
-            // Aquí debes conectar a tu base de datos
-            // $conn = new mysqli($servername, $username, $password, $dbname);
-            // Asegúrate de manejar los errores de conexión
 
         $guideContent .= <<<HTML
     </main>
