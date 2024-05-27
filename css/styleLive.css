@@ -127,3 +127,24 @@ footer ul li a {
 
 /*Main*/
 /* Estilos para el botón */
+form div {
+    margin: 1em 0;
+}
+
+form input[type="text"] {
+    padding: 0.5em;
+    width: 70%;
+    margin-right: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form input[type="submit"] {
+    padding: 0.5em 1em;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
