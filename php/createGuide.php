@@ -181,7 +181,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         HTML;
         $guideContent .= '<?php
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            echo = "entro";
+            echo "entro";
             $vote = $_POST["vote"];
             $sql = "UPDATE Repairs SET rating = rating + 100, votes = votes + 1";
             $stmt = $conn->prepare($sql);
