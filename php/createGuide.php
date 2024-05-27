@@ -190,53 +190,53 @@ error_reporting(E_ALL);
         </section>
         HTML;
         $guideContent .= <<<PHP
-        <?php
-        include '../../php/connect.php';
-        if (\$_SERVER["REQUEST_METHOD"] === "POST") {
-            \$vote = \$_POST['vote'];
-            \$id = \$_POST['guide_id'];
-            if(\$vote==1):
-                \$conn->query("UPDATE Repairs SET rating = rating + 100, votes = votes + 1 WHERE id = \$id");
-            else:
-                \$conn->query("UPDATE Repairs SET votes = votes + 1 WHERE id = \$id");
-            endif;
-        }
-        // Obtener los datos de la columna rating
-        \$result = \$conn->query("SELECT rating FROM Repairs");
-        \$ratings = [];
-        while (\$row = \$result->fetch_assoc()) {
-            \$ratings[] = \$row['rating'];
-        }
-        \$jsonRatings = json_encode(\$ratings);
-        ?>
-        PHP;
-        $guideContent .= <<<HTML
-        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-        <script>
-            window.onload = function () {
-                var ratings = JSON.parse('<?php echo \$jsonRatings; ?>');
-                var dataPoints = ratings.map(function (rating, index) {
-                    return { y: rating, label: "Rating " + (index + 1) };
-                });
+    <?php
+    include '../../php/connect.php';
+    if (\$_SERVER["REQUEST_METHOD"] === "POST") {
+        \$vote = \$_POST['vote'];
+        \$id = \$_POST['guide_id'];
+        if(\$vote==1):
+            \$conn->query("UPDATE Repairs SET rating = rating + 100, votes = votes + 1 WHERE id = \$id");
+        else:
+            \$conn->query("UPDATE Repairs SET votes = votes + 1 WHERE id = \$id");
+        endif;
+    }
+    // Obtener los datos de la columna rating
+    \$result = \$conn->query("SELECT rating FROM Repairs");
+    \$ratings = [];
+    while (\$row = \$result->fetch_assoc()) {
+        \$ratings[] = \$row['rating'];
+    }
+    \$jsonRatings = json_encode(\$ratings);
+    ?>
+    PHP;
+    $guideContent .= <<<HTML
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var ratings = JSON.parse('<?php echo \$jsonRatings; ?>');
+            var dataPoints = ratings.map(function (rating, index) {
+                return { y: rating, label: "Rating " + (index + 1) };
+            });
 
-                var chart = new CanvasJS.Chart("ratingChartContainer", {
-                    animationEnabled: true,
-                    title: {
-                        text: "Ratings Pie Chart"
-                    },
-                    data: [{
-                        type: "pie",
-                        startAngle: 240,
-                        yValueFormatString: "##0.00\"%\"",
-                        indexLabel: "{label} {y}",
-                        dataPoints: dataPoints
-                    }]
-                });
-                chart.render();
-            }
-        </script>
-        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-        HTML;
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                title: {
+                    text: "Ratings Pie Chart"
+                },
+                data: [{
+                    type: "pie",
+                    startAngle: 240,
+                    yValueFormatString: "##0.00\"%\"",
+                    indexLabel: "{label} {y}",
+                    dataPoints: dataPoints
+                }]
+            });
+            chart.render();
+        });
+    </script>
+    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    HTML;
     $guideContent .= <<<HTML
     </main>
         <footer>
