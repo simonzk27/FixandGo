@@ -192,6 +192,7 @@ error_reporting(E_ALL);
     $guideContent .= <<<PHP
     <?php
     include '../../php/connect.php';
+    \$id = \$_GET['guide_id'] ?? null;
     if (\$_SERVER["REQUEST_METHOD"] === "POST") {
         \$vote = \$_POST['vote'];
         \$id = \$_POST['guide_id'];
