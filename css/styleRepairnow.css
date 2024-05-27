@@ -196,6 +196,7 @@ footer ul li a {
   overflow: hidden;
   position: relative;
   width: 400px;
+  margin-bottom: 20px; /* Ajusta este valor según tus necesidades */
 }
 
 
