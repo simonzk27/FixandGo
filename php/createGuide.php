@@ -179,6 +179,7 @@ error_reporting(E_ALL);
                 <h2>Retroalimentación</h2>
                 <p>¿Fue útil este tutorial?</p>
                 <input type="hidden" name="vote" value="1">
+                <input type="hidden" name="guide_id" value="<?php echo $guideId; ?>">
                 <input type="submit" class="yes" style="padding: 10px 20px; margin-right: 20px;" value="Sí, fue útil">
             </form>
             <form method="post">
@@ -193,10 +194,10 @@ error_reporting(E_ALL);
             if (\$_SERVER["REQUEST_METHOD"] === "POST") {
                 echo "entro";
                 \$vote = \$_POST['vote'];
-                \$id = \$guideId;
+                \$id = \$_POST['guide_id'];
                 echo \$id;
                 echo \$vote;
-                \$conn->query("UPDATE Repairs SET rating = 20 WHERE id = 26");
+                \$conn->query("UPDATE Repairs SET rating = 20 WHERE id = \$id");
             }
             ?>
         PHP;
