@@ -228,7 +228,7 @@ error_reporting(E_ALL);
         var chart = new CanvasJS.Chart("chartContainer", {
             animationEnabled: true,
             title: {
-                text: "Ratings Pie Chart"
+                text: "Retroalimentación de la guía"
             },
             data: [{
                 type: "pie",
