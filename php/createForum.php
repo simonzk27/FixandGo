@@ -71,7 +71,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </nav>
     </div>
 </header>
-    <h1>Bienvenido al Foro</h1>
     <main>
         <form method="post">
             <label for="titulo">Título:</label><br>

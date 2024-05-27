@@ -139,6 +139,13 @@ main {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
 .forum-post {
     margin-bottom: 20px;
     padding: 20px;
@@ -180,74 +187,5 @@ main {
     background-color: #0056b3;
 }
 
-/* Estilos para dispositivos con pantalla de hasta 600px de ancho */
-@media (max-width: 600px) {
-    body {
-        font-size: 18px;
-    }
-
-    .container {
-        width: 100%;
-        padding: 0 15px;
-    }
-
-    .grid {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .item {
-        margin-bottom: 20px;
-    }
-
-    /* Añade más estilos específicos para móviles aquí */
-}
-
-/* Estilos para dispositivos con pantalla de entre 601px y 900px de ancho */
-@media (min-width: 601px) and (max-width: 900px) {
-    body {
-        font-size: 20px;
-    }
-
-    .container {
-        width: 90%;
-        padding: 0 15px;
-    }
-
-    .grid {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .item {
-        flex: 0 0 50%; /* Hace que los elementos de la grid ocupen la mitad del ancho */
-        margin-bottom: 20px;
-    }
-
-    /* Añade más estilos específicos para tablets aquí */
-}
-
-/* Estilos para dispositivos con pantalla de más de 900px de ancho */
-@media (min-width: 901px) {
-    body {
-        font-size: 22px;
-    }
-
-    .container {
-        width: 80%;
-        margin: auto;
-    }
-
-    .grid {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .item {
-        flex: 0 0 33.33%; /* Hace que los elementos de la grid ocupen un tercio del ancho */
-    }
-
-    /* Añade más estilos específicos para desktop aquí */
-}
 
 

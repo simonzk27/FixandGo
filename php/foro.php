@@ -60,6 +60,7 @@ $forums = $result->fetch_all(MYSQLI_ASSOC);
         </div>
     </header>
     <main>
+    <h1>Bienvenido al Foro</h1>
         <?php foreach ($forums as $forum): ?>
             <div class="forum-post">
                 <h2 class="forum-title">
