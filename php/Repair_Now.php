@@ -87,7 +87,7 @@
                 $result = $conn->query("SELECT id, title, url, authors_id, upload_date, image_url, descripcion FROM Repairs");
 
                 if ($result->num_rows > 0) {
-                    // Iterar sobre los resultados y generar una tarjeta para cada uno
+                    // Iterar sobre las guias y generar una tarjeta para cada una
                     while($row = $result->fetch_assoc()) {
                         echo '<div class="card transition">';
                         echo '<a href="'.$row['url'].'" class="card-link">';
@@ -98,7 +98,7 @@
                         echo '</div>';
                     }
                 } else {
-                    echo "No se encontraron resultados";
+                    echo "No se encontraron guias-taller.";
                 }
 
                 $conn->close();

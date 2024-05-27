@@ -290,7 +290,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             imagedestroy($sourceImage);
         }
     }
-    // Asegúrate de que tu tabla Repairs tenga una columna para la imagen
     $imagePath = 'https://fixandgo.site/guides/g' . $guideId . '/' . 'principal.jpg';
     // Inserta la guía en la base de datos
     $stmt = $conn->prepare("INSERT INTO Repairs (title, url, authors_id, image_url, descripcion) VALUES (?, ?, ?, ?, ?)");
@@ -375,7 +374,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <script>
                 let stepCount = 1;
                 function addStep() {
-                    // Hide the remove button for the previous step
+                    // oculta el boton de eliminar del paso anterior
                     if (stepCount > 1) {
                         const previousStepRemoveButton = document.querySelector(`#step${stepCount} .remove-button`);
                         previousStepRemoveButton.style.display = 'none';
@@ -402,7 +401,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         stepToRemove.parentNode.removeChild(stepToRemove);
                         stepCount--;
 
-                        // Show the remove button for the new last step
+                        // muestra el boton de eliminar del paso anterior
                         if (stepCount > 1) {
                             const lastStepRemoveButton = document.querySelector(`#step${stepCount} .remove-button`);
                             lastStepRemoveButton.style.display = 'block';

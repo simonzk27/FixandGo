@@ -28,19 +28,19 @@ header {
 }
 
 .logo {
-    height: 50px; /* Ajusta esto al tamaño que prefieras */
+    height: 50px; 
 }
 
 header h1 {
-    color: #333; /* Color de texto gris oscuro */
+    color: #333; 
     font-size: 24px;
-    margin: 0; /* Eliminar margen */
+    margin: 0; 
 }
 
-/* Propiedades flexbox para el contenedor */
+
 header .container {
     display: flex;
-    flex-direction: column; /* Organizar en columna */
+    flex-direction: column;
 }
 
 /* Elementos del lado izquierdo */
@@ -63,10 +63,10 @@ header nav ul {
 }
 
 header nav li {
-    display: inline-block; /* Mostrar elementos del menú en línea */
-    padding: 10px 20px; /* Agregar espacio entre elementos del menú */
-    background-color: #333; /* Establecer el color de fondo */
-    border-radius: 15px; /* Bordes redondeados */
+    display: inline-block; 
+    padding: 10px 20px; 
+    background-color: #333; 
+    border-radius: 15px; 
 }
 
 header nav li a {
@@ -84,7 +84,7 @@ header nav li a:hover {
     display: inline-block;
     padding: 10px 20px;
     background-color: #333;
-    border-radius: 15px; /* Bordes redondeados */
+    border-radius: 15px;
 }
 
 .user-info.welcome-msg {
@@ -99,7 +99,7 @@ header nav li a:hover {
 }
 
 .user-info a:hover {
-    color: #ccc; /* Gris claro al pasar el mouse */
+    color: #ccc; 
 }
 
 /* Footer */
@@ -116,7 +116,7 @@ footer ul {
 }
 
 footer ul li {
-    display: inline-block; /* Cambiado a inline-block */
+    display: inline-block; 
     margin: 0 10px;
 }
 
@@ -141,7 +141,7 @@ form input[type="text"] {
 
 form input[type="submit"] {
     padding: 0.5em 1em;
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50; 
     border: none;
     color: white;
     text-decoration: none;

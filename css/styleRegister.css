@@ -3,15 +3,15 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font-family: Arial, sans-serif; /* Cambia "Arial" por la fuente que prefieras */
+    font-family: Arial, sans-serif; 
     }
 
-/* Agrega la propiedad font-family con la fuente que desees */
+
 .singup, .card, .inputBox, .inputBox1, .enter{
-    font-family: Arial, sans-serif; /* Cambia "Arial" por la fuente que prefieras */
+    font-family: Arial, sans-serif;
 }
 
-/* Resto de tus estilos aquí */
+/* Resto de tus estilos aquï¿½ */
 
 .singup {
     color: #003166;
@@ -127,8 +127,8 @@
 
 .message {
     color: #003166;
-    position: center; /* Cambiado a relativo para mantener el flujo del documento */
-    text-align: center; /* Centra el texto dentro del mensaje */
-    font-family: Arial, sans-serif; /* Cambia "Arial" por la fuente que prefieras */
-    font-size: 12px; /* Ajusta el tamaño de la fuente según sea necesario */
+    position: center; 
+    text-align: center; 
+    font-family: Arial, sans-serif; 
+    font-size: 12px; 
 }

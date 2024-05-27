@@ -31,19 +31,19 @@ header {
 }
 
 .logo {
-  height: 50px; /* Ajusta esto al tamaÃ±o que prefieras */
+  height: 50px; 
 }
 
 header h1 {
   color: #333; /* Color de texto gris oscuro */
   font-size: 24px;
-  margin: 0; /* Eliminar margen */
+  margin: 0; 
 }
 
-/* Propiedades flexbox para el contenedor */
+
 header .container {
   display: flex;
-  flex-direction: column; /* Organizar en columna */
+  flex-direction: column; 
 }
 
 /* Elementos del lado izquierdo */
@@ -124,7 +124,7 @@ footer {
 }
 
 footer ul li {
-  display: inline-block; /* Cambiado a inline-block */
+  display: inline-block; 
   margin: 0 10px;
 }
 

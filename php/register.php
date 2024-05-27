@@ -51,6 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $message = "Gracias por registrarte. Ingresa el codigo de verificacion enviado a tu direccion de correo electronico.";
 
             // Crear el Transporte
+            // biblioteca de php Swift Mailer, SMTP (Simple Mail Transfer Protocol)
             $transport = (new Swift_SmtpTransport('smtp.hostinger.com', 587))
                 ->setUsername('support@fixandgo.site')
                 ->setPassword('Fixandgosupport2024*');
@@ -88,7 +89,7 @@ if ($confirmationSuccess) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

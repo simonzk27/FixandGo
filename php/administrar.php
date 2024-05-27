@@ -1,7 +1,7 @@
 <?php
 session_start(); 
 
-include 'connect.php'; // Cambiado a require para detener la ejecución si el archivo no se puede incluir
+include 'connect.php'; 
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 'owner') {
     die("No tienes permiso para ver esta página");
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $action = $_POST['action'];
 
     if ($action == 'ascend' && $_SESSION['id'] != $userId) {
-        $sql = "UPDATE Users SET role='admin' WHERE id=?"; // Corrige el nombre de la tabla aquí
+        $sql = "UPDATE Users SET role='admin' WHERE id=?"; 
         $stmt = $conn->prepare($sql);
         $stmt->execute([$userId]);
     } elseif ($action == 'descend' && $_SESSION['id'] != $userId) {
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 
-$sql = "SELECT * FROM Users where role <> 'owner'"; // Asegúrate de que estás utilizando el nombre correcto de la tabla
+$sql = "SELECT * FROM Users where role <> 'owner'"; 
 $result = $conn->query($sql);
 if (!$result) {
     die("Error al ejecutar la consulta");
@@ -57,7 +57,7 @@ if (!$result) {
 $users = $result->fetch_all(MYSQLI_ASSOC);
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

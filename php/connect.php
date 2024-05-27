@@ -3,7 +3,6 @@ $servername = "82.197.80.210";
 $username = "u482925761_fag";
 $password = "Admin11admin";
 $dbname = "u482925761_fixandgo";
-
 // Crear una conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
 

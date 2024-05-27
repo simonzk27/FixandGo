@@ -16,27 +16,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if ($result->num_rows == 1) {
     $user = $result->fetch_assoc();
     if (password_verify($password, $user['password'])) {
-      // Login successful
+      // Login correcto
       $_SESSION['user_id'] = $user['id'];
-      $_SESSION['username'] = $username; // Add username for convenience
+      $_SESSION['username'] = $username; 
       $_SESSION['loggedIn'] = true;
       $_SESSION['role'] = $user['role'];
       
       
-      header("Location: ../index.php"); // Replace with your logged-in page
+      header("Location: ../index.php"); // volver a la página de inicio
       exit;
     } else {
-      $loginError = "Incorrect password.";
+      $loginError = "Contraseña incorrecta.";
     }
   } else {
-    $loginError = "Username not found.";
+    $loginError = "Username no encontrado.";
   }
 }
 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

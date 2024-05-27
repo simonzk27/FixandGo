@@ -20,27 +20,27 @@ body {
 
 /* Header */
 header {
-    background-color: #0d0c0c4a; /* Color de fondo azul claro */
+    background-color: #0d0c0c4a; 
     padding: 20px;
     margin-bottom: 15px;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2); /* Sombra sutil */
-    border-radius: 15px; /* Sombra sutil */
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 15px; 
 }
 
 .logo {
-    height: 50px; /* Ajusta esto al tamaño que prefieras */
+    height: 50px; 
 }
 
 header h1 {
     color: #333; /* Color de texto gris oscuro */
     font-size: 24px;
-    margin: 0; /* Eliminar margen */
+    margin: 0; 
 }
 
-/* Propiedades flexbox para el contenedor */
+
 header .container {
     display: flex;
-    flex-direction: column; /* Organizar en columna */
+    flex-direction: column;
 }
 
 /* Elementos del lado izquierdo */
@@ -63,46 +63,46 @@ header nav ul {
 }
 
 header nav li {
-    display: inline-block; /* Mostrar elementos del menú en línea */
-    padding: 10px 20px; /* Agregar espacio entre elementos del menú */
-    background-color: #333; /* Establecer el color de fondo */
-    border-radius: 15px; /* Bordes redondeados */
+    display: inline-block; 
+    padding: 10px 20px; 
+    background-color: #333; 
+    border-radius: 15px;
 }
 
 header nav li a {
-    color: #fff; /* Color de texto blanco */
-    text-decoration: none; /* Eliminar subrayado */
+    color: #fff; 
+    text-decoration: none; 
     font-size: 18px;
-    transition: color 0.3s ease; /* Efecto suave al pasar el mouse */
+    transition: color 0.3s ease; 
 }
 
 header nav li a:hover {
-    color: #ccc; /* Gris claro al pasar el mouse */
+    color: #ccc; 
 }
 
 .user-info {
     display: inline-block;
     padding: 10px 20px;
     background-color: #333;
-    border-radius: 15px; /* Bordes redondeados */
+    border-radius: 15px;
 }
 
 .user-info.welcome-msg {
-    color: #fff; /* Color de texto blanco */
+    color: #fff; 
 }
 
 .user-info a {
-    color: #fff; /* Color de texto blanco */
-    text-decoration: none; /* Eliminar subrayado */
+    color: #fff;
+    text-decoration: none; 
     font-size: 18px;
-    transition: color 0.3s ease; /* Efecto suave al pasar el mouse */
+    transition: color 0.3s ease; 
 }
 
 .user-info a:hover {
     color: #ccc; /* Gris claro al pasar el mouse */
 }
 
-/* hacia abajo header */
+
 
 /* Footer */
 footer {
@@ -121,7 +121,7 @@ footer {
 }
 
 footer ul li {
-    display: inline-block; /* Cambiado a inline-block */
+    display: inline-block; 
     margin: 0 10px;
 }
 

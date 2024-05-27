@@ -27,7 +27,7 @@ header {
 }
 
 .logo {
-    height: 50px; /* Ajusta esto al tamaño que prefieras */
+    height: 50px; 
 }
 
 header h1 {
@@ -36,7 +36,7 @@ header h1 {
     margin: 0; /* Eliminar margen */
 }
 
-/* Propiedades flexbox para el contenedor */
+
 header .container {
     display: flex;
     flex-direction: column; /* Organizar en columna */
@@ -154,29 +154,13 @@ footer {
 }
 
 footer ul li {
-    display: inline-block; /* Cambiado a inline-block */
+    display: inline-block; 
     margin: 0 10px;
 }
 
 footer ul li a {
     color: #ffffff;
     text-decoration: none;
-}
-
-/* Para pantallas de tamaño tablet */
-@media (max-width: 768px) {
-    footer ul li {
-        display: block;
-        margin: 10px 0;
-    }
-}
-
-/* Para pantallas de tamaño móvil */
-@media (max-width: 480px) {
-    footer ul li {
-        display: block;
-        margin: 5px 0;
-    }
 }
 
 /* Bajar la posición de los testimonios */

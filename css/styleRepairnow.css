@@ -256,7 +256,7 @@ z-index: 9999;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100px; /* Asegura que el contenedor tenga una altura */
+  height: 100px; 
 }
 
 .crear {
