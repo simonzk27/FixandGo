@@ -183,7 +183,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             echo = "entro";
             $vote = $_POST["vote"];
-            echo = "$vote";
+            echo = $vote;
             $sql = "UPDATE Repairs SET rating = rating + 100, votes = votes + 1";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
