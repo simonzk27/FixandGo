@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Crea el contenido de la guía
     
-    $guideContent = '<?php session_start(); ?>';
+    $guideContent = '<?php session_start();?>';
 
     $guideContent .= <<<HTML
     <!DOCTYPE html>
