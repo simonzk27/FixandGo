@@ -97,7 +97,7 @@ if ($role == 'admin' || $role == 'owner') {
             <input type="date" id="date" name="date" required style="width: 200px; height: 30px; margin-bottom: 10px;">
             <label for="date">Hora:</label>
             <input type="time" id="time" name="time" required style="width: 200px; height: 30px; margin-bottom: 10px;">
-            <input type="hidden" id="location" name="location">
+            <input type="hidden" id="location" name="location" required>
         </div>
         <div style="display: flex; flex-direction: column; align-items: center;">
             <label for="map">Ubicacion: (click para seleccionar)</label>
