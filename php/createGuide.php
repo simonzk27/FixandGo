@@ -180,7 +180,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                   .='$sql = "UPDATE Repairs SET rating = rating + 100, votes = votes + 1";'
                   .='else:'
                   .='$sql = "UPDATE Repairs SET votes = votes + 1";'
-                  .='endif; ?>';
+                  .='endif; ?>'
                   .='$stmt = $conn->prepare($sql);'
                   .='$stmt->execute(); ?>';
     $guideContent .= <<<HTML     
