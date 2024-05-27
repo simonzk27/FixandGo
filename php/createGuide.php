@@ -180,9 +180,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </section>
         HTML;
         $guideContent .= '<?php 
-        $sql = "UPDATE Repairs SET rating = rating + 100, votes = votes + 1";'
-        '$stmt = $conn->prepare($sql);'
-        '$stmt->execute();?>';
+        $sql = "UPDATE Repairs SET rating = rating + 100, votes = votes + 1";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();?>';
             // Aquí debes conectar a tu base de datos
             // $conn = new mysqli($servername, $username, $password, $dbname);
             // Asegúrate de manejar los errores de conexión
