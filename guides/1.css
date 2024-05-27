@@ -188,7 +188,7 @@ button.herramientas {
     transition: background-color 0.3s ease;
 }
 
-button.yes {
+input.yes {
     font-size: 16px;
     color: white;
     background-color: #158d6f;
@@ -198,7 +198,7 @@ button.yes {
     transition: background-color 0.3s ease;
 }
 
-button.no {
+input.no {
     font-size: 16px;
     color: white;
     background-color: #8f1b34;
