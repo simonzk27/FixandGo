@@ -167,13 +167,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $guideContent .= <<<HTML
         </section>
         <section>
-            <form action="updateRating.php" method="post">
+            <form method="post">
                 <h2>Retroalimentación</h2>
                 <p>¿Fue útil este tutorial?</p>
                 <input type="hidden" name="vote" value="1">
                 <input type="submit" class="yes" style="padding: 10px 20px; margin-right: 20px;" value="Sí, fue útil">
             </form>
-            <form action="updateRating.php" method="post">
+            <form method="post">
                 <input type="hidden" name="vote" value="-1">
                 <input type="submit" class="no" style="padding: 10px 20px;" value="No, no funcionó">
             </form>
