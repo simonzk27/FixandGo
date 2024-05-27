@@ -179,17 +179,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
         </section>
         HTML;
-        $guideContent .= '<?php
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            echo "entro";
-            $vote = $_POST["vote"];
-            $id = {$_POST[\'id\']};
-            $sql = "UPDATE Repairs SET rating = rating + 100, votes = votes + 1 where id =  $id ";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("i", $id);
-            $stmt->execute();
-            
-        } ?>';
+        $guideContent .= <<<PHP
+            <?php
+            if (\$_SERVER["REQUEST_METHOD"] === "POST") {
+                echo "entro";
+                \$vote = \$_POST['vote'];
+                \$id = \$_POST['id'];
+                echo \$id;
+                echo \$vote;
+                \$sql = "UPDATE Repairs SET rating = rating + 100, votes = votes + 1 WHERE id = ?";
+                \$stmt = \$conn->prepare(\$sql);
+                \$stmt->bind_param("i", \$id);
+                \$stmt->execute();
+            }
+            ?>
+        PHP;
 
         
         
