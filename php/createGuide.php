@@ -193,7 +193,7 @@ error_reporting(E_ALL);
             if (\$_SERVER["REQUEST_METHOD"] === "POST") {
                 echo "entro";
                 \$vote = \$_POST['vote'];
-                \$id = \$_POST['id'];
+                \$id = \$guideId;
                 echo \$id;
                 echo \$vote;
                 \$conn->query("UPDATE Repairs SET rating = 20 WHERE id = 26");
