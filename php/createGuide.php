@@ -200,11 +200,48 @@ error_reporting(E_ALL);
             else:
                 \$conn->query("UPDATE Repairs SET votes = votes + 1 WHERE id = \$id");
             endif;
+            \$query = "SELECT rating, votes FROM Repairs WHERE id = \$id";
+            \$stmt = \$conn->prepare(\$query);
+            \$stmt->bind_param("i", \$guideId);
+            \$stmt->execute();
+            \$result = \$stmt->get_result();
+            \$row = \$result->fetch_assoc();
+            \$rating = \$row['rating'];
+            \$votes = \$row['votes'];
         }
         ?>
         PHP;
-
         $guideContent .= <<<HTML
+            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+            <script>
+            window.onload = function () {
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    animationEnabled: true,
+                    title: {
+                        text: "Rating"
+                    },
+                    data: [{
+                        type: "pie",
+                        startAngle: 240,
+                        yValueFormatString: "##0.00\"%\"",
+                        indexLabel: "{label} {y}",
+                        dataPoints: [
+        HTML;
+
+$guideContent .= "{y: $rating, label: 'Rating'},";
+$guideContent .= "{y: $votes, label: 'Votes'}";
+
+$guideContent .= <<<HTML
+                        ]
+                    }]
+                });
+                chart.render();
+            }
+            </script>
+            <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+HTML;
+        
+    $guideContent .= <<<HTML
     </main>
         <footer>
             <div class="container">
