@@ -90,19 +90,20 @@
                     // Iterar sobre las guias y generar una tarjeta para cada una
                     while($row = $result->fetch_assoc()) {
                         $rating = $row['rating'] / $row['votes'];
+                        $chartId = 'chartContainer' . $row['id'];  // Generar un id único para cada gráfica
                         echo '<div class="card transition">';
                         echo '<a href="'.$row['url'].'" class="card-link">';
                         echo '<div class="card_circle transition" style="background-image: url(\''.$row['image_url'].'\');"></div>';
                         echo '<h2 class="transition">'.$row['title'].'</h2>';
                         echo '<p>'.$row['descripcion'].'</p>';
                         
-                        echo '<div id="chartContainer" style="height: 370px; width: 100%;"></div>';
+                        echo '<div id="'.$chartId.'" style="height: 370px; width: 100%;"></div>';  // Usar el id único aquí
                         echo '<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>';
                         echo '<script>';
                         echo 'document.addEventListener(\'DOMContentLoaded\', function () {';
                         echo 'var rating = '.$rating.';';
                         echo 'var dataPoints = [{ y: rating, label: "Fue útil", color: "green" }, { y: 100 - rating, label: "No fue útil", color: "red" }];';
-                        echo 'var chart = new CanvasJS.Chart("chartContainer", {';
+                        echo 'var chart = new CanvasJS.Chart("'.$chartId.'", {';  // Usar el id único aquí
                         echo 'animationEnabled: true,';
                         echo 'title: {';
                         echo 'text: "Retroalimentación de la guía"';
@@ -118,7 +119,7 @@
                         echo 'chart.render();';
                         echo '});';
                         echo '</script>';
-
+                    
                         echo '</a>';
                         echo '</div>';
                     }
