@@ -100,13 +100,8 @@
                         echo '<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>';
                         echo '<script>';
                         echo 'document.addEventListener(\'DOMContentLoaded\', function () {';
-                        echo 'var ratings = JSON.parse(\''.$rating.'\');';
-                        echo 'var dataPoints = ratings.map(function (rating, index) {';
-                        echo 'return { y: rating, label: "Fue útil" + (index + 1), color: "green" };';
-                        echo '});';
-                        echo 'if (dataPoints[0].y < 100) {';
-                        echo 'dataPoints.push({ y: 100 - dataPoints[0].y, label: "No fue útil", color: "red" });';
-                        echo '}';
+                        echo 'var rating = '.$rating.';';
+                        echo 'var dataPoints = [{ y: rating, label: "Fue útil", color: "green" }, { y: 100 - rating, label: "No fue útil", color: "red" }];';
                         echo 'var chart = new CanvasJS.Chart("chartContainer", {';
                         echo 'animationEnabled: true,';
                         echo 'title: {';
