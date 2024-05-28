@@ -84,16 +84,46 @@
                 <?php
                 include 'connect.php';
 
-                $result = $conn->query("SELECT id, title, url, authors_id, upload_date, image_url, descripcion FROM Repairs");
-
+                $result = $conn->query("SELECT id, title, url, authors_id, upload_date, image_url, descripcion, rating, votes FROM Repairs");
+                
                 if ($result->num_rows > 0) {
                     // Iterar sobre las guias y generar una tarjeta para cada una
                     while($row = $result->fetch_assoc()) {
+                        $rating = $row['rating'] / $row['votes'];
                         echo '<div class="card transition">';
                         echo '<a href="'.$row['url'].'" class="card-link">';
                         echo '<div class="card_circle transition" style="background-image: url(\''.$row['image_url'].'\');"></div>';
                         echo '<h2 class="transition">'.$row['title'].'</h2>';
                         echo '<p>'.$row['descripcion'].'</p>';
+                        
+                        echo '<div id="chartContainer" style="height: 370px; width: 100%;"></div>';
+                        echo '<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>';
+                        echo '<script>';
+                        echo 'document.addEventListener(\'DOMContentLoaded\', function () {';
+                        echo 'var ratings = JSON.parse(\''.$rating.'\');';
+                        echo 'var dataPoints = ratings.map(function (rating, index) {';
+                        echo 'return { y: rating, label: "Fue útil" + (index + 1), color: "green" };';
+                        echo '});';
+                        echo 'if (dataPoints[0].y < 100) {';
+                        echo 'dataPoints.push({ y: 100 - dataPoints[0].y, label: "No fue útil", color: "red" });';
+                        echo '}';
+                        echo 'var chart = new CanvasJS.Chart("chartContainer", {';
+                        echo 'animationEnabled: true,';
+                        echo 'title: {';
+                        echo 'text: "Retroalimentación de la guía"';
+                        echo '},';
+                        echo 'data: [{';
+                        echo 'type: "pie",';
+                        echo 'startAngle: 240,';
+                        echo 'yValueFormatString: "##0.00\"%\"",';
+                        echo 'indexLabel: "{label} {y}",';
+                        echo 'dataPoints: dataPoints';
+                        echo '}]';
+                        echo '});';
+                        echo 'chart.render();';
+                        echo '});';
+                        echo '</script>';
+
                         echo '</a>';
                         echo '</div>';
                     }
