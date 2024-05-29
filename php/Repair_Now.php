@@ -96,7 +96,7 @@
                         echo '<div class="card_circle transition" style="background-image: url(\''.$row['image_url'].'\');"></div>';
                         echo '<h2 class="transition">'.$row['title'].'</h2>';
                         echo '<p>'.$row['descripcion'].'</p>';
-                        echo '</a>';
+                        
                         echo '<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>';
                         echo '<script>';
                         echo 'document.addEventListener(\'DOMContentLoaded\', function () {';
@@ -116,7 +116,10 @@
                         echo '});';
                         echo '</script>';
                         echo '<div id="'.$chartId.'" style="height: 370px; width: 100%;"></div>';  
+                    
+                        echo '</a>';
                         echo '</div>';
+                        
                     }
                 } else {
                     echo "No se encontraron guias-taller.";
