@@ -115,7 +115,7 @@
                         echo 'chart.render();';
                         echo '});';
                         echo '</script>';
-                        echo '<div id="'.$chartId.'" style="height: 370px; width: 100%;"></div>';  
+                        echo '<div id="'.$chartId.'" style="height: 200px; width: 100%;"></div>';  
                         echo '</div>';
                     }
                 } else {
