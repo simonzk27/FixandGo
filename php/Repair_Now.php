@@ -98,7 +98,9 @@
                         echo '<h2 class="transition">'.$row['title'].'</h2>';
                         echo '<p>'.$row['descripcion'].'</p>';
                         echo '</a>';
-                        echo '<div id="'.$chartId.'" style="height: 200px; width: 100%;"></div>';  
+                        echo '<div>';
+                        echo '<div id="'.$chartId.'" style="height: 200px; width: 100%;"></div>'; 
+                        echo '</div>'; 
                         echo '<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>';
                         echo '<script>';
                         echo 'document.addEventListener(\'DOMContentLoaded\', function () {';
