@@ -84,46 +84,19 @@
                 <?php
                 include 'connect.php';
 
-                $result = $conn->query("SELECT id, title, url, authors_id, upload_date, image_url, descripcion, rating, votes FROM Repairs");
-                
+                $result = $conn->query("SELECT id, title, url, authors_id, upload_date, image_url, descripcion FROM Repairs");
+
                 if ($result->num_rows > 0) {
                     // Iterar sobre las guias y generar una tarjeta para cada una
                     while($row = $result->fetch_assoc()) {
-                        $rating = $row['rating'] / $row['votes'];
-                        $chartId = 'chartContainer' . $row['id'];  
                         echo '<div class="card transition">';
-                        echo '<div class="card-content">'; // Nuevo contenedor para el contenido de la tarjeta
                         echo '<a href="'.$row['url'].'" class="card-link">';
                         echo '<div class="card_circle transition" style="background-image: url(\''.$row['image_url'].'\');"></div>';
                         echo '<h2 class="transition">'.$row['title'].'</h2>';
                         echo '<p>'.$row['descripcion'].'</p>';
                         echo '</a>';
-                        echo '</div>'; // Fin del contenedor del contenido de la tarjeta
-                        echo '<div class="card-chart">'; // Nuevo contenedor para la gráfica
-                        echo '<div id="'.$chartId.'" style="height: 200px; width: 100%;"></div>';  
-                        echo '<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>';
-                        echo '<script>';
-                        echo 'document.addEventListener(\'DOMContentLoaded\', function () {';
-                        echo 'var rating = '.$rating.';';
-                        echo 'var dataPoints = [{ y: rating, label: "Fue útil", color: "green" }, { y: 100 - rating, label: "No fue útil", color: "red" }];';
-                        echo 'var chart = new CanvasJS.Chart("'.$chartId.'", {';  
-                        echo 'animationEnabled: true,';
-                        echo 'data: [{';
-                        echo 'type: "pie",';
-                        echo 'startAngle: 240,';
-                        echo 'yValueFormatString: "##0.00\"%\"",';
-                        echo 'indexLabel: "{label} {y}",';
-                        echo 'dataPoints: dataPoints';
-                        echo '}]';
-                        echo '});';
-                        echo 'chart.render();';
-                        echo '});';
-                        echo '</script>';
-                        echo '</div>'; // Fin del contenedor de la gráfica
                         echo '</div>';
                     }
-
-
                 } else {
                     echo "No se encontraron guias-taller.";
                 }
