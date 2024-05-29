@@ -115,9 +115,7 @@
                         echo 'chart.render();';
                         echo '});';
                         echo '</script>';
-                        echo '<div>';
                         echo '<div id="'.$chartId.'" style="height: 370px; width: 100%;"></div>';  
-                        echo '</div>'
                     
                         echo '</a>';
                         echo '</div>';
