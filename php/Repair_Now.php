@@ -88,6 +88,7 @@
                 
                 if ($result->num_rows > 0) {
                     // Iterar sobre las guias y generar una tarjeta para cada una
+                    
                     while($row = $result->fetch_assoc()) {
                         $rating = $row['rating'] / $row['votes'];
                         $chartId = 'chartContainer' . $row['id'];  
@@ -97,6 +98,7 @@
                         echo '<h2 class="transition">'.$row['title'].'</h2>';
                         echo '<p>'.$row['descripcion'].'</p>';
                         echo '</a>';
+                        echo '<div id="'.$chartId.'" style="height: 200px; width: 100%;"></div>';  
                         echo '<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>';
                         echo '<script>';
                         echo 'document.addEventListener(\'DOMContentLoaded\', function () {';
@@ -115,9 +117,9 @@
                         echo 'chart.render();';
                         echo '});';
                         echo '</script>';
-                        echo '<div id="'.$chartId.'" style="height: 200px; width: 100%;"></div>';  
                         echo '</div>';
                     }
+
                 } else {
                     echo "No se encontraron guias-taller.";
                 }
